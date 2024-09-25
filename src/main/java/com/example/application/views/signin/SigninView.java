@@ -20,7 +20,6 @@ public class SigninView extends Composite<VerticalLayout> {
         getContent().getStyle().set("flex-grow", "1");
         getContent().setJustifyContentMode(JustifyContentMode.START);
         getContent().setAlignItems(Alignment.CENTER);
-        loginForm.setWidth("100%");
         getContent().add(loginForm);
     }
 }
