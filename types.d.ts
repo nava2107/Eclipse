@@ -4,7 +4,6 @@ declare module '*.css?inline' {
   export default content;
 }
 
-// Allow any CSS Custom Properties
 declare module 'csstype' {
   interface Properties {
     [index: `--${string}`]: any;
