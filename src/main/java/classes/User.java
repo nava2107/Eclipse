@@ -4,17 +4,32 @@ import java.util.List;
 
 
 public class User {
+
+    // userCount brukes for å telle antall ganger et User-objekt har blitt opprettet,
+    // og skal brukes til å fordele userId.
+    private static int userCount = 0;
+
+    // userId for å få en unik identifikator av brukere
     private int userId;
     private String username;
     private String email;
     private String hashedPassword;
-    private boolean isActive;
-    private boolean isAuthenticated;
-    private boolean isAdmin;
-    private List<Device> devices;
 
-    public User(int userId, String username, String email, String hashedPassword) {
-        this.userId = userId;
+    // isActive viser om brukeren er aktiv på appen eller ikke
+    private boolean isActive;
+
+    // isAuthenticated viser om brukeren er autentisert eller ikke
+    private boolean isAuthenticated;
+
+    // isAdmin viser om brukeren har admin-rettigheter eller ikke, for å finne ut av hva de kan/kan ikke gjøre
+    private boolean isAdmin;
+
+    // devices er en liste med devices som er relatert til brukeren
+    private ArrayList<Device> devices;
+
+
+    public User(int userCount, String username, String email, String hashedPassword) {
+        this.userId = ++userCount;
         this.username = username;
         this.email = email;
         this.hashedPassword = hashedPassword;
@@ -100,7 +115,7 @@ public class User {
         isAuthenticated = authenticated;
     }
 
-    public void setDevices(List<Device> devices) {
+    public void setDevices(ArrayList<Device> devices) {
         this.devices = devices;
     }
 
@@ -110,5 +125,13 @@ public class User {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public static int getUserCount() {
+        return userCount;
+    }
+
+    public static void setUserCount(int userCount) {
+        User.userCount = userCount;
     }
 }
