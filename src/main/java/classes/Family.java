@@ -15,10 +15,12 @@ public class Family {
 
     private ArrayList<Device> householdDevices;
 
+    // Brukeren som aller først lager en familie blir satt som admin. Kan endres senere dersom man ønsker det.
     private User admin;
     private String qrCode;
 
-
+    // Konstruktør for en familie, hvor admin blir bestemt og familien får en tilhørende QR-kode
+    // som kan brukes til å invitere nye familiemedlemmer
     public Family(String familyName, User admin) {
         this.familyId = ++familyCount;
         this.familyName = familyName;
@@ -29,10 +31,12 @@ public class Family {
         this.qrCode = generateQRCode();
     }
 
+    // Metode for å generere QR-kode
     private String generateQRCode() {
         return UUID.randomUUID().toString();
     }
 
+    // Metode for å legge til familiemedlemmer gjennom familiens QR-kode
     public boolean addFamilyMemberWithQRCode(User newMember, String qrCodeInput) {
         if (this.qrCode.equals(qrCodeInput)) {
             this.familyMembers.add(newMember);
@@ -47,7 +51,7 @@ public class Family {
     }
 
 
-    // Getter and setter methods for familyName
+
     public String getFamilyName() {
         return familyName;
     }
@@ -56,42 +60,41 @@ public class Family {
         this.familyName = familyName;
     }
 
-    // Getter and setter methods for familyId (no setter, since ID is auto-generated)
     public int getFamilyId() {
         return familyId;
     }
 
-    // Getter and setter methods for familyMembers
+
     public ArrayList<User> getFamilyMembers() {
         return familyMembers;
     }
 
-    // Add a member to the family
+
     public void addFamilyMember(User newMember) {
         this.familyMembers.add(newMember);
     }
 
-    // Remove a member from the family
+
     public void removeFamilyMember(User member) {
         this.familyMembers.remove(member);
     }
 
-    // Getter and setter methods for householdDevices
+
     public ArrayList<Device> getHouseholdDevices() {
         return householdDevices;
     }
 
-    // Add a device to the household devices list
+
     public void addDevice(Device newDevice) {
         this.householdDevices.add(newDevice);
     }
 
-    // Remove a device from the household devices list
+
     public void removeDevice(Device device) {
         this.householdDevices.remove(device);
     }
 
-    // Getter and setter methods for admin
+
     public User getAdmin() {
         return admin;
     }
@@ -100,7 +103,7 @@ public class Family {
         this.admin = admin;
     }
 
-    // Static method to get the total number of families created
+
     public static int getFamilyCount() {
         return familyCount;
     }

@@ -21,6 +21,21 @@ public class UserRepository {
         return null;
     }
 
+    public User findByEmail(String email) {
+        for (User user : users.values()) {
+            if (user.getEmail().equals(email)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public void update(User user) {
+        if (users.containsKey(user.getUserId())) {
+            users.put(user.getUserId(), user);
+        }
+    }
+
     public int nextId() {
         return nextId;
     }

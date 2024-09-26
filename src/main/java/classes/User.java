@@ -15,11 +15,13 @@ public class User {
     private String email;
     private String hashedPassword;
 
-    // isActive viser om brukeren er aktiv på appen eller ikke
     private boolean isActive;
 
     // isAuthenticated viser om brukeren er autentisert eller ikke
     private boolean isAuthenticated;
+
+    // isEmailVerified sjekker om mailen til user er verifisert
+    private boolean isEmailVerified;
 
     // isAdmin viser om brukeren har admin-rettigheter eller ikke, for å finne ut av hva de kan/kan ikke gjøre
     private boolean isAdmin;
@@ -28,6 +30,7 @@ public class User {
     private ArrayList<Device> devices;
 
 
+    // Konstruktør som lager user-objekter
     public User(int userCount, String username, String email, String hashedPassword) {
         this.userId = ++userCount;
         this.username = username;
@@ -35,9 +38,22 @@ public class User {
         this.hashedPassword = hashedPassword;
         this.isActive = true;
         this.isAuthenticated = false;
+        this.isEmailVerified = false;
         this.isAdmin = false;
         this.devices = new ArrayList<>();
     }
+
+    public boolean isEmailVerified() {
+        return isEmailVerified;
+    }
+
+    public void setEmailVerified(boolean emailVerified) {
+        this.isEmailVerified = emailVerified;
+        if (emailVerified) {
+            this.isActive = true;
+        }
+    }
+
 
     public boolean authenticate(String password) {
         return verifyPassword(password);
