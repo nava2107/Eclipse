@@ -1,4 +1,4 @@
-
+@import url('./styles/register.css');
 @import url('@fontsource/mukta/index.css');    html {
       --lumo-shade: hsl(214, 32%, 12%);
       --lumo-shade-5pct: hsla(214, 32%, 12%, 0.05);
@@ -63,8 +63,10 @@
 
 
 .div-login {
-    background-image: url('images/moon.jpeg');
-    background-color: rgba(55, 51, 68, 0.54);
+   background-image: url('/images/moon.jpeg');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
     max-width: 600px;
     width: 100%;
     height: 100vh;
@@ -74,6 +76,7 @@
     align-items: center;
     box-shadow: black;
     border-radius: 6px;
+    padding: 0;
 }
 
 .sign-in-view {
@@ -83,7 +86,7 @@
 }
 
 .bottom-div-login {
-    background-color: rgba(17, 15, 26, 0.541);
+    background-color: rgba(17, 15, 26, 0.8);
     max-height: 200px;
     min-height: 100px;
     width: 100%;
@@ -91,6 +94,29 @@
     justify-content: center;
     align-items: center;
     margin-top: 3rem;
+}
+
+.layout-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(111, 147, 227);
+    font-weight: bold;
+}
+
+.join-here {
+    color: rgb(111, 147, 227);
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+
+
+
+.vaadin-login-form::part {
+    background-color: transparent;
+    width: 600px;
+    margin-top: 0;
 }
 
 /*background-color: rgba(17, 15, 26, 0.541);*/

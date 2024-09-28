@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e450650-28fb-4605-a4cb-1c7d399dfb0d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/images/moon.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/styles/register.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/application/views/register/Register.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/resources/images/moon.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/resources/images/test-bilde.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/resources/images/test-bilde2.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/images/moon.jpeg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/views/@layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/views/@layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/views/signin/SigninView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/views/signin/SigninView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +37,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -54,7 +63,7 @@
     "Spring Boot.Application.executor": "Run",
     "git-widget-placeholder": "feature/login-frontend",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/ninaberkova/Desktop/github/Eclipse/pom.xml",
+    "last_opened_file_path": "/Users/ninaberkova/Desktop/github/Eclipse/src/main/resources/META-INF/resources/images",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -68,9 +77,16 @@
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/META-INF/resources/images" />
       <recent name="$PROJECT_DIR$/src/main/frontend/themes/eclipse/images" />
       <recent name="$PROJECT_DIR$/src/main/resources/META-INF/recources/images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/META-INF/resources/images" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/main/resources/META-INF/recources/images" />
+      <recent name="$PROJECT_DIR$/src/main/frontend/themes/eclipse/images" />
       <recent name="C:\Users\nina0\Documents\GitHub\Eclipse" />
     </key>
   </component>
@@ -90,7 +106,7 @@
       <option name="presentableId" value="Default" />
       <updated>1727283454875</updated>
       <workItem from="1727426166165" duration="598000" />
-      <workItem from="1727482064228" duration="4693000" />
+      <workItem from="1727482064228" duration="20685000" />
     </task>
     <servers />
   </component>

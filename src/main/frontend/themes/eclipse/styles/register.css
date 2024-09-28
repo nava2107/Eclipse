@@ -1,0 +1,60 @@
+.register-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-register {
+    background-image: url('/images/moon.jpeg');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    max-width: 600px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: black;
+    border-radius: 6px;
+    padding: 5%;
+}
+
+.inner-div {
+    background-color: rgba(17, 15, 26, 0.8);
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10%;
+    border-radius: 20px;
+}
+
+.email-field, .password-field, .username-field, .firstname-field, .lastname_field {
+
+}
+
+.button-div {
+    padding: 5%;
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10%;
+}
+
+.primary-register {
+    background-color: rgba(17, 15, 26, 1);
+    width: 30%;
+}
+.secondary-register {
+    background-color: rgba(17, 15, 26, 0.8);
+    width: 30%;
+}
+
+.set-up {
+    padding-bottom: 5%;
+}
