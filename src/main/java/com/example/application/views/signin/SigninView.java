@@ -1,6 +1,7 @@
 package com.example.application.views.signin;
 
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
@@ -17,17 +18,28 @@ import com.vaadin.flow.router.Route;
 public class SigninView extends Composite<VerticalLayout> {
 
     public SigninView() {
-        LoginForm loginForm = new LoginForm();
+        this.addClassName("sign-in-view");
+        this.getElement().getStyle().set("background-color", "rgba(17, 16, 24, 1)");
+        this.getElement().getStyle().setWidth("100%");
+        this.getElement().getStyle().set("height", "100vh");
 
-        // Configure layout properties
+        Div container = new Div();
+        container.addClassName("div-login");
+        container.getElement().getStyle().set("background-image", "url('moon.jpeg')");
+        container.getElement().getStyle().set("background-size", "cover");
+        container.getElement().getStyle().set("background-position", "center");
+        container.getElement().getStyle().set("height", "100vh");
+        container.getElement().getStyle().set("width", "100%");
+        getContent().add(container);
+
+        LoginForm loginForm = new LoginForm();
         VerticalLayout content = getContent();
         content.setWidth("100%");
         content.getStyle().set("flex-grow", "1");
         content.setJustifyContentMode(JustifyContentMode.START);
         content.setAlignItems(Alignment.CENTER);
 
-        // login form til layout
-        content.add(loginForm);
+        container.add(loginForm);
 
         // listener for login
         loginForm.addLoginListener(event -> {
@@ -36,9 +48,12 @@ public class SigninView extends Composite<VerticalLayout> {
             getUI().ifPresent(ui -> ui.navigate("home")); // Replace "home" with your target route
         });
 
-        // Add Sign Up link
-        Anchor signUpLink = new Anchor("https://example.com/signup", "Not a member? Join our Eclipse family here!");
+        Div bottomContainer = new Div();
+        container.add(bottomContainer);
+
+        bottomContainer.addClassName("bottom-div-login");
+        Anchor signUpLink = new Anchor("https://example.com", "Not a member?\n Join our Eclipse family here!");
         signUpLink.getElement().getStyle().set("margin-top", "5px"); // Add some space
-        content.add(signUpLink);
+        bottomContainer.add(signUpLink);
     }
 }

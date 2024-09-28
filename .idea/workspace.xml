@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e450650-28fb-4605-a4cb-1c7d399dfb0d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/classes/AuthService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/classes/Device.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/classes/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/classes/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/images/moon.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/views/@layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/views/@layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/views/signin/SigninView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/views/signin/SigninView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,27 +44,40 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Application.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "feature/login",
+    "Spring Boot.Application.executor": "Run",
+    "git-widget-placeholder": "feature/login-frontend",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/ninaberkova/Desktop/github/Eclipse/pom.xml",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "/Users/ninaberkova/Desktop/github/Eclipse/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/frontend/themes/eclipse/images" />
+      <recent name="$PROJECT_DIR$/src/main/resources/META-INF/recources/images" />
       <recent name="C:\Users\nina0\Documents\GitHub\Eclipse" />
     </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-11.0.16-jbr_dcevm-11.0.16-4caba194b151-788636e5" />
-        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-23eed401" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-9b16c6e2" />
       </set>
     </attachedChunks>
   </component>
@@ -76,7 +89,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1727283454875</updated>
+      <workItem from="1727426166165" duration="598000" />
+      <workItem from="1727482064228" duration="4693000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
