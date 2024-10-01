@@ -98,7 +98,7 @@ public class Register extends Composite<VerticalLayout> {
             }
 
             // Call the register method
-            User user = authService.register(username, email, password);
+            User user = authService.register(firstName, lastName, username, email, password);
 
             if (user != null) { // Check if the returned User object is not null
                 Notification.show("Registration successful! Please verify your email.", 3000, Notification.Position.MIDDLE);
