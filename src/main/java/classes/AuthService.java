@@ -10,10 +10,10 @@ public class AuthService {
         this.emailService = emailService;
     }
 
-    public User register(String username, String email, String password) {
+    public User register(String username, String firstName, String lastName, String email, String password) {
         String hashedPassword = hashPassword(password);
         int userId = generateUserId();
-        User newUser = new User(userId, username, email, hashedPassword);
+        User newUser = new User(userId, username, firstName, lastName, email, hashedPassword);
 
 
         userRepository.add(newUser);
