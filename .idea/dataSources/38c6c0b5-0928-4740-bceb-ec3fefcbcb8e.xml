@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="eclipsedatabase">
-  <database-model serializer="dbm" dbms="H2" family-id="H2" format-version="4.53">
+  <database-model serializer="dbm" dbms="H2" family-id="H2" format-version="4.51">
     <root id="1">
       <ServerVersion>2.2.220</ServerVersion>
     </root>
@@ -160,7 +160,7 @@
     <collation id="153" parent="2" name="THAI_THAILAND"/>
     <collation id="154" parent="2" name="THAI_THAILAND_TH"/>
     <collation id="155" parent="2" name="TURKISH"/>
-    <collation id="156" parent="2" name="TURKISH_TÜRKIYE"/>
+    <collation id="156" parent="2" name="TURKISH_TURKEY"/>
     <collation id="157" parent="2" name="UKRAINIAN"/>
     <collation id="158" parent="2" name="UKRAINIAN_UKRAINE"/>
     <collation id="159" parent="2" name="VIETNAMESE"/>
@@ -169,59 +169,98 @@
     <schema id="162" parent="2" name="INFORMATION_SCHEMA"/>
     <schema id="163" parent="2" name="PUBLIC">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-10-02.12:26:55</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-10-02.16:40:24</LastIntrospectionLocalTimestamp>
     </schema>
     <user id="164" parent="2" name="SA">
       <Admin>1</Admin>
     </user>
-    <table id="165" parent="163" name="USERS"/>
-    <column id="166" parent="165" name="USERID">
+    <table id="165" parent="163" name="FAMILY"/>
+    <table id="166" parent="163" name="USERS"/>
+    <column id="167" parent="165" name="FAMID">
+      <DasType>INTEGER|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="167" parent="165" name="USERNAME">
+    <column id="168" parent="165" name="FAMNAME">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
       <Position>2</Position>
-      <StoredType>CHARACTER VARYING(255)|0s</StoredType>
     </column>
-    <column id="168" parent="165" name="FIRSTNAME">
+    <column id="169" parent="165" name="ADMINID">
+      <DasType>INTEGER|0s</DasType>
       <Position>3</Position>
-      <StoredType>CHARACTER VARYING(255)|0s</StoredType>
     </column>
-    <column id="169" parent="165" name="LASTNAME">
+    <column id="170" parent="165" name="QRCODE">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
       <Position>4</Position>
-      <StoredType>CHARACTER VARYING(255)|0s</StoredType>
     </column>
-    <column id="170" parent="165" name="EMAIL">
+    <foreign-key id="171" parent="165" name="FK_ADMIN">
+      <ColNames>ADMINID</ColNames>
+      <OnDelete>restrict</OnDelete>
+      <OnUpdate>restrict</OnUpdate>
+      <RefKeyName>CONSTRAINT_4</RefKeyName>
+      <RefTableName>USERS</RefTableName>
+    </foreign-key>
+    <index id="172" parent="165" name="PRIMARY_KEY_7">
+      <ColNames>FAMID</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <index id="173" parent="165" name="FK_ADMIN_INDEX_7">
+      <ColNames>ADMINID</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+    </index>
+    <key id="174" parent="165" name="CONSTRAINT_7">
+      <ColNames>FAMID</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="175" parent="166" name="USERID">
+      <DasType>INTEGER|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="176" parent="166" name="USERNAME">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="177" parent="166" name="FIRSTNAME">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="178" parent="166" name="LASTNAME">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="179" parent="166" name="EMAIL">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
       <Position>5</Position>
-      <StoredType>CHARACTER VARYING(255)|0s</StoredType>
     </column>
-    <column id="171" parent="165" name="HASHEDPASSWORD">
+    <column id="180" parent="166" name="HASHEDPASSWORD">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
       <Position>6</Position>
-      <StoredType>CHARACTER VARYING(255)|0s</StoredType>
     </column>
-    <column id="172" parent="165" name="ISACTIVE">
+    <column id="181" parent="166" name="ISACTIVE">
+      <DasType>BOOLEAN|0s</DasType>
       <Position>7</Position>
-      <StoredType>BOOLEAN|0s</StoredType>
     </column>
-    <column id="173" parent="165" name="ISAUTHENTICATED">
+    <column id="182" parent="166" name="ISAUTHENTICATED">
+      <DasType>BOOLEAN|0s</DasType>
       <Position>8</Position>
-      <StoredType>BOOLEAN|0s</StoredType>
     </column>
-    <column id="174" parent="165" name="ISEMAILVERIFIED">
+    <column id="183" parent="166" name="ISEMAILVERIFIED">
+      <DasType>BOOLEAN|0s</DasType>
       <Position>9</Position>
-      <StoredType>BOOLEAN|0s</StoredType>
     </column>
-    <column id="175" parent="165" name="ISADMIN">
+    <column id="184" parent="166" name="ISADMIN">
+      <DasType>BOOLEAN|0s</DasType>
       <Position>10</Position>
-      <StoredType>BOOLEAN|0s</StoredType>
     </column>
-    <index id="176" parent="165" name="PRIMARY_KEY_4">
+    <index id="185" parent="166" name="PRIMARY_KEY_4">
       <ColNames>USERID</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <key id="177" parent="165" name="CONSTRAINT_4">
+    <key id="186" parent="166" name="CONSTRAINT_4">
       <ColNames>USERID</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
