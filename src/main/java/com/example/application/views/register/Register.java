@@ -90,7 +90,7 @@ public class Register extends Composite<VerticalLayout> {
 
             // Call the AuthService to register the user
             try {
-                User user = authService.register(username, firstName, lastName, email, password);
+                User user = authService.register(lastName, email, password);
                 Notification.show("Registration successful! Please check your email for verification.", 3000, Notification.Position.MIDDLE);
                 // Optionally, redirect or take other actions after registration
                 // getUI().ifPresent(ui -> ui.navigate("login")); // Example of redirecting to login
