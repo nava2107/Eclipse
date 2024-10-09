@@ -11,7 +11,10 @@ public class User {
 
     // userId for å få en unik identifikator av brukere
     private int userId;
+
     private String username;
+    private String firstName;
+    private String lastName;
     private String email;
     private String hashedPassword;
 
@@ -31,9 +34,11 @@ public class User {
 
 
     // Konstruktør som lager user-objekter
-    public User(int userCount, String username, String email, String hashedPassword) {
+    public User(int userCount, String username, String firstName, String lastName, String email, String hashedPassword) {
         this.userId = ++userCount;
         this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.hashedPassword = hashedPassword;
         this.isActive = true;
@@ -149,5 +154,21 @@ public class User {
 
     public static void setUserCount(int userCount) {
         User.userCount = userCount;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
