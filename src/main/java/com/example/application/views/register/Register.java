@@ -1,9 +1,7 @@
 package com.example.application.views.register;
 
-import classes.AuthService;
-import classes.EmailService;
-import classes.User;
-import classes.UserRepository;
+import com.example.application.classes.AuthService;
+import com.example.application.classes.User;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H3;
@@ -16,19 +14,19 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import java.awt.*;
 
 @PageTitle("Empty")
 @Menu(icon = "line-awesome/svg/file.svg", order = 0)
 @Route(value = "register")
 public class Register extends Composite<VerticalLayout> {
     private final AuthService authService;
-    public Register() {
 
-        UserRepository userRepository = new UserRepository(); // Replace with actual instance
-        EmailService emailService = new EmailService(); // Replace with actual instance
-        this.authService = new AuthService(userRepository, emailService);
+    @Autowired
+    public Register(AuthService authService) {
+
+        this.authService = authService;
 
         this.addClassName("register-view");
         this.getElement().getStyle().set("background-color", "rgba(1, 1, 1, 0.5)");
@@ -91,23 +89,39 @@ public class Register extends Composite<VerticalLayout> {
             String email = emailField.getValue();
             String password = passwordField.getValue();
 
-            // Perform basic validation
+            // Basic validering
             if (firstName.isEmpty() || lastName.isEmpty() || username.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 Notification.show("All fields must be filled", 3000, Notification.Position.MIDDLE);
                 return;
             }
 
-            // Call the register method
-            User user = authService.register(firstName, lastName, username, email, password);
+            // Sjekk om e-posten allerede er registrert
+            if (authService.getUserRepository().findByEmail(email) != null) {
+                Notification.show("Email is already registered.", 3000, Notification.Position.MIDDLE);
+                return;
+            }
 
-            if (user != null) { // Check if the returned User object is not null
-                Notification.show("Registration successful! Please verify your email.", 3000, Notification.Position.MIDDLE);
-                // Redirect or perform other actions after success
+            // Registrer brukeren via AuthService
+            User newUser = authService.registerUser(username, firstName, lastName, email, password);
+
+            if (newUser != null) {
+                // Hvis registreringen er vellykket
+                Notification.show("Registration successful! A verification email has been sent.", 3000, Notification.Position.MIDDLE);
             } else {
-                Notification.show("Registration failed. Try again.", 3000, Notification.Position.MIDDLE);
+                // Hvis registreringen feilet
+                Notification.show("Registration failed. Please try again.", 3000, Notification.Position.MIDDLE);
             }
         });
 
+        // Kanseller-knappen sin logikk (valgfritt)
+        buttonSecondary.addClickListener(event -> {
+            // Handling for avbryt knappen, f.eks. tømme alle feltene
+            firstNameField.clear();
+            lastNameField.clear();
+            usernameField.clear();
+            emailField.clear();
+            passwordField.clear();
+        });
     }
 
 }

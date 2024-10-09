@@ -5,11 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad10ca52-9de7-4336-945a-2dc1b9223e19" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/38c6c0b5-0928-4740-bceb-ec3fefcbcb8e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/38c6c0b5-0928-4740-bceb-ec3fefcbcb8e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vaadin-node-tasks.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.vaadin-node-tasks.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eclipsedatabase.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/eclipsedatabase.mv.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eclipsedatabase.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/eclipsedatabase.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/classes/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/classes/Device.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/Device.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/classes/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/classes/Family.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/Family.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/classes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/classes/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/views/register/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/views/register/Register.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +50,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.Application.executor": "Run",
-    "git-widget-placeholder": "feature/database",
+    "git-widget-placeholder": "feature/register-og-login-funksjonalitet",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -72,8 +81,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-corretto-21.0.2-4caba194b151-51586f01" />
-        <option value="jdk-22-openjdk-22-4caba194b151-f504ca98" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
       </set>
     </attachedChunks>
   </component>
@@ -87,6 +96,7 @@
       <updated>1727869426860</updated>
       <workItem from="1727869429529" duration="2610000" />
       <workItem from="1728387718003" duration="419000" />
+      <workItem from="1728470282024" duration="3692000" />
     </task>
     <servers />
   </component>

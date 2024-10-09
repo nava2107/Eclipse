@@ -1,7 +1,11 @@
-package classes;
+package com.example.application.classes;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AuthService {
 
+    @Autowired
     private UserRepository userRepository;
     private EmailService emailService;
 
@@ -10,20 +14,20 @@ public class AuthService {
         this.emailService = emailService;
     }
 
-    public User register(String username, String firstName, String lastName, String email, String password) {
-        String hashedPassword = hashPassword(password);
-        int userId = generateUserId();
-        User newUser = new User(userId, username, firstName, lastName, email, hashedPassword);
+    public User registerUser(String username, String password, String email, String firstName, String lastName) {
+        if (userRepository.findByUsername(username) != null || userRepository.findByEmail(email) != null) {
+            throw new RuntimeException("Username or email already in use");
+        }
 
+        User newUser = new User();
+        newUser.setUsername(username);
+        newUser.setFirstName(firstName);
+        newUser.setLastName(lastName);
+        newUser.setHashedPassword(password); // Pass på å hashe passordet
+        newUser.setEmail(email);
 
-        userRepository.add(newUser);
-
-        String verificationCode = generateVerificationCode(newUser);
-
-
-        emailService.sendVerificationEmail(newUser.getEmail(), verificationCode);
-
-        return newUser;
+        // Lagre den nye brukeren i databasen
+        return userRepository.save(newUser);
     }
 
 
@@ -31,7 +35,7 @@ public class AuthService {
         User user = userRepository.findByEmail(email);
         if (user != null && verifyCode(user, code)) {
             user.setEmailVerified(true);
-            userRepository.update(user);
+            userRepository.save(user); // Bruk save() i stedet for update()
             return true;
         }
         return false;
@@ -66,8 +70,19 @@ public class AuthService {
     }
 
 
-    private int generateUserId() {
-        return userRepository.nextId();
+    public UserRepository getUserRepository() {
+        return userRepository;
     }
 
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public EmailService getEmailService() {
+        return emailService;
+    }
+
+    public void setEmailService(EmailService emailService) {
+        this.emailService = emailService;
+    }
 }

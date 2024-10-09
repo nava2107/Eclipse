@@ -1,15 +1,20 @@
-package classes;
+package com.example.application.classes;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.OneToMany;
 
 
+@Entity
+@Table(name = "users")
 public class User {
 
-    // userCount brukes for å telle antall ganger et User-objekt har blitt opprettet,
-    // og skal brukes til å fordele userId.
-    private static int userCount = 0;
-
-    // userId for å få en unik identifikator av brukere
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
 
     private String username;
@@ -30,12 +35,12 @@ public class User {
     private boolean isAdmin;
 
     // devices er en liste med devices som er relatert til brukeren
-    private ArrayList<Device> devices;
+    @OneToMany(cascade = jakarta.persistence.CascadeType.ALL, fetch = jakarta.persistence.FetchType.LAZY)
+    private List<Device> devices = new ArrayList<>();
 
 
     // Konstruktør som lager user-objekter
-    public User(int userCount, String username, String firstName, String lastName, String email, String hashedPassword) {
-        this.userId = ++userCount;
+    public User(String username, String firstName, String lastName, String email, String hashedPassword) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -47,6 +52,8 @@ public class User {
         this.isAdmin = false;
         this.devices = new ArrayList<>();
     }
+
+    public User(){}
 
     public boolean isEmailVerified() {
         return isEmailVerified;
@@ -146,14 +153,6 @@ public class User {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
-    }
-
-    public static int getUserCount() {
-        return userCount;
-    }
-
-    public static void setUserCount(int userCount) {
-        User.userCount = userCount;
     }
 
     public String getFirstName() {
