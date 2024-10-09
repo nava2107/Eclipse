@@ -15,11 +15,22 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "Spring Boot.Application.executor": "Run",
     "git-widget-placeholder": "feature/login-frontend",
+    "last_opened_file_path": "/Users/ninaberkova/Desktop/github/Eclipse/src/main/resources/META-INF/resources/images",
     "node.js.selected.package.tslint": "(autodetect)",
     "ts.external.directory.path": "/Users/ninaberkova/Desktop/github/Eclipse/node_modules/typescript/lib"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/META-INF/resources/images" />
+    </key>
+  </component>
   <component name="TaskManager">
     <servers />
   </component>
