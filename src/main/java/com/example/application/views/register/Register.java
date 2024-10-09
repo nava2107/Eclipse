@@ -11,79 +11,103 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.router.Menu;
-import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
 
-import java.awt.*;
-
-@PageTitle("Empty")
-@Menu(icon = "line-awesome/svg/file.svg", order = 0)
-@Route(value = "register")
+@PageTitle("Register")
+@Route("register")
 public class Register extends Composite<VerticalLayout> {
-    private final AuthService authService;
-    public Register() {
 
-        UserRepository userRepository = new UserRepository(); // Replace with actual instance
-        EmailService emailService = new EmailService(); // Replace with actual instance
+    private final AuthService authService;
+
+    public Register() {
+        // Replace with actual instances of UserRepository and EmailService if necessary
+        UserRepository userRepository = new UserRepository();
+        EmailService emailService = new EmailService();
         this.authService = new AuthService(userRepository, emailService);
 
+        // Styling
         this.addClassName("register-view");
         this.getElement().getStyle().set("background-color", "rgba(1, 1, 1, 0.5)");
         this.getElement().getStyle().setWidth("100%");
         this.getElement().getStyle().set("height", "100vh");
 
+        // Container for layout
         Div container = new Div();
         container.getElement().getStyle().set("height", "100vh");
         container.getElement().getStyle().set("width", "100%");
         container.addClassName("div-register");
         getContent().add(container);
 
+        // Inner container for form
         Div innerC = new Div();
         innerC.addClassName("inner-div");
         container.add(innerC);
 
-        H3 h3 = new H3();
-        TextField firstNameField = new TextField();
-        TextField lastNameField = new TextField();
-        TextField usernameField = new TextField();
-        EmailField emailField = new EmailField();
-        PasswordField passwordField = new PasswordField();
-
-        h3.setText("Set up your account");
+        // Heading
+        H3 h3 = new H3("Set up your account");
         h3.setWidth("100%");
-        firstNameField.setLabel("First Name");
-        lastNameField.setLabel("Last Name");
-        usernameField.setLabel("Choose an username:");
-        emailField.setLabel("Email");
-        passwordField.setLabel("Password field");
-        passwordField.setWidth("min-content");
+        innerC.add(h3);
 
-        h3.addClassName("set-up");
-        firstNameField.setClassName("name-field");
-        lastNameField.setClassName("lastname-field");
-        usernameField.setClassName("username-field");
-        emailField.setClassName("email-field");
-        passwordField.setClassName("password-field");
+        // Input fields
+        TextField firstNameField = new TextField("First Name");
+        TextField lastNameField = new TextField("Last Name");
+        TextField usernameField = new TextField("Choose a username:");
+        EmailField emailField = new EmailField("Email");
+        PasswordField passwordField = new PasswordField("Password");
 
-        innerC.add(h3, firstNameField, lastNameField, usernameField, emailField, passwordField);
+        innerC.add(firstNameField, lastNameField, usernameField, emailField, passwordField);
 
+        // Buttons
         Div buttonDiv = new Div();
         buttonDiv.addClassName("button-div");
 
-        Button buttonPrimary = new Button();
-        Button buttonSecondary = new Button();
+        Button buttonPrimary = new Button("Continue");
+        Button buttonSecondary = new Button("Cancel");
 
-        buttonPrimary.setText("Continue");
-        buttonSecondary.setText("Cancel");
-        buttonPrimary.setClassName("primary-register");
-        buttonSecondary.setClassName("secondary-register");
+        buttonPrimary.addClassName("primary-register");
+        buttonSecondary.addClassName("secondary-register");
 
         container.add(buttonDiv);
         buttonDiv.add(buttonPrimary, buttonSecondary);
 
-    }
+        // Action when "Continue" button is clicked
+        buttonPrimary.addClickListener(event -> {
+            // Retrieve input values
+            String firstName = firstNameField.getValue();
+            String lastName = lastNameField.getValue();
+            String username = usernameField.getValue();
+            String email = emailField.getValue();
+            String password = passwordField.getValue();
 
+            // Input validation (basic example, more could be added)
+            if (firstName.isEmpty() || lastName.isEmpty() || username.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                Notification.show("All fields must be filled", 3000, Notification.Position.MIDDLE);
+                return;
+            }
+
+            // Call the AuthService to register the user
+            try {
+                User user = authService.register(username, firstName, lastName, email, password);
+                Notification.show("Registration successful! Please check your email for verification.", 3000, Notification.Position.MIDDLE);
+                // Optionally, redirect or take other actions after registration
+                // getUI().ifPresent(ui -> ui.navigate("login")); // Example of redirecting to login
+            } catch (Exception e) {
+                Notification.show("Registration failed: " + e.getMessage(), 3000, Notification.Position.MIDDLE);
+            }
+        });
+
+        // Action when "Cancel" button is clicked (navigate to another view or clear fields)
+        buttonSecondary.addClickListener(event -> {
+            // Optional: Clear the fields or redirect to another page
+            firstNameField.clear();
+            lastNameField.clear();
+            usernameField.clear();
+            emailField.clear();
+            passwordField.clear();
+            Notification.show("Registration cancelled", 2000, Notification.Position.MIDDLE);
+        });
+    }
 }
