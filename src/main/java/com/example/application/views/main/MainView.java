@@ -120,11 +120,7 @@ public class MainView extends Composite<VerticalLayout> {
         pulsContainer.setClassName("puls-container");
 
         Image pulsImage = new Image("/images/devices.png", "Search");
-        pulsImage.setWidth("150px");
-        pulsImage.setHeight("150px");
-
         pulsImage.setClassName("puls-image");
-
 
         Div imagePuls = new Div();
         imagePuls.setClassName("image-puls");
