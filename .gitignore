@@ -6,3 +6,6 @@ src/main/frontend/generated/
 vite.generated.ts
 .idea/workspace.xml
 
+.idea/dataSources/38c6c0b5-0928-4740-bceb-ec3fefcbcb8e.xml
+.idea/dataSources.local.xml
+.idea/workspace.xml
