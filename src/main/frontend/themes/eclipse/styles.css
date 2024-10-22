@@ -1,4 +1,5 @@
 @import url('./styles/register.css');
+@import url("./styles/mainview.css");
 @import url('@fontsource/mukta/index.css');    html {
       --lumo-shade: hsl(214, 32%, 12%);
       --lumo-shade-5pct: hsla(214, 32%, 12%, 0.05);
