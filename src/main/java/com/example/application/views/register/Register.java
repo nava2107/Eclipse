@@ -1,6 +1,7 @@
 package com.example.application.views.register;
 
 import com.example.application.classes.AuthService;
+import com.example.application.classes.EmailService;
 import com.example.application.classes.User;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.html.Div;
@@ -16,17 +17,18 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
 @PageTitle("Empty")
 @Menu(icon = "line-awesome/svg/file.svg", order = 0)
 @Route(value = "register")
 public class Register extends Composite<VerticalLayout> {
     private final AuthService authService;
+    private final EmailService emailService;
 
     @Autowired
-    public Register(AuthService authService) {
+    public Register(AuthService authService, EmailService emailService) {
 
         this.authService = authService;
+        this.emailService = emailService;
 
         this.addClassName("register-view");
         this.getElement().getStyle().set("background-color", "rgba(1, 1, 1, 0.5)");
@@ -83,6 +85,8 @@ public class Register extends Composite<VerticalLayout> {
         buttonDiv.add(buttonPrimary, buttonSecondary);
 
         buttonPrimary.addClickListener(event -> {
+            System.out.println("Continue button clicked");
+
             String firstName = firstNameField.getValue();
             String lastName = lastNameField.getValue();
             String username = usernameField.getValue();
@@ -92,25 +96,40 @@ public class Register extends Composite<VerticalLayout> {
             // Basic validering
             if (firstName.isEmpty() || lastName.isEmpty() || username.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 Notification.show("All fields must be filled", 3000, Notification.Position.MIDDLE);
+                System.out.println("Validation failed: Missing fields");
                 return;
             }
 
             // Sjekk om e-posten allerede er registrert
             if (authService.getUserRepository().findByEmail(email) != null) {
                 Notification.show("Email is already registered.", 3000, Notification.Position.MIDDLE);
+                System.out.println("Email already registered: " + email);
                 return;
             }
 
             // Registrer brukeren via AuthService
             User newUser = authService.registerUser(username, firstName, lastName, email, password);
+            System.out.println("User registration attempted");
 
             if (newUser != null) {
                 // Hvis registreringen er vellykket
                 Notification.show("Registration successful! A verification email has been sent.", 3000, Notification.Position.MIDDLE);
+                System.out.println("Registration successful: " + username);
+
+                // Generer verifikasjonskode
+                String verificationCode = "verif-" + Math.random();
+                System.out.println("Generated verification code: " + verificationCode);
+
+                // Send verifikasjonsepost via EmailService
+                emailService.sendVerificationEmail(email, verificationCode);
+                System.out.println("Verification email sent to: " + email);
+
             } else {
                 // Hvis registreringen feilet
                 Notification.show("Registration failed. Please try again.", 3000, Notification.Position.MIDDLE);
+                System.out.println("Registration failed");
             }
+
         });
 
         // Kanseller-knappen sin logikk (valgfritt)
