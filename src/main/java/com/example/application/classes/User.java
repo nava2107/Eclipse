@@ -1,12 +1,8 @@
 package com.example.application.classes;
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.OneToMany;
+
+import jakarta.persistence.*;
 
 
 @Entity
@@ -14,7 +10,8 @@ import jakarta.persistence.OneToMany;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // or another strategy based on your DB
+    @Column(name = "USERID", nullable = false)
     private int userId;
 
     private String username;
