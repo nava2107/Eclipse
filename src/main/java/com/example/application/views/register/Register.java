@@ -38,7 +38,7 @@ public class Register extends Composite<VerticalLayout> {
         Div container = new Div();
         container.getElement().getStyle().set("height", "100vh");
         container.getElement().getStyle().set("width", "100%");
-        container.addClassName("div-login");
+        container.addClassName("div-background-general");
         getContent().add(container);
 
         Div innerC = new Div();
