@@ -63,8 +63,8 @@
     }
 
 
-.div-background-general {
-   background-image: url('/images/moon-rett.png');
+.div-login {
+   background-image: url('/images/moon.jpeg');
     background-size: cover;
     background-position: center bottom;
     background-repeat: no-repeat;

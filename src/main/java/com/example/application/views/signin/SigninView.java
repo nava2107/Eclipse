@@ -28,7 +28,7 @@ public class SigninView extends Composite<VerticalLayout> {
         Div container = new Div();
         container.getElement().getStyle().set("height", "100vh");
         container.getElement().getStyle().set("width", "100%");
-        container.addClassName("div-background-general");
+        container.addClassName("div-login");
         getContent().add(container);
 
         LoginForm loginForm = new LoginForm();
