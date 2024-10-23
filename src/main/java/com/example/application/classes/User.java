@@ -28,7 +28,9 @@ public class User {
     private boolean isAuthenticated;
 
     // isEmailVerified sjekker om mailen til user er verifisert
-    private boolean isEmailVerified;
+    @Column(name = "IS_EMAIL_VERIFIED", nullable = false)
+    private boolean isEmailVerified = false;
+
 
     // isAdmin viser om brukeren har admin-rettigheter eller ikke, for å finne ut av hva de kan/kan ikke gjøre
     private boolean isAdmin;
