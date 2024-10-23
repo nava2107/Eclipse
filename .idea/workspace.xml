@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad10ca52-9de7-4336-945a-2dc1b9223e19" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/38c6c0b5-0928-4740-bceb-ec3fefcbcb8e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/38c6c0b5-0928-4740-bceb-ec3fefcbcb8e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/classes/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/classes/Device.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/Device.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/classes/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/EmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/classes/Family.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/Family.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/classes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/classes/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/views/register/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/views/register/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/views/signin/SigninView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/classes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,10 +16,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2nn8buNsj4oYimEfoEzAzB5xR0s" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -38,7 +28,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature/login-og-register-funksjonalitet",
+    "git-widget-placeholder": "develope",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -82,6 +72,7 @@
       <workItem from="1727869429529" duration="2610000" />
       <workItem from="1728387718003" duration="419000" />
       <workItem from="1729597557809" duration="1659000" />
+      <workItem from="1729679996964" duration="60000" />
     </task>
     <servers />
   </component>

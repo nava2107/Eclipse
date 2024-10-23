@@ -10,7 +10,7 @@ import jakarta.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // or another strategy based on your DB
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USERID", nullable = false)
     private int userId;
 
