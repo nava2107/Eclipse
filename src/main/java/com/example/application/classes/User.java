@@ -36,6 +36,9 @@ public class User {
     private List<Device> devices = new ArrayList<>();
 
 
+    // Nytt felt for å lagre verifikasjonskoden for registrering
+    private String verificationCode;
+
     // Konstruktør som lager user-objekter
     public User(String username, String firstName, String lastName, String email, String hashedPassword) {
         this.username = username;
@@ -63,6 +66,14 @@ public class User {
         }
     }
 
+
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
+    }
 
     public boolean authenticate(String password) {
         return verifyPassword(password);
@@ -167,4 +178,6 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+
 }
