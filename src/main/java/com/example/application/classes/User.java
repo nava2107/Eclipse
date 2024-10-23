@@ -10,7 +10,11 @@ import jakarta.persistence.*;
 public class User {
 
     @Id
+<<<<<<< HEAD
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+=======
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // or another strategy based on your DB
+>>>>>>> origin/emailservice
     @Column(name = "USERID", nullable = false)
     private int userId;
 
