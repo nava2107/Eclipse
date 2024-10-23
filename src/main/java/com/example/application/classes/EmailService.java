@@ -1,5 +1,7 @@
-package classes;
+package com.example.application.classes;
+import org.springframework.stereotype.Service;
 
+@Service
 public class EmailService {
 
     // Denne klassen skal brukes for å sende ulike mailer

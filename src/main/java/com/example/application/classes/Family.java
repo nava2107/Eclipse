@@ -1,4 +1,4 @@
-package classes;
+package com.example.application.classes;
 
 import java.util.ArrayList;
 import java.util.UUID;

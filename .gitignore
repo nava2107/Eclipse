@@ -9,3 +9,4 @@ vite.generated.ts
 *.xml
 *.lock
 *.db
+.idea/workspace.xml

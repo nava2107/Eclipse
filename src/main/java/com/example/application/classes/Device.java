@@ -1,19 +1,32 @@
-package classes;
+package com.example.application.classes;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "devices")
 public class Device {
-    private String deviceId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long deviceId;
+
     private String deviceName;
     private String deviceType;
     private boolean isActive;
 
-    public Device(String deviceId, String deviceName, String deviceType) {
+    public Device(){}
+
+    public Device(Long deviceId, String deviceName, String deviceType) {
         this.deviceId = deviceId;
         this.deviceName = deviceName;
         this.deviceType = deviceType;
         this.isActive = true;
     }
 
-    public String getDeviceId() {
+    public Long getDeviceId() {
         return deviceId;
     }
 
@@ -25,7 +38,7 @@ public class Device {
         return deviceType;
     }
 
-    public void setDeviceId(String deviceId) {
+    public void setDeviceId(Long deviceId) {
         this.deviceId = deviceId;
     }
 
