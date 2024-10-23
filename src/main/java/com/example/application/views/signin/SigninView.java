@@ -37,7 +37,6 @@ public class SigninView extends Composite<VerticalLayout> {
         content.getStyle().set("flex-grow", "1");
         content.setJustifyContentMode(JustifyContentMode.START);
         content.setAlignItems(Alignment.CENTER);
-
         container.add(loginForm);
 
         loginForm.addLoginListener(event -> {
