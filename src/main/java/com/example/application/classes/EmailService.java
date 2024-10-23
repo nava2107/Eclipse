@@ -17,11 +17,14 @@ public class EmailService {
     public void sendVerificationEmail(String toEmail, String verificationCode) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(toEmail);
-        message.setSubject("Verify your email address");
-        message.setText("Din bekreftelseskode er: " + verificationCode +
-                "\nKlikk på lenken for å bekrefte e-posten: " +
-                "http://localhost:60401/verify?code=" + verificationCode);
-
+        message.setSubject("Please Verify Your Email Address");
+        message.setText("Dear User,\n\n" +
+                "Thank you for registering with us! To complete your registration, please verify your email address by using the verification code below:\n\n" +
+                "Verification Code: " + verificationCode + "\n\n" +
+                "Alternatively, you can verify your email by clicking the following link:\n" +
+                "http://localhost:60401/verify?code=" + verificationCode + "\n\n" +
+                "If you did not register with us, please ignore this email.\n\n" +
+                "Best regards,\nThe Eclipse Team");
         try {
             mailSender.send(message);
             System.out.println("Verification email sent to: " + toEmail);
