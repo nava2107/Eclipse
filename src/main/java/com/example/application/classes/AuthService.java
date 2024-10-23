@@ -1,14 +1,7 @@
 package com.example.application.classes;
-<<<<<<< HEAD
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-=======
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
->>>>>>> origin/emailservice
 @Service
 public class AuthService {
 
@@ -34,22 +27,16 @@ public class AuthService {
         newUser.setEmail(email);
 
         // Lagre den nye brukeren i databasen
-<<<<<<< HEAD
         return userRepository.save(newUser); // save() kommer fra JpaRepository
-=======
-        return userRepository.save(newUser);
->>>>>>> origin/emailservice
     }
 
     public boolean verifyEmail(String email, String code) {
         User user = userRepository.findByEmail(email);
         if (user != null && verifyCode(user, code)) {
             user.setEmailVerified(true);
-<<<<<<< HEAD
             userRepository.save(user); // Bruk save() til å oppdatere brukeren
-=======
             userRepository.save(user); // Bruk save() i stedet for update()
->>>>>>> origin/emailservice
+
             return true;
         }
         return false;
@@ -81,10 +68,7 @@ public class AuthService {
         return password;  // Burde bruke en ordentlig hashingfunksjon
     }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/emailservice
     public UserRepository getUserRepository() {
         return userRepository;
     }

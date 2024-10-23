@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="ad10ca52-9de7-4336-945a-2dc1b9223e19" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/38c6c0b5-0928-4740-bceb-ec3fefcbcb8e.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/classes/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/classes/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/classes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/classes/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/views/register/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/views/register/Register.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +36,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.Application.executor": "Debug",
     "git-widget-placeholder": "develope",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -59,8 +67,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-9b16c6e2" />
       </set>
     </attachedChunks>
   </component>
@@ -76,10 +83,22 @@
       <workItem from="1728387718003" duration="419000" />
       <workItem from="1729597557809" duration="1659000" />
       <workItem from="1729679996964" duration="60000" />
+      <workItem from="1729682818497" duration="297000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
