@@ -55,9 +55,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    border-radius: 20px;
-    box-shadow: 10px 5px 5px #1a1141;
-
+    position: relative;
+    top: -45px;
 }
 
 .recommendations::-webkit-scrollbar {
@@ -71,26 +70,56 @@
     margin: 5px;
 }
 
-
+/*
 .search-button-main, .manual-button-main {
     background: rgb(150,95,217);
     background: radial-gradient(circle, rgba(150,95,217,1) 0%, rgba(59,6,124,1) 100%);
 }
-
-.search-button-main, .manual-button-main, .devices-button-main {
+}
+.devices-button-main {
     color: white;
     font-weight: 600;
     font-size: small;
     max-width: 30%;
     min-width: 30%;
     padding: 0;
-    box-shadow: 10px 5px 5px rgba(5, 5, 19, 0.55);
+    box-shadow: 10px 5px 5px rgba(5, 5, 19, 0.55);}
+*/
+.search-button-main, .manual-button-main, .devices-button-main{
+    color: white;
+    font-weight: 600;
+    font-size: small;
+    position: relative;
+    text-align: start;
+    max-width: 30%;
+    min-width: 30%;
+    border: 1px solid transparent;
+    padding: 0.75rem; /* p-3 */
+    border-radius: 0.5rem; /* rounded-lg */
+    overflow: hidden;
+    text-decoration: underline;
+    text-underline-offset: 0.125rem; /* underline-offset-2 */
+    transition: all 0.5s ease; /* duration-500 */
 }
+
+.search-button-main:hover, .manual-button-main:hover, .devices-button-main:hover {
+    color: #4c4a93;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.25rem;
+    border-color: #4c4a93;
+    background-color: #a4c1ff;
+}
+
 .text-main {
     font-size: medium;
     font-weight: bold;
     padding: 20px;
-    color: #9b6eff;
+    color: rgb(255, 255, 255);
+}
+.text-main:hover {
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.8);
+    transition: font-weight 400ms;
 }
 
 .main-div{
@@ -115,10 +144,23 @@
 
 .device-image {
     position: relative;
-    max-width: 2rem;
-    max-height: 2rem;
     height: 2rem;
     width: 2rem;
+    right: -50px;
+    top: 4px;
+    display: inline-block;
+}
+.device-image:hover {
+    animation: searching 300ms forwards !important;
+}
+
+@keyframes searching {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.3);
+    }
 }
 
 .puls-container {
@@ -130,10 +172,12 @@
 }
 
 .pulses {
-    position: absolute;
+    position: relative;
     transform: translate(-50%, -50%); /* Shift back to truly center */
     width: 100px;
     height: 100px;
+    left: -16px;
+    bottom: -4px;
 }
 
 .pulses::before,
@@ -177,26 +221,14 @@
     }
 }
 
-
-.luna{
-    width: 100%;
-}
-
-.luna-main {
-     position: sticky;
-     margin-bottom: 2rem;
-     bottom: 0;
-
-}
 .background{
     position: relative;
-    width: 3.7rem;
-    height: auto;
+    width: 57px;
+    height: 57px;
     margin-bottom: 3rem;
     margin-top: 3rem;
     box-shadow: 5px 5px 5px rgb(20, 20, 26);
     border: none;
-    padding: 10px 20px;
     font-size: 20px;
     border-radius: 50%;
     transition: all 0.3s ease;
@@ -204,6 +236,7 @@
     background: radial-gradient(circle, rgba(59,6,124,1) 0%, rgba(150,95,217,1) 50%, rgba(59,6,124,1) 100%); 
     display: grid;
     z-index: -1;
+    right: 4px;
 }
 .background::after {
     content: "";
@@ -221,7 +254,7 @@
     background: linear-gradient(                                                                              
             45deg,
             rgba(139, 71, 225, 0.36), rgba(66, 68, 119, 0.52), rgba(55, 28, 91, 0.8), rgba(43, 50, 84, 0.56),
-            rgba(255, 255, 255, 0.41), rgba(98, 96, 168, 0.23), rgba(95, 0, 211, 0.58), rgb(76, 74, 147)
+            rgba(255, 255, 255, 0.41), rgba(255, 255, 255, 0.99), rgba(95, 0, 211, 0.58), rgb(220, 110, 196)
     );                                                                                                        
     position: absolute;
     top: -2px;
@@ -284,6 +317,18 @@
     opacity: 0;
 }
 
+
+
+.luna-main {
+    position: sticky;
+    margin-bottom: 50px;
+    padding-bottom: 100px;
+    bottom: 0;
+    max-width: 50px;
+    height: 50px;
+
+}
+
 .luna-image-main:hover::before {
     opacity: 1;
 }
@@ -291,20 +336,33 @@
     background: transparent;
 }
 .luna-image-main {
-    width: 5rem;
+    width: 60px;
 }
 
 
 vaadin-text-field::part(input-field),
 vaadin-avatar,
 vaadin-menu-bar-button{
-    background-color: rgba(27,17,65,1);
-
+    background-color: rgba(82, 75, 126, 0.78);
+    border: none;
 }
 
-vaadin-menu-bar[has-single-button] {
-
+vaadin-text-field::part(input-field):hover,
+vaadin-avatar:hover,
+vaadin-menu-bar-button:hover{
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    background-color: rgb(26, 17, 65);
+    transition: background-color 400ms, box-shadow 400ms;
 }
+
+vaadin-text-field::part(input-field):focus-within,
+vaadin-avatar:focus-within,
+vaadin-menu-bar-button:focus-within{
+    box-shadow: 0 0 30px rgb(150, 95, 217);
+    background-color: rgb(92, 74, 147);
+    transition: background-color 1s, box-shadow 400ms;
+}
+
 
 vaadin-text-field {
     max-width: 15rem;
@@ -313,11 +371,17 @@ vaadin-text-field {
 
 
 vaadin-menu-bar-item[aria-haspopup] {
-    background: rgb(150,95,217);
-    background: radial-gradient(circle, rgba(150,95,217,1) 0%, rgba(59,6,124,1) 100%);
+    background: transparent;
     display: flex;
     gap: 4px;
 }
+
+vaadin-menu-bar-item[aria-haspopup]:hover {
+    background-color: #3b3272;
+    transition: background-color 400ms;
+    font-weight: bold;
+}
+
 
 
 
@@ -327,6 +391,7 @@ vaadin-menu-bar-overlay::part(overlay){
     gap: 5px;
     max-width: 100%;
     height: 10rem;
+    background-color: #524b7e;
 }
 
 vaadin-menu-bar-overlay [role="menuitem"] {
@@ -338,7 +403,6 @@ vaadin-menu-bar-overlay [role="menuitem"] {
 
 .menu-img{
     max-width: 1rem;
-    position: fixed;
     animation: rotate 1s linear infinite;
     animation-play-state: paused;
     animation-delay: inherit;
@@ -355,6 +419,7 @@ vaadin-menu-bar-overlay [role="menuitem"] {
     flex-direction: column;
     gap: 5px;
 }
+
 
 .upper-quick-main{
     display: flex;
@@ -382,7 +447,20 @@ vaadin-menu-bar-overlay [role="menuitem"] {
     width: 10rem;
     height: 10rem;
     background: rgba(150, 95, 217, 0.33);
-    background: radial-gradient(circle, rgba(150, 95, 217, 0.44) 0%, rgba(59, 6, 124, 0.44) 100%);
+    background-color: #67527e;
+}
+.quick{
+    border: 1px solid #d4c6e8;
+    box-shadow: 0 6px 10px rgba(207, 212, 222, 0.5);
+    border-radius: 10px;
+    text-align: center;
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.3s ease;
+}
+
+.quick:hover {
+    transform: translateY(-10px);
 }
 
 

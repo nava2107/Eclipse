@@ -51,9 +51,8 @@ public class MainView extends Composite<VerticalLayout> {
         avatar2.setName("Firstname Lastname");
 
         TextField questionField = new TextField("");
-        questionField.setPlaceholder("Type your question here...");
+        questionField.setPlaceholder("Search the internet...");
         questionField.setWidth("300px");
-        questionField.getStyle().set("color", "#ff0000");
         questionField.setClassName("ask-luna");
 
         Div wholeTop = new Div();

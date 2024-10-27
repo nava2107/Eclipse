@@ -57,6 +57,9 @@ public class SigninView extends Composite<VerticalLayout> {
         container.add(title, moon);
 
         Div mainBox = new Div();
+        mainBox.addClassName("main-box");
+        Div shadowBox = new Div();
+        shadowBox.addClassName("shadow-box-login");
 
         LoginForm loginForm = new LoginForm();
         loginForm.addClassName("loginform");
@@ -65,7 +68,7 @@ public class SigninView extends Composite<VerticalLayout> {
             getUI().ifPresent(ui -> ui.navigate("main-view"));
         });
 
-        mainBox.add(loginForm);
+        mainBox.add(shadowBox,loginForm);
 
         Div bottomContainer = new Div();
         bottomContainer.addClassName("bottom-div-login");
