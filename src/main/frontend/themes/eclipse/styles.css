@@ -63,6 +63,57 @@
     }
 
 
+:host {
+    --monospace: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    --red: #ff5555;
+    --yellow: #e2aa53;
+    --purple: #cfa4ff;
+    --blue: #a4c1ff;
+    --cyan: #2dd9da;
+    --dim: #c9c9c9;
+    direction: ltr;
+}
+.window:root {
+    font-family: sans-serif;
+    background-color: rgba(10, 58, 115, 0.85);
+    backdrop-filter: blur(1px);
+    color: white;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    z-index: 99998;
+    width: 100%;
+    height: 500px;
+    max-height: 90%;
+    box-shadow: rgb(0 0 0 / 30%) 0px 0px 20px;
+    border-top: 1px solid rgb(63, 78, 96);
+    transform-origin: center top;
+    visibility: visible;
+    transition: all 0.2s ease 0s;
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0px) scale(1);
+}
+.window-collapsed {
+    transform: translateY(0px) scale(1);
+    visibility: hidden;
+    transition: all 0.2s ease 0s;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(15px) scale(1.02);
+}
+.list-scroll {
+    height: 100%;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+main {
+    padding: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
 .div-login {
    background-image: url('/images/moon.jpeg');
     background-size: cover;
