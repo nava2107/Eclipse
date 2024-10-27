@@ -10,29 +10,6 @@
     --text-color: hsl(0, 0%, 100%);
 }
 
-.div-main {
-    background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.31) 0%, rgba(27,17,65,1) 8%, rgba(11,7,29,1) 80%, rgba(0,0,0,1) 100%);
-    filter: drop-shadow(0 -6mm 4mm rgba(6, 43, 59, 0.67));
-    background-size:cover;
-    background-position:center bottom;
-    background-repeat:no-repeat;
-    max-width: 400px;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    box-shadow: 10px 5px 5px rgba(4, 4, 26, 0.87);
-    border-radius: 6px;
-    padding: 0;
-    flex-grow: 1;
-    font-family: "Roboto Condensed", sans-serif;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
 
 .top-main {
     display: flex;
@@ -361,7 +338,7 @@ vaadin-menu-bar-overlay [role="menuitem"] {
 
 .menu-img{
     max-width: 1rem;
-    position: fixed; /* make sure it stays put so we can see it! */
+    position: fixed;
     animation: rotate 1s linear infinite;
     animation-play-state: paused;
     animation-delay: inherit;

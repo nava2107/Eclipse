@@ -1,9 +1,4 @@
 
-.sign-in-view {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .bottom-div-login {
     background-color: rgba(17, 15, 26, 0.8);
@@ -26,32 +21,11 @@
 
 
 vaadin-login-form-wrapper::part(form) {
-    background: rgb(26, 17, 65);
-    background: linear-gradient(180deg, rgb(68, 49, 140) 0%, rgba(27,17,65,1) 8%, rgba(11,7,29,1) 80%, rgb(26, 17, 65) 100%);
-    filter: drop-shadow(0 -6mm 4mm rgba(6, 43, 59, 0.67));
-
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-
-
-.join-here {
-    color: rgb(150, 95, 217);
-    font-weight: bold;
-    margin-bottom: 0;
-}
-.join-family-link{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.join-here::after {
-    content: "";
-    background-color: #a4c1ff;
-    box-shadow: 2px 2px 2px #9b6eff;
+    border-radius: 20px;
+    padding-top: 0px;
 }
 
 .div-login vaadin-text-field::part(input-field),
@@ -61,7 +35,175 @@ vaadin-login-form-wrapper::part(form) {
     border-style: solid;
     border-width: 2px;
     border-color: #9e1bb5;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
+vaadin-login-form vaadin-button[theme~="submit"]{
+    width: 180px;
+    height: 40px;
+    background-image: linear-gradient(#9e1bb5, #150F4FA8);
+    border: none;
+    border-radius: 50px;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    gap: 5px;
+    cursor: pointer;
+    box-shadow: 1px 3px 0px rgba(10, 5, 61, 0.93);
+    transition-duration: .3s;
+}
+
+
+
+.join-here {
+    color: rgb(150, 95, 217);
+    font-weight: normal;
+    margin-bottom: 0;
+    text-shadow: 1px 1px 0 rgb(50, 10, 100);
+}
+.join-family-link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.join-here:hover {
+    content: "";
+    color: rgb(150, 95, 217);
+    text-decoration: none;
+    text-shadow: 2px 2px 2px 4px rgb(150, 95, 217);
+}
+
+
+
+
+
+
+/*------------------------------*/
+
+.moon {
+    position: relative;
+    left: 0px;
+    top: -80px;
+    margin: -25px;
+    width: 50px;
+    height: 50px;
+    background: #373344;
+    border-radius: 50%;
+    box-shadow: inset -6.25px 0px 0 0px #4a5765;
+    mix-blend-mode: luminosity;
+    animation: moonLineMotion 5s linear infinite;
+    opacity: 1;
+}
+
+@keyframes moonLineMotion {
+    0% {
+        transform: translateX(-90px) scale(0.2); 
+        opacity: 0; 
+    }
+    10% {
+        transform: translateX(-100px) scale(0.4); 
+        opacity: 0.6; 
+    }
+    14% {
+        transform: translateX(-103px) scale(0.5); 
+        opacity: 0.6; 
+    }
+    20% {
+        transform: translateX(-105px) scale(0.6); 
+        opacity: 1; 
+    }
+    30% {
+        transform: translateX(-90px) scale(0.7); 
+        opacity: 1; 
+    }
+    40% {
+        transform: translateX(-50px) scale(1);  
+        opacity: 1; 
+    }
+    60% {
+        transform: translateX(50px) scale(1);  
+        opacity: 1;
+    }
+    70% {
+        transform: translateX(90px) scale(0.7); 
+        opacity: 1; 
+    }
+    80% {
+        transform: translateX(105px) scale(0.6); 
+        opacity: 1; 
+    }
+    86% {
+        transform: translateX(103px) scale(0.5); 
+        opacity: 0.6; 
+    }
+    90% {
+        transform: translateX(100px) scale(0.4); 
+        opacity: 0.6; 
+    }
+    100% {
+        transform: translateX(90px) scale(0.2); /* End small and right */
+        opacity: 0; 
+    }
+}
+.moon div {
+    position: absolute;
+    width: 10%;
+}
+.moon div:nth-of-type(1) {
+    left: 6.25px;
+    top: 15px;
+    width: 12.5px;
+    height: 12.5px;
+    box-shadow: inset 1.5px -0.5px 0 0px #1a1141;
+    border-radius: 50%;
+}
+.moon div:nth-of-type(2) {
+    left: 37.5px;
+    top: 12.5px;
+    width: 6.25px;
+    height: 6.25px;
+    box-shadow: inset 0.75px -0.25px 0 0px #1a1141;
+    border-radius: 50%;
+}
+.moon div:nth-of-type(3) {
+    left: 25px;
+    top: 37.5px;
+    width: 6.25px;
+    height: 6.25px;
+    box-shadow: inset 0.75px -0.25px 0 0px #1a1141;
+    border-radius: 50%;
+}
+.moon div:nth-of-type(4) {
+    left: 12.5px;
+    top: 37.5px;
+    width: 3.125px;
+    height: 3.125px;
+    box-shadow: inset 0.6px -0.2px 0 0px #1a1141;
+    border-radius: 50%;
+}
+
+.moon div:nth-of-type(5) {
+    left: 21.875px;
+    top: 4.1666666675px;
+    width: 3.125px;
+    height: 3.125px;
+    box-shadow: inset 0.6px -0.2px 0 0px #1a1141;
+    border-radius: 50%;
+}
+.moon div:nth-of-type(6) {
+    border-radius: 50%;
+    left: 28.5714285725px;
+    top: 20px;
+    width: 3.125px;
+    height: 3.125px;
+    box-shadow: inset 0.6px -0.2px 0 0px #1a1141;
+}
+.moon div:nth-of-type(7) {
+    border-radius: 50%;
+    left: 45.454545455px;
+    top: 25px;
+    width: 3.125px;
+    height: 3.125px;
+    box-shadow: inset 0.6px -0.2px 0 0px #1a1141;
+}
 

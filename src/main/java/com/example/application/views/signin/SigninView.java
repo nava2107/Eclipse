@@ -28,6 +28,8 @@ public class SigninView extends Composite<VerticalLayout> {
         container.getElement().getStyle().set("width", "100%");
         container.addClassName("div-login");
 
+        Div title = new Div();
+
         Div logo = new Div();
         logo.addClassName("logo");
         H1 eclipse = new H1("Eclipse");
@@ -35,13 +37,29 @@ public class SigninView extends Composite<VerticalLayout> {
         eclipse.addClassName("top");
         eclipse2.addClassName("bottom");
         logo.add(eclipse,eclipse2);
-        container.add(logo);
+
+        title.add(logo);
+
+        Div moon = new Div();
+        moon.addClassName("moon");
+        Div moon1 = new Div();
+        Div moon2 = new Div();
+        Div moon3 = new Div();
+        Div moon4 = new Div();
+        Div moon5 = new Div();
+        Div moon6 = new Div();
+        Div moon7 = new Div();
+
+        moon.add(moon1,moon2,moon3,moon4,moon5, moon7, moon6);
+
 
         getContent().add(container);
+        container.add(title, moon);
 
         Div mainBox = new Div();
 
         LoginForm loginForm = new LoginForm();
+        loginForm.addClassName("loginform");
         loginForm.addLoginListener(event -> {
             Notification.show("Login Successful! Redirecting...", 3000, Notification.Position.MIDDLE);
             getUI().ifPresent(ui -> ui.navigate("main-view"));
@@ -64,6 +82,7 @@ public class SigninView extends Composite<VerticalLayout> {
         mainBox.add(divJoinFamily);
 
         container.add(mainBox);
+
 
 
 

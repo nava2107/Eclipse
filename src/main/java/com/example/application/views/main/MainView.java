@@ -191,7 +191,7 @@ public class MainView extends Composite<VerticalLayout> {
 
 
     private void setMenuSampleData(MenuBar menuBar) {
-        Image menuImage = new Image("/images/menu-bar.png", "Menu");
+        Image menuImage = new Image("/images/menu-.png", "Menu");
         menuImage.addClassName("menu-img");
 //        menuImage.setWidth("24px");
 //        menuImage.setHeight("24px");

@@ -17,8 +17,11 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.ClickEvent;
+import com.vaadin.flow.component.ComponentEventListener;
+import com.vaadin.flow.theme.Theme;
 
-import java.awt.*;
 
 @PageTitle("Empty")
 @Menu(icon = "line-awesome/svg/file.svg", order = 0)
@@ -39,7 +42,7 @@ public class Register extends Composite<VerticalLayout> {
         Div container = new Div();
         container.getElement().getStyle().set("height", "100vh");
         container.getElement().getStyle().set("width", "100%");
-        container.addClassName("div-login");
+        container.addClassName("div-register");
 
         Div logo = new Div();
         logo.addClassName("logo");
@@ -49,6 +52,18 @@ public class Register extends Composite<VerticalLayout> {
         eclipse2.addClassName("bottom");
         logo.add(eclipse,eclipse2);
         container.add(logo);
+        // back to login arrow
+        Image icon = new Image("images/arrow<-.png", "back");
+        icon.addClassName("back-register");
+        icon.addClickListener((ComponentEventListener<ClickEvent<Image>>) click -> {
+            getUI().ifPresent(ui -> ui.getPage().setLocation("http://localhost:60401"));
+        });
+
+        Div back = new Div();
+        back.addClassName("back-div");
+        back.add(icon);
+        container.add(back);
+
         getContent().add(container);
         Div innerC = new Div();
         innerC.addClassName("inner-div");
@@ -61,7 +76,7 @@ public class Register extends Composite<VerticalLayout> {
         EmailField emailField = new EmailField();
         PasswordField passwordField = new PasswordField();
 
-        h3.setText("Set up your account");
+        h3.setText("Create Account");
         h3.setWidth("100%");
         firstNameField.setLabel("First Name");
         lastNameField.setLabel("Last Name");
