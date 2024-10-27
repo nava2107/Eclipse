@@ -1,6 +1,10 @@
 @import url('./styles/register.css');
+@import url('./styles/login.css');
 @import url("./styles/mainview.css");
-@import url('@fontsource/mukta/index.css');    html {
+@import url("./components/logo.css");
+@import url('@fontsource/mukta/index.css');
+
+html {
       --lumo-shade: hsl(214, 32%, 12%);
       --lumo-shade-5pct: hsla(214, 32%, 12%, 0.05);
       --lumo-shade-10pct: hsla(214, 32%, 12%, 0.1);
@@ -38,27 +42,6 @@
       --lumo-line-height-s: 1.5;
       --lumo-line-height-xs: 1.3;
 --lumo-font-family: Mukta;
-
-    }
-
-    [theme~="dark"] {
-      --lumo-base-color: hsl(249, 57%, 12%);
-      --lumo-error-color: hsl(0, 90%, 63%);
-      --lumo-error-color-50pct: hsla(0, 90%, 63%, 0.5);
-      --lumo-error-color-10pct: hsla(0, 90%, 63%, 0.1);
-      --lumo-shade: hsl(214, 49%, 39%);
-      --lumo-shade-5pct: hsla(214, 49%, 39%, 0.05);
-      --lumo-shade-10pct: hsla(214, 49%, 39%, 0.1);
-      --lumo-shade-20pct: hsla(214, 49%, 39%, 0.2);
-      --lumo-shade-30pct: hsla(214, 49%, 39%, 0.3);
-      --lumo-shade-40pct: hsla(214, 49%, 39%, 0.4);
-      --lumo-shade-50pct: hsla(214, 49%, 39%, 0.5);
-      --lumo-shade-60pct: hsla(214, 49%, 39%, 0.6);
-      --lumo-shade-70pct: hsla(214, 49%, 39%, 0.7);
-      --lumo-shade-80pct: hsla(214, 49%, 39%, 0.8);
-      --lumo-shade-90pct: hsla(214, 49%, 39%, 0.9);
-      --lumo-body-text-color: hsla(99, 0%, 98%, 1);
-      --lumo-success-text-color: hsl(145, 0%, 99%);
 
     }
 
@@ -102,6 +85,7 @@
     pointer-events: none;
     transform: translateY(15px) scale(1.02);
 }
+
 .list-scroll {
     height: 100%;
     overflow-y: auto;
@@ -115,60 +99,32 @@ main {
 
 
 .div-login {
-   background-image: url('/images/moon.jpeg');
-    background-size: cover;
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    max-width: 600px;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.31) 0%, rgba(27,17,65,1) 8%, rgba(11,7,29,1) 80%, rgba(0,0,0,1) 100%);
+    filter: drop-shadow(0 -6mm 4mm rgba(6, 43, 59, 0.67));
+    background-size:cover;
+    background-position:center bottom;
+    background-repeat:no-repeat;
+    max-width: 400px;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-    box-shadow: black;
+    box-shadow: 10px 5px 5px rgba(4, 4, 26, 0.87);
     border-radius: 6px;
     padding: 0;
+    flex-grow: 1;
+    font-family: "Roboto Condensed", sans-serif;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-.sign-in-view {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.bottom-div-login {
-    background-color: rgba(17, 15, 26, 0.8);
-    max-height: 200px;
-    min-height: 100px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 3rem;
-}
-
-.layout-link{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgb(111, 147, 227);
-    font-weight: bold;
-}
-
-.join-here {
-    color: rgb(111, 147, 227);
-    font-weight: bold;
-    margin-bottom: 0;
-}
-
-
-
-
-.vaadin-login-form::part {
-    background-color: transparent;
-    width: 600px;
-    margin-top: 0;
+vaadin-login-overlay-wrapper > vaadin-login-form {
+    color: #41112b;
+    background-color: #41112b;
+    background: #41112b;
 }
 
 /*background-color: rgba(17, 15, 26, 0.541);*/

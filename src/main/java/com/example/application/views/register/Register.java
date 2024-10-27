@@ -6,6 +6,7 @@ import classes.User;
 import classes.UserRepository;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
@@ -39,8 +40,16 @@ public class Register extends Composite<VerticalLayout> {
         container.getElement().getStyle().set("height", "100vh");
         container.getElement().getStyle().set("width", "100%");
         container.addClassName("div-login");
-        getContent().add(container);
 
+        Div logo = new Div();
+        logo.addClassName("logo");
+        H1 eclipse = new H1("Eclipse");
+        H1 eclipse2 = new H1("Eclipse");
+        eclipse.addClassName("top");
+        eclipse2.addClassName("bottom");
+        logo.add(eclipse,eclipse2);
+        container.add(logo);
+        getContent().add(container);
         Div innerC = new Div();
         innerC.addClassName("inner-div");
         container.add(innerC);

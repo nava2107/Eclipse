@@ -1,0 +1,67 @@
+
+.sign-in-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom-div-login {
+    background-color: rgba(17, 15, 26, 0.8);
+    max-height: 200px;
+    min-height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.layout-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(111, 147, 227);
+    font-weight: bold;
+}
+
+
+vaadin-login-form-wrapper::part(form) {
+    background: rgb(26, 17, 65);
+    background: linear-gradient(180deg, rgb(68, 49, 140) 0%, rgba(27,17,65,1) 8%, rgba(11,7,29,1) 80%, rgb(26, 17, 65) 100%);
+    filter: drop-shadow(0 -6mm 4mm rgba(6, 43, 59, 0.67));
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.join-here {
+    color: rgb(150, 95, 217);
+    font-weight: bold;
+    margin-bottom: 0;
+}
+.join-family-link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.join-here::after {
+    content: "";
+    background-color: #a4c1ff;
+    box-shadow: 2px 2px 2px #9b6eff;
+}
+
+.div-login vaadin-text-field::part(input-field),
+.div-login vaadin-login-form-wrapper vaadin-password-field::part(input-field){
+    width: 20rem;
+    background-color: transparent;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #9e1bb5;
+    border-radius: 10px;
+}
+
+

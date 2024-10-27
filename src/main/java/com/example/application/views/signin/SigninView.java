@@ -3,6 +3,7 @@ package com.example.application.views.signin;
 
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
@@ -21,47 +22,49 @@ public class SigninView extends Composite<VerticalLayout> {
 
     public SigninView() {
         this.addClassName("sign-in-view");
-        this.getElement().getStyle().set("background-color", "rgba(1, 1, 1, 0.5)");
-        this.getElement().getStyle().setWidth("100%");
-        this.getElement().getStyle().set("height", "100vh");
 
         Div container = new Div();
         container.getElement().getStyle().set("height", "100vh");
         container.getElement().getStyle().set("width", "100%");
         container.addClassName("div-login");
+
+        Div logo = new Div();
+        logo.addClassName("logo");
+        H1 eclipse = new H1("Eclipse");
+        H1 eclipse2 = new H1("Eclipse");
+        eclipse.addClassName("top");
+        eclipse2.addClassName("bottom");
+        logo.add(eclipse,eclipse2);
+        container.add(logo);
+
         getContent().add(container);
 
+        Div mainBox = new Div();
+
         LoginForm loginForm = new LoginForm();
-        VerticalLayout content = getContent();
-        content.setWidth("100%");
-        content.getStyle().set("flex-grow", "1");
-        content.setJustifyContentMode(JustifyContentMode.START);
-        content.setAlignItems(Alignment.CENTER);
-
-        container.add(loginForm);
-
         loginForm.addLoginListener(event -> {
             Notification.show("Login Successful! Redirecting...", 3000, Notification.Position.MIDDLE);
-            getUI().ifPresent(ui -> ui.navigate("home"));
+            getUI().ifPresent(ui -> ui.navigate("main-view"));
         });
 
+        mainBox.add(loginForm);
+
         Div bottomContainer = new Div();
-        bottomContainer.getElement().getStyle().setWidth("100%");
-        container.add(bottomContainer);
         bottomContainer.addClassName("bottom-div-login");
 
-        VerticalLayout layoutLink =new VerticalLayout();
-        layoutLink.addClassName("layout-link");
+
+        Div divJoinFamily =new Div();
+        divJoinFamily.addClassName("join-family-link");
 
         Anchor signUpLink = new Anchor("register", "Join our Eclipse family here!");
         signUpLink.addClassName("join-here");
 
-        layoutLink.add(new Span("Not a member?"));
+        divJoinFamily.add(new Span("Not a member?"), signUpLink);
 
+        mainBox.add(divJoinFamily);
 
-        layoutLink.add(signUpLink);
+        container.add(mainBox);
 
-        bottomContainer.add(layoutLink);
 
 
     }

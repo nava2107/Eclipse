@@ -27,13 +27,8 @@ public class MainView extends Composite<VerticalLayout> {
     public MainView() {
 
         this.addClassName("main-view");
-//        this.getElement().getStyle().set("background-color", "rgba(1, 1, 1, 0.5)");
-//        this.getElement().getStyle().setWidth("100%");
-//        this.getElement().getStyle().set("height", "100%");
 
         Div container = new Div();
-//        container.getElement().getStyle().set("height", "100%");
-//        container.getElement().getStyle().set("width", "100%");
         container.addClassName("div-main");
         getContent().add(container);
 
@@ -180,7 +175,7 @@ public class MainView extends Composite<VerticalLayout> {
 
         Div luna = new Div();
         luna.setClassName("luna-main");
-        Image lunaImage = new Image("/images/luna.png", "Luna");
+        Image lunaImage = new Image("/images/rett-luna.png", "Luna");
         lunaImage.setClassName("luna-image-main");
         Div lunaBackground = new Div();
         lunaBackground.addClassName("background");
