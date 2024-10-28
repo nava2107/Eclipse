@@ -7,6 +7,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Eclipse</title>
+    <script>
+      window.addEventListener('scroll', () => {
+        // Get the scroll position of the page
+        const scrollPosition = window.scrollY;
+
+        // Adjust the background position based on scroll position
+        document.body.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
+      });
+    </script>
     <dom-module id="material-login-form-wrapper" theme-for="vaadin-login-form-wrapper">
       <template>
         <style include="material-typography">
@@ -27,7 +36,7 @@
           [part="form-title"] {
             margin-top: calc(var(--material-h3-font-size) - var(--material-h4-font-size));
             font-size: var(--material-h5-font-size);
-            color: #512a70 !important;
+
           }
 
           [theme~='primary']{

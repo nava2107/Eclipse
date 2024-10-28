@@ -6,8 +6,6 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.login.LoginForm;
-import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
-import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.notification.Notification;
@@ -22,6 +20,10 @@ public class SigninView extends Composite<VerticalLayout> {
 
     public SigninView() {
         this.addClassName("sign-in-view");
+
+        getContent().setWidth("100%");
+        getContent().getStyle().set("flex-grow", "1");
+        getContent().getStyle().set("min-height", "100vh");
 
         Div container = new Div();
         container.getElement().getStyle().set("height", "100vh");
@@ -85,9 +87,5 @@ public class SigninView extends Composite<VerticalLayout> {
         mainBox.add(divJoinFamily);
 
         container.add(mainBox);
-
-
-
-
     }
 }

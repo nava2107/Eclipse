@@ -85,6 +85,7 @@
     padding: 0;
     box-shadow: 10px 5px 5px rgba(5, 5, 19, 0.55);}
 */
+
 .search-button-main, .manual-button-main, .devices-button-main{
     color: white;
     font-weight: 600;
@@ -128,7 +129,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: 1rem;
 }
 
 .buttons-main {
@@ -283,6 +283,7 @@
 
 .background:active:after {
     background: transparent;
+    scale: 1.5;
 }
 
 .luna-image-main::after {
@@ -331,9 +332,12 @@
 
 .luna-image-main:hover::before {
     opacity: 1;
+    scale: 1.5;
 }
+
 .luna-image-main:active:after {
     background: transparent;
+    scale: 1.5;
 }
 .luna-image-main {
     width: 60px;
@@ -349,7 +353,9 @@ vaadin-menu-bar-button{
 
 vaadin-text-field::part(input-field):hover,
 vaadin-avatar:hover,
-vaadin-menu-bar-button:hover{
+vaadin-menu-bar-button:hover,
+vaadin-email-field::part(input-field):hover,
+vaadin-password-field::part(input-field):hover{
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
     background-color: rgb(26, 17, 65);
     transition: background-color 400ms, box-shadow 400ms;
@@ -357,7 +363,9 @@ vaadin-menu-bar-button:hover{
 
 vaadin-text-field::part(input-field):focus-within,
 vaadin-avatar:focus-within,
-vaadin-menu-bar-button:focus-within{
+vaadin-menu-bar-button:focus-within,
+vaadin-email-field::part(input-field):focus-within,
+vaadin-password-field::part(input-field):focus-within{
     box-shadow: 0 0 30px rgb(150, 95, 217);
     background-color: rgb(92, 74, 147);
     transition: background-color 1s, box-shadow 400ms;
@@ -398,9 +406,6 @@ vaadin-menu-bar-overlay [role="menuitem"] {
     margin: 5px;
 }
 
-
-
-
 .menu-img{
     max-width: 1rem;
     animation: rotate 1s linear infinite;
@@ -413,56 +418,78 @@ vaadin-menu-bar-overlay [role="menuitem"] {
     height: 6rem;
 }
 
-
-.quick-main{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+.room-quick-main{
+    width: 100%;
 }
 
-
-.upper-quick-main{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 20px;
-
-}
-
-.upper-quick-main h3{
-    font-weight: normal;
-    font-size: medium;
-}
-
-.bottom-quick {
+.top-rooms, .device-bottom {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: start;
+    row-gap: 2rem;
+}
+.upper-room-quick-main, .lower-room-quick-main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 0 20px 0;
+    padding: 5px 20px 5px 20px;
+
+}
+.upper-room-quick-main:hover, .lower-room-quick-main:hover{
+    background-color: rgba(124, 106, 196, 0.51);
+    transition: background-color 400ms;
 
 }
 
-.quick{
-    width: 10rem;
-    height: 10rem;
-    background: rgba(150, 95, 217, 0.33);
-    background-color: #67527e;
+.upper-room-quick-main h3, .lower-room-quick-main h3{
+    font-weight: normal;
+    font-size: large;
+    color: #ffffff !important;
 }
-.quick{
-    border: 1px solid #d4c6e8;
-    box-shadow: 0 6px 10px rgba(207, 212, 222, 0.5);
-    border-radius: 10px;
+
+@media only screen and (max-width: 768px) {
+
+}
+
+/*--------------------CARDS-------------------*/
+.device-bottom, .top-rooms {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     text-align: center;
-    color: #ffffff;
-    font-family: "Poppins", sans-serif;
-    transition: all 0.3s ease;
+    height: 10rem !important;
+    width: 15rem !important;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer !important;
+    transition: 400ms !important;
 }
 
-.quick:hover {
-    transform: translateY(-10px);
+.card:hover {
+    transform: scale(1.1, 1.1);
 }
 
+.top-rooms:hover > .card:not(:hover){
+    filter: blur(6px);
+    transform: scale(0.9, 0.9);
+}
+
+.device-bottom:hover > .card:not(:hover){
+    filter: blur(6px);
+    transform: scale(0.9, 0.9);
+}
 
 
 /*062C43 , 054569 , 5591A9 , 9CCDDC , CED7E0    */

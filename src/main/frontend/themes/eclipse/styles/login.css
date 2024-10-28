@@ -19,6 +19,14 @@
     font-weight: bold;
 }
 
+.main-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 
 vaadin-login-form-wrapper::part(form) {
     display: flex;
@@ -27,13 +35,19 @@ vaadin-login-form-wrapper::part(form) {
     border-radius: 20px;
     padding-top: 0px;
 }
+.sign-in-view vaadin-text-field,
+.sign-in-view vaadin-password-field{
+    min-width: 20rem !important;
+    width: 20rem !important;
+    min-width: 20rem !important;
+}
 
 
 
-.div-login vaadin-text-field::part(input-field),
-.div-login vaadin-login-form-wrapper vaadin-password-field::part(input-field){
-    width: 20rem;
+.sign-in-view vaadin-text-field::part(input-field),
+.sign-in-view vaadin-login-form-wrapper vaadin-password-field::part(input-field){
     background-color: transparent;
+    width: 100%;
     border-style: solid;
     border-width: 2px;
     border-color: #9e1bb5;
@@ -58,24 +72,52 @@ vaadin-login-form vaadin-button[theme~="submit"]{
 
 
 
+
 .join-here {
     color: rgb(150, 95, 217);
     font-weight: normal;
     margin-bottom: 0;
     text-shadow: 1px 1px 0 rgb(50, 10, 100);
+    position: relative;
 }
+
+.join-here:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #8200cc;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+
+
+.join-here:hover {
+    text-decoration: none;
+}
+
+
 .join-family-link{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
 }
-.join-here:hover {
-    content: "";
-    color: rgb(150, 95, 217);
-    text-decoration: none;
-    text-shadow: 2px 2px 2px 4px rgb(150, 95, 217);
+
+
+
+.join-family-link:hover .join-here:after {
+    transform: scaleX(1) scaleY(1);
+    transform-origin: bottom left;
 }
+
 
 
 
@@ -94,7 +136,7 @@ vaadin-login-form vaadin-button[theme~="submit"]{
     background: #373344;
     border-radius: 50%;
     box-shadow: inset -6.25px 0px 0 0px #4a5765;
-    mix-blend-mode: luminosity;
+    mix-blend-mode: hard-light;
     animation: moonLineMotion 5s linear infinite;
     opacity: 1;
 }

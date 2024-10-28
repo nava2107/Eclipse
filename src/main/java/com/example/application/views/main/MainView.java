@@ -1,5 +1,6 @@
 package com.example.application.views.main;
 
+import com.example.application.views.RedirectCard;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -25,6 +26,11 @@ import org.apache.coyote.http11.Http11InputBuffer;
 public class MainView extends Composite<VerticalLayout> {
 
     public MainView() {
+
+        getContent().setWidth("100%");
+        getContent().getStyle().set("flex-grow", "1");
+        getContent().getStyle().set("min-height", "100vh");
+
 
         this.addClassName("main-view");
 
@@ -143,35 +149,51 @@ public class MainView extends Composite<VerticalLayout> {
         emptyDiv.addClassName("empty");
         container.add(emptyDiv);
 
+
         Div quickMain = new Div();
-        quickMain.addClassName("quick-main");
+        quickMain.addClassName("room-quick-main");
 
         Div upperQuick = new Div();
-        upperQuick.addClassName("upper-quick-main");
+        upperQuick.addClassName("upper-room-quick-main");
 
-        H3 quickAct = new H3("Devices quick action");
-        quickAct.addClassName("quick-action-h3");
-        H3 icon = new H3("-->");
-        upperQuick.add(quickAct, icon);
+        H3 yourRooms = new H3("Your Rooms");
+        yourRooms.addClassName("quick-action-h3");
+        Image icon = new Image("/images/arrow->.png", "-->");
+        icon.setWidth("20px");
+        upperQuick.add(yourRooms, icon);
         quickMain.add(upperQuick);
 
+        Div roomBottom = new Div();
+        roomBottom.addClassName("top-rooms");
 
-        Div bottomQuick = new Div();
-        bottomQuick.addClassName("bottom-quick");
-        Button top41 = new Button("Thermo");
-        top41.setClassName("quick");
-        Button top42 = new Button("Light 1");
-        top42.setClassName("quick");
-        Button top43 = new Button("Light 2");
-        top43.setClassName("quick");
-        Button top44 = new Button("Air Quality");
-        top44.setClassName("quick");
-        bottomQuick.add(top41, top42, top43, top44);
-        quickMain.add(bottomQuick);
+        RedirectCard room = new RedirectCard("Kitchen", "Tap to modify", "test-view");
+        room.addClassName("room");
+        RedirectCard room2 = new RedirectCard("Bedroom", "Tap to modify", "test-view");
+        room2.addClassName("room");
+        roomBottom.add(room, room2);
+        quickMain.add(roomBottom);
+
+        Div lowerQuick = new Div();
+        lowerQuick.addClassName("lower-room-quick-main");
+
+        H3 suggestedDevices = new H3("Suggested Devices");
+        suggestedDevices.addClassName("quick-action-h3");
+        Image icon2 = new Image("/images/arrow->.png", "-->");
+        icon2.setWidth("20px");
+        lowerQuick.add(suggestedDevices, icon2);
+        quickMain.add(lowerQuick);
+
+        Div deviceBottom = new Div();
+        deviceBottom.addClassName("device-bottom");
+
+        RedirectCard device = new RedirectCard("Thermo", "20C" + "Tap to modify", "test-view");
+        device.addClassName("room");
+        RedirectCard device2 = new RedirectCard("Light 1", "ON" + "Tap to modify", "test-view");
+        device2.addClassName("room");
+        deviceBottom.add(device, device2);
+        quickMain.add(deviceBottom);
+
         container.add(quickMain);
-
-
-
         Div luna = new Div();
         luna.setClassName("luna-main");
         Image lunaImage = new Image("/images/rett-luna.png", "Luna");
@@ -182,9 +204,6 @@ public class MainView extends Composite<VerticalLayout> {
         luna.add(lunaBackground);
         container.add(luna);
 
-        getContent().setWidth("100%");
-        getContent().setWidth("100%");
-        getContent().getStyle().set("flex-grow", "1");
     }
 
 
@@ -192,8 +211,7 @@ public class MainView extends Composite<VerticalLayout> {
     private void setMenuSampleData(MenuBar menuBar) {
         Image menuImage = new Image("/images/menu-.png", "Menu");
         menuImage.addClassName("menu-img");
-//        menuImage.setWidth("24px");
-//        menuImage.setHeight("24px");
+
 
         MenuItem more = menuBar.addItem(menuImage);
 

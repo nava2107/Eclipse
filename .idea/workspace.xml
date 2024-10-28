@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad10ca52-9de7-4336-945a-2dc1b9223e19" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/application/views/RedirectCard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/application/views/devices/DevicesView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/application/views/luna/LunaView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/application/views/user/UserView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/resources/images/background.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/components/logo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/components/logo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/styles/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/styles/login.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/styles/mainview.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/styles/mainview.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/styles/register.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/themes/eclipse/styles/register.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/views/main/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/views/main/MainView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/views/signin/SigninView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/views/signin/SigninView.java" afterDir="false" />
     </list>
@@ -16,6 +24,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

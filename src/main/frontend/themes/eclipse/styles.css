@@ -5,6 +5,31 @@
 @import url("./components/logo.css");
 @import url('@fontsource/mukta/index.css');
 
+
+
+.card {
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+
+
 html {
       --lumo-shade: hsl(214, 32%, 12%);
       --lumo-shade-5pct: hsla(214, 32%, 12%, 0.05);
@@ -46,6 +71,29 @@ html {
 
     }
 
+html, body {
+    width: 100vw;
+    overflow-x: hidden;
+    background: linear-gradient(162deg, rgba(9,4,62,1) 0%, rgba(16,0,74,1) 10%, rgba(16,0,74,1) 42%, rgba(56,12,110,1) 71%, rgba(104,48,171,1) 93%);
+
+}
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+
+}
+
+
+#outlet {
+    min-height: 100vh;
+    width: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background: transparent;
+}
+
 
 :host {
     --monospace: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
@@ -55,7 +103,6 @@ html {
     --blue: #a4c1ff;
     --cyan: #2dd9da;
     --dim: #c9c9c9;
-    direction: ltr;
 }
 .window:root {
     font-family: sans-serif;
@@ -104,22 +151,44 @@ main {
 .div-login,
 .div-register,
 .div-main{
-    background: rgb(9,4,62);
-    background: linear-gradient(162deg, rgba(9,4,62,1) 0%, rgba(16,0,74,1) 10%, rgba(16,0,74,1) 42%, rgba(56,12,110,1) 71%, rgba(104,48,171,1) 93%);
-    max-width: 400px;
+    background: transparent;
+    max-width: 500px;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    box-shadow: 10px 5px 5px rgba(4, 4, 26, 0.87);
+
+    box-shadow: 0 5px 25px rgb(0, 0, 0);
     border-radius: 6px;
     padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
     flex-grow: 1;
     font-family: "Roboto Condensed", sans-serif;
-    overflow-y: auto;
-    overflow-x: hidden;
+    top: 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .div-login,
+    .div-register,
+    .div-main{
+        max-width: 100vh;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        box-shadow: none;
+
+    }
+    .div-main{
+        overflow-x: hidden;
+    }
+    .div-login{
+
+    }
+
 }
 
 .register-view, .sign-in-view, .main-view {
@@ -127,8 +196,19 @@ main {
     justify-content: center;
     align-items: center;
     max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0px;
+    position: relative;
+    background-image: url('/images/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: local;
+    background-position: top center;
 }
 
-/*background-color: rgba(17, 15, 26, 0.541);*/
+/*background-color: rgba(17, 15, 26, 0.541);
+    background: linear-gradient(162deg, rgba(9,4,62,1) 0%, rgba(16,0,74,1) 10%, rgba(16,0,74,1) 42%, rgba(56,12,110,1) 71%, rgba(104,48,171,1) 93%);
+*/
 
 
