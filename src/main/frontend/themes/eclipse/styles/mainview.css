@@ -412,11 +412,7 @@ vaadin-menu-bar-overlay [role="menuitem"] {
     animation-play-state: paused;
     animation-delay: inherit;
 }
-.empty{
-    margin-bottom: 2rem;
-    width: 100%;
-    height: 6rem;
-}
+
 
 .room-quick-main{
     width: 100%;
