@@ -14,6 +14,8 @@ public class AuthService {
         this.emailService = emailService;
     }
 
+    public AuthService(){}
+
     public User registerUser(String username, String password, String email, String firstName, String lastName) {
         if (userRepository.findByUsername(username) != null || userRepository.findByEmail(email) != null) {
             throw new RuntimeException("Username or email already in use");

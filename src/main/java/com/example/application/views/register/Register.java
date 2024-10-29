@@ -1,9 +1,9 @@
 package com.example.application.views.register;
 
-import classes.AuthService;
-import classes.EmailService;
-import classes.User;
-import classes.UserRepository;
+import com.example.application.classes.AuthService;
+import com.example.application.classes.EmailService;
+import com.example.application.classes.User;
+import com.example.application.classes.UserRepository;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -30,9 +30,8 @@ public class Register extends Composite<VerticalLayout> {
     private final AuthService authService;
     public Register() {
 
-        UserRepository userRepository = new UserRepository(); // Replace with actual instance
-        EmailService emailService = new EmailService(); // Replace with actual instance
-        this.authService = new AuthService(userRepository, emailService);
+
+        this.authService = new AuthService();
 
         this.addClassName("register-view");
         this.getElement().getStyle().set("background-color", "rgba(1, 1, 1, 0.5)");
@@ -122,7 +121,7 @@ public class Register extends Composite<VerticalLayout> {
             }
 
             // Call the register method
-            User user = authService.register(firstName, lastName, username, email, password);
+            User user = authService.registerUser(firstName, lastName, username, email, password);
 
             if (user != null) { // Check if the returned User object is not null
                 Notification.show("Registration successful! Please verify your email.", 3000, Notification.Position.MIDDLE);
