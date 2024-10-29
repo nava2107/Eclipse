@@ -3,10 +3,9 @@ package com.example.application.views.signin;
 
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.login.LoginForm;
-import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
-import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.notification.Notification;
@@ -21,47 +20,72 @@ public class SigninView extends Composite<VerticalLayout> {
 
     public SigninView() {
         this.addClassName("sign-in-view");
-        this.getElement().getStyle().set("background-color", "rgba(1, 1, 1, 0.5)");
-        this.getElement().getStyle().setWidth("100%");
-        this.getElement().getStyle().set("height", "100vh");
+
+        getContent().setWidth("100%");
+        getContent().getStyle().set("flex-grow", "1");
+        getContent().getStyle().set("min-height", "100vh");
 
         Div container = new Div();
         container.getElement().getStyle().set("height", "100vh");
         container.getElement().getStyle().set("width", "100%");
         container.addClassName("div-login");
+
+        Div title = new Div();
+
+        Div logo = new Div();
+        logo.addClassName("logo");
+        H1 eclipse = new H1("Eclipse");
+        H1 eclipse2 = new H1("Eclipse");
+        eclipse.addClassName("top");
+        eclipse2.addClassName("bottom");
+        logo.add(eclipse,eclipse2);
+
+        title.add(logo);
+
+        Div moon = new Div();
+        moon.addClassName("moon");
+        Div moon1 = new Div();
+        Div moon2 = new Div();
+        Div moon3 = new Div();
+        Div moon4 = new Div();
+        Div moon5 = new Div();
+        Div moon6 = new Div();
+        Div moon7 = new Div();
+
+        moon.add(moon1,moon2,moon3,moon4,moon5, moon7, moon6);
+
+
         getContent().add(container);
+        container.add(title, moon);
+
+        Div mainBox = new Div();
+        mainBox.addClassName("main-box");
+        Div shadowBox = new Div();
+        shadowBox.addClassName("shadow-box-login");
 
         LoginForm loginForm = new LoginForm();
-        VerticalLayout content = getContent();
-        content.setWidth("100%");
-        content.getStyle().set("flex-grow", "1");
-        content.setJustifyContentMode(JustifyContentMode.START);
-        content.setAlignItems(Alignment.CENTER);
-        container.add(loginForm);
-
+        loginForm.addClassName("loginform");
         loginForm.addLoginListener(event -> {
-            Notification.show("Login Successful! Redirecting...", 3000, Notification.Position.MIDDLE);
-            getUI().ifPresent(ui -> ui.navigate("home"));
+            Notification.show("Login Successful!", 3000, Notification.Position.MIDDLE);
+            getUI().ifPresent(ui -> ui.navigate("main-view"));
         });
 
+        mainBox.add(shadowBox,loginForm);
+
         Div bottomContainer = new Div();
-        bottomContainer.getElement().getStyle().setWidth("100%");
-        container.add(bottomContainer);
         bottomContainer.addClassName("bottom-div-login");
 
-        VerticalLayout layoutLink =new VerticalLayout();
-        layoutLink.addClassName("layout-link");
+
+        Div divJoinFamily =new Div();
+        divJoinFamily.addClassName("join-family-link");
 
         Anchor signUpLink = new Anchor("register", "Join our Eclipse family here!");
         signUpLink.addClassName("join-here");
 
-        layoutLink.add(new Span("Not a member?"));
+        divJoinFamily.add(new Span("Not a member?"), signUpLink);
 
+        mainBox.add(divJoinFamily);
 
-        layoutLink.add(signUpLink);
-
-        bottomContainer.add(layoutLink);
-
-
+        container.add(mainBox);
     }
 }

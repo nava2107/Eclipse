@@ -1,5 +1,6 @@
 package com.example.application.views.main;
 
+import com.example.application.views.RedirectCard;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -8,20 +9,16 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.menubar.MenuBar;
-import com.vaadin.flow.component.menubar.MenuBarVariant;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.component.textfield.TextField;
-import java.awt.*;
-import java.util.TimerTask;
+import org.apache.coyote.http11.Http11InputBuffer;
 
 @PageTitle("My View")
 @Menu(icon = "line-awesome/svg/pencil-ruler-solid.svg", order = 0)
@@ -30,16 +27,25 @@ public class MainView extends Composite<VerticalLayout> {
 
     public MainView() {
 
+        getContent().setWidth("100%");
+        getContent().getStyle().set("flex-grow", "1");
+        getContent().getStyle().set("min-height", "100vh");
+
+
         this.addClassName("main-view");
-        this.getElement().getStyle().set("background-color", "rgba(1, 1, 1, 0.5)");
-        this.getElement().getStyle().setWidth("100%");
-        this.getElement().getStyle().set("height", "100vh");
 
         Div container = new Div();
-        container.getElement().getStyle().set("height", "100vh");
-        container.getElement().getStyle().set("width", "100%");
         container.addClassName("div-main");
         getContent().add(container);
+
+        Div logo = new Div();
+        logo.addClassName("logo");
+        H1 eclipse = new H1("Eclipse");
+        H1 eclipse2 = new H1("Eclipse");
+        eclipse.addClassName("top");
+        eclipse2.addClassName("bottom");
+        logo.add(eclipse,eclipse2);
+        container.add(logo);
 
         //meny bar
         MenuBar menuBar = new MenuBar();
@@ -51,17 +57,23 @@ public class MainView extends Composite<VerticalLayout> {
         avatar2.setName("Firstname Lastname");
 
         TextField questionField = new TextField("");
-        questionField.setPlaceholder("Type your question here...");
+        questionField.setPlaceholder("Search the internet...");
         questionField.setWidth("300px");
-        questionField.getStyle().set("color", "#ff0000");
         questionField.setClassName("ask-luna");
+
+        Div wholeTop = new Div();
+        wholeTop.addClassName("whole-top");
+        container.add(wholeTop);
+
+        Div filter = new Div();
+        filter.addClassName("filter");
+        wholeTop.add(filter);
 
         Div topMain = new Div();
         topMain.setClassName("top-main");
         topMain.setWidth("100%");
-        topMain.setHeight("10%");
         topMain.add(menuBar, questionField, avatar2);
-        container.add(topMain);
+        wholeTop.add(topMain);
 
         Div background = new Div();
         background.setClassName("background");
@@ -96,9 +108,6 @@ public class MainView extends Composite<VerticalLayout> {
         products.setClassName("products");
         products.add(prod);
 
-        container.add(products, recommendations);
-
-
         Button buttonPrimary2 = new Button();
         Button buttonPrimary4 = new Button();
         Button buttonPrimary6 = new Button();
@@ -108,7 +117,14 @@ public class MainView extends Composite<VerticalLayout> {
         buttonPrimary4.setWidth("min-content");
         buttonPrimary6.setText("Add manually");
         buttonPrimary6.setWidth("min-content");
+
+
+
         buttonPrimary2.setClassName("search-button-main");
+        buttonPrimary2.addClickListener(event ->{
+            getUI().ifPresent(ui -> ui.getPage().setLocation("http://localhost:60401/devices-view"));
+        });
+
         buttonPrimary4.setClassName("devices-button-main");
         buttonPrimary6.setClassName("manual-button-main");
 
@@ -116,41 +132,102 @@ public class MainView extends Composite<VerticalLayout> {
         buttonsMain.setClassName("buttons-main");
         buttonsMain.add(buttonPrimary2, buttonPrimary4, buttonPrimary6);
 
-        Div pulsContainer = new Div();
-        pulsContainer.setClassName("puls-container");
+        wholeTop.add(products, recommendations, buttonsMain);
+
+
+        Div pulses = new Div();
+        pulses.setClassName("pulses");
+
 
         Image pulsImage = new Image("/images/devices.png", "Search");
-        pulsImage.setClassName("puls-image");
+        pulsImage.setClassName("device-image");
 
-        Div imagePuls = new Div();
-        imagePuls.setClassName("image-puls");
-        imagePuls.add(pulsImage);
-        imagePuls.add(pulsContainer);
+        Div pulsContainer1 = new Div();
+        pulsContainer1.setClassName("puls-container");
+        pulsContainer1.add(pulsImage);
+        pulsContainer1.add(pulses);
 
         Div mainDiv = new Div();
         mainDiv.setClassName("main-div");
-        mainDiv.add(buttonsMain,imagePuls);
+        mainDiv.add(pulsContainer1);
 
         container.add(mainDiv);
+        Div emptyDiv = new Div();
+        emptyDiv.addClassName("empty");
+        container.add(emptyDiv);
 
+
+        Div quickMain = new Div();
+        quickMain.addClassName("room-quick-main");
+
+        Div upperQuick = new Div();
+        upperQuick.addClassName("upper-room-quick-main");
+        upperQuick.addClickListener(event ->{
+            getUI().ifPresent(ui -> ui.getPage().setLocation("http://localhost:60401/devices-view#room-section"));
+        });
+
+        H3 yourRooms = new H3("Your Rooms");
+        yourRooms.addClassName("quick-action-h3");
+        Image icon = new Image("/images/arrow->.png", "-->");
+        icon.setWidth("20px");
+        upperQuick.add(yourRooms, icon);
+        quickMain.add(upperQuick);
+
+        Div roomBottom = new Div();
+        roomBottom.addClassName("top-rooms");
+
+        RedirectCard room = new RedirectCard("Kitchen", "Tap to modify", "test-view");
+        room.addClassName("room");
+        RedirectCard room2 = new RedirectCard("Bedroom", "Tap to modify", "test-view");
+        room2.addClassName("room");
+        roomBottom.add(room, room2);
+        quickMain.add(roomBottom);
+
+        Div lowerQuick = new Div();
+        lowerQuick.addClassName("lower-room-quick-main");
+        lowerQuick.addClickListener(event ->{
+            getUI().ifPresent(ui -> ui.getPage().setLocation("http://localhost:60401/devices-view"));
+        });
+
+        H3 suggestedDevices = new H3("Suggested Devices");
+        suggestedDevices.addClassName("quick-action-h3");
+        Image icon2 = new Image("/images/arrow->.png", "-->");
+        icon2.setWidth("20px");
+        lowerQuick.add(suggestedDevices, icon2);
+        quickMain.add(lowerQuick);
+
+        Div deviceBottom = new Div();
+        deviceBottom.addClassName("device-bottom");
+
+        RedirectCard device = new RedirectCard("Thermo", "20C", "Tap to modify", "test-view");
+        device.addClassName("room");
+        RedirectCard device2 = new RedirectCard("Light 1", "ON" , "Tap to modify", "test-view");
+        device2.addClassName("room");
+        deviceBottom.add(device, device2);
+        quickMain.add(deviceBottom);
+
+        container.add(quickMain);
         Div luna = new Div();
         luna.setClassName("luna-main");
-        Image lunaImage = new Image("/images/luna.png", "Luna");
+        Image lunaImage = new Image("/images/rett-luna.png", "Luna");
         lunaImage.setClassName("luna-image-main");
-        luna.add(lunaImage);
+        Div lunaBackground = new Div();
+        lunaBackground.addClassName("background");
+        lunaBackground.add(lunaImage);
+        luna.add(lunaBackground);
         container.add(luna);
 
-        getContent().setWidth("100%");
-        getContent().setWidth("100%");
-        getContent().getStyle().set("flex-grow", "1");
-
+        Div footerMain = new Div();
+        container.add(footerMain);
 
     }
 
+
+
     private void setMenuSampleData(MenuBar menuBar) {
-        Image menuImage = new Image("/images/menu-bar.png", "Menu");
-        menuImage.setWidth("24px");
-        menuImage.setHeight("24px");
+        Image menuImage = new Image("/images/menu-.png", "Menu");
+        menuImage.addClassName("menu-img");
+
 
         MenuItem more = menuBar.addItem(menuImage);
 
