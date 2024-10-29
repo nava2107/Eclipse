@@ -53,7 +53,7 @@ public class Register extends Composite<VerticalLayout> {
         logo.add(eclipse,eclipse2);
         container.add(logo);
         // back to login arrow
-        Image icon = new Image("images/arrow<-.png", "back");
+        Image icon = new Image("images/arrow-left.png", "back");
         icon.addClassName("back-register");
         icon.addClickListener((ComponentEventListener<ClickEvent<Image>>) click -> {
             getUI().ifPresent(ui -> ui.getPage().setLocation("http://localhost:60401"));
