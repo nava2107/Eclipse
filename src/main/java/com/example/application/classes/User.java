@@ -12,36 +12,43 @@ public class User {
     @Id
 
     @GeneratedValue(strategy = GenerationType.IDENTITY) // or another strategy based on your DB
-
     @Column(name = "USERID", nullable = false)
     private int userId;
 
+    @Column(name = "USERNAME")
     private String username;
+
+    @Column(name = "FIRST_NAME")
     private String firstName;
+
+    @Column(name = "LAST_NAME")
     private String lastName;
+
+    @Column(name = "EMAIL")
     private String email;
+
+    @Column(name = "HASHED_PASSWORD")
     private String hashedPassword;
 
-    private boolean isActive;
+    @Column(name = "IS_ACTIVE", nullable = false)
+    private boolean isActive = true;
 
-    // isAuthenticated viser om brukeren er autentisert eller ikke
-    private boolean isAuthenticated;
+    @Column(name = "IS_AUTHENTICATED", nullable = false)
+    private boolean isAuthenticated = false;
 
-    // isEmailVerified sjekker om mailen til user er verifisert
     @Column(name = "IS_EMAIL_VERIFIED", nullable = false)
     private boolean isEmailVerified = false;
 
+    @Column(name = "IS_ADMIN", nullable = false)
+    private boolean isAdmin = false;
 
-    // isAdmin viser om brukeren har admin-rettigheter eller ikke, for å finne ut av hva de kan/kan ikke gjøre
-    private boolean isAdmin;
+    @Column(name = "VERIFICATION_CODE")
+    private String verificationCode;
 
     // devices er en liste med devices som er relatert til brukeren
     @OneToMany(cascade = jakarta.persistence.CascadeType.ALL, fetch = jakarta.persistence.FetchType.LAZY)
     private List<Device> devices = new ArrayList<>();
 
-
-    // Nytt felt for å lagre verifikasjonskoden for registrering
-    private String verificationCode;
 
     // Konstruktør som lager user-objekter
     public User(String username, String firstName, String lastName, String email, String hashedPassword) {

@@ -21,6 +21,7 @@ import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.theme.Theme;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 @PageTitle("Empty")
@@ -28,10 +29,12 @@ import com.vaadin.flow.theme.Theme;
 @Route(value = "register")
 public class Register extends Composite<VerticalLayout> {
     private final AuthService authService;
-    public Register() {
+
+    @Autowired
+    public Register(AuthService authService) {
 
 
-        this.authService = new AuthService();
+        this.authService = authService;
 
         this.addClassName("register-view");
         this.getElement().getStyle().set("background-color", "rgba(1, 1, 1, 0.5)");
@@ -121,7 +124,7 @@ public class Register extends Composite<VerticalLayout> {
             }
 
             // Call the register method
-            User user = authService.registerUser(firstName, lastName, username, email, password);
+            User user = authService.registerUser(username, password, email, firstName, lastName);
 
             if (user != null) { // Check if the returned User object is not null
                 Notification.show("Registration successful! Please verify your email.", 3000, Notification.Position.MIDDLE);
