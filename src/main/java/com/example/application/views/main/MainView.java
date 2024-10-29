@@ -117,7 +117,14 @@ public class MainView extends Composite<VerticalLayout> {
         buttonPrimary4.setWidth("min-content");
         buttonPrimary6.setText("Add manually");
         buttonPrimary6.setWidth("min-content");
+
+
+
         buttonPrimary2.setClassName("search-button-main");
+        buttonPrimary2.addClickListener(event ->{
+            getUI().ifPresent(ui -> ui.getPage().setLocation("http://localhost:60401/devices-view"));
+        });
+
         buttonPrimary4.setClassName("devices-button-main");
         buttonPrimary6.setClassName("manual-button-main");
 
@@ -155,6 +162,9 @@ public class MainView extends Composite<VerticalLayout> {
 
         Div upperQuick = new Div();
         upperQuick.addClassName("upper-room-quick-main");
+        upperQuick.addClickListener(event ->{
+            getUI().ifPresent(ui -> ui.getPage().setLocation("http://localhost:60401/devices-view#room-section"));
+        });
 
         H3 yourRooms = new H3("Your Rooms");
         yourRooms.addClassName("quick-action-h3");
@@ -175,6 +185,9 @@ public class MainView extends Composite<VerticalLayout> {
 
         Div lowerQuick = new Div();
         lowerQuick.addClassName("lower-room-quick-main");
+        lowerQuick.addClickListener(event ->{
+            getUI().ifPresent(ui -> ui.getPage().setLocation("http://localhost:60401/devices-view"));
+        });
 
         H3 suggestedDevices = new H3("Suggested Devices");
         suggestedDevices.addClassName("quick-action-h3");
@@ -186,9 +199,9 @@ public class MainView extends Composite<VerticalLayout> {
         Div deviceBottom = new Div();
         deviceBottom.addClassName("device-bottom");
 
-        RedirectCard device = new RedirectCard("Thermo", "20C" + "Tap to modify", "test-view");
+        RedirectCard device = new RedirectCard("Thermo", "20C", "Tap to modify", "test-view");
         device.addClassName("room");
-        RedirectCard device2 = new RedirectCard("Light 1", "ON" + "Tap to modify", "test-view");
+        RedirectCard device2 = new RedirectCard("Light 1", "ON" , "Tap to modify", "test-view");
         device2.addClassName("room");
         deviceBottom.add(device, device2);
         quickMain.add(deviceBottom);
@@ -203,6 +216,9 @@ public class MainView extends Composite<VerticalLayout> {
         lunaBackground.add(lunaImage);
         luna.add(lunaBackground);
         container.add(luna);
+
+        Div footerMain = new Div();
+        container.add(footerMain);
 
     }
 

@@ -1,0 +1,355 @@
+
+.cardT {
+    margin: 40px;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: lightgrey;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: all 1s ease-in-out;
+    border: 2px solid rgb(255, 255, 255);
+}
+
+.backgroundT {
+    position: absolute;
+    inset: 0;
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.logoTTT {
+    position: absolute;
+    right: 50%;
+    bottom: 50%;
+    transform: translate(50%, 50%);
+    transition: all 0.6s ease-in-out;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 3px;
+}
+
+.logoTTT .svg {
+    fill: white;
+    width: 30px;
+    height: 30px;
+}
+
+.svg {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+.svg {
+    fill: rgba(255, 255, 255, 0.797);
+    width: 100%;
+    transition: all 0.5s ease-in-out;
+}
+
+.box1, .box2, .box3, .box4 {
+    position: absolute;
+    padding: 10px;
+    text-align: right;
+    background: rgba(255, 255, 255, 0.389);
+    border-top: 2px solid rgb(255, 255, 255);
+    border-right: 1px solid white;
+    border-radius: 10% 13% 42% 0%/10% 12% 75% 0%;
+    box-shadow: rgba(100, 100, 111, 0.364) -7px 7px 29px 0px;
+    transform-origin: bottom left;
+    transition: all 1s ease-in-out;
+}
+
+.box1::before, .box2::before, .box3::before, .box4::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.box1:hover .svg, .box2:hover .svg, .box3:hover .svg, .box4:hover .svg {
+    fill: white;
+}
+
+.box1 {
+    width: 70%;
+    height: 70%;
+    bottom: -70%;
+    left: -70%;
+}
+
+.box1::before {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #ff53d4 60%, #62c2fe 90%);
+}
+
+.box1:hover::before {
+    opacity: 1;
+}
+
+.box1:hover .svg .svg {
+    filter: drop-shadow(0 0 5px white);
+}
+
+.box2 {
+    width: 50%;
+    height: 50%;
+    bottom: -50%;
+    left: -50%;
+    transition-delay: 0.2s;
+}
+
+.box2::before {
+    background: radial-gradient(circle at 30% 107%, #91e9ff 0%, #00ACEE 90%);
+}
+
+.box2:hover::before {
+    opacity: 1;
+}
+
+.box2:hover .svg .svg {
+    filter: drop-shadow(0 0 5px white);
+}
+
+.box3 {
+    width: 30%;
+    height: 30%;
+    bottom: -30%;
+    left: -30%;
+    transition-delay: 0.4s;
+}
+
+.box3::before {
+    background: radial-gradient(circle at 30% 107%, #969fff 0%, #b349ff 90%);
+}
+
+.box3:hover::before {
+    opacity: 1;
+}
+
+.box3:hover .svg .svg {
+    filter: drop-shadow(0 0 5px white);
+}
+
+.box4 {
+    width: 10%;
+    height: 10%;
+    bottom: -10%;
+    left: -10%;
+    transition-delay: 0.6s;
+}
+
+.cardT:hover {
+    transform: scale(1.1);
+}
+
+.cardT:hover .box1, .cardT:hover .box2, .cardT:hover .box3, .cardT:hover .box4 {
+    bottom: -1px;
+    left: -1px;
+}
+
+.cardT:hover .logoTTT {
+    transform: translate(70px, -52px);
+    letter-spacing: 0px;
+}
+
+.svg{
+    max-width: 25px;
+    width: 25px;
+}
+
+
+.btn1 {
+    margin: 40px;
+    font-size: 1.2rem;
+    padding: 1rem 2.5rem;
+    border: none;
+    outline: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: rgb(14, 14, 26);
+    color: rgb(234, 234, 234);
+    font-weight: 700;
+    transition: 0.6s;
+    box-shadow: 0px 0px 60px #1f4c65;
+    -webkit-box-reflect: below 10px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.4));
+}
+
+.btn1:active {
+    scale: 0.92;
+}
+
+.btn1:hover {
+    background: rgb(2,29,78);
+    background: linear-gradient(270deg, rgba(2, 29, 78, 0.681) 0%, rgba(31, 215, 232, 0.873) 60%);
+    color: rgb(4, 4, 38);
+}
+
+
+
+
+/* -------------------------------------------------------------------------------- */
+.cardTT {
+    margin: 20px;
+    position: relative;
+    height: 300px;
+    width: 230px;
+}
+.cardTT:nth-child(2) {
+    filter: hue-rotate(100deg) brightness(1.5);
+}
+.cardTT:nth-child(3) {
+    filter: hue-rotate(300deg) brightness(1.3);
+}
+.cardTT:nth-child(4) {
+    filter: hue-rotate(300deg) brightness(2);
+}
+.boxshadowT {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border: 1px solid rgb(0, 217, 255);
+    transform: scale(0.8);
+    box-shadow: rgb(0, 217, 255) 0px 30px 70px 0px;
+    transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.mainT {
+    width: 230px;
+    height: 300px;
+    overflow: hidden;
+    background: rgb(0, 255, 149);
+    background: linear-gradient(
+            0deg,
+            #3e0000 0%,
+            rgb(0, 247, 255) 60%,
+            #3e0000 100%
+    );
+    position: relative;
+    clip-path: polygon(
+            0 0,
+            100% 0,
+            100% 40px,
+            100% calc(100% - 40px),
+            calc(100% - 40px) 100%,
+            40px 100%,
+            0 calc(100% - 40px)
+    );
+    box-shadow: rgb(0, 132, 255) 0px 7px 29px 0px;
+    transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.topT {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 0px;
+    height: 0px;
+    z-index: 2;
+    border-top: 115px solid black;
+    border-left: 115px solid transparent;
+    border-right: 115px solid transparent;
+    transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.left-side, .right-side {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    transform: translateX(-50%);
+    height: 101%;
+    background: black;
+    clip-path: polygon(0% 0%, 50% 0, 95% 45%, 100% 100%, 0% 100%);
+    transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 1s;
+}
+.left-side {
+    left: 0;
+}
+.right-side {
+    right: 0;
+    transform: translateX(50%) scale(-1, 1);
+}
+.titleT {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 90px;
+    font-weight: bold;
+    font-size: 25px;
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.2s ease-out 0s;
+}
+.button-containerT {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.buttonT {
+    position: absolute;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    clip-path: polygon(0 0, 100% 0, 81% 100%, 21% 100%);
+    background: black;
+    border: none;
+    color: white;
+    display: grid;
+    place-content: center;
+    transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.buttonT img {
+    width: 15px;
+    transition: all 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.buttonT:nth-child(1) {
+    bottom: 300px;
+    transition-delay: 0.4s;
+}
+.buttonT:nth-child(2) {
+    bottom: 300px;
+    transition-delay: 0.6s;
+}
+.buttonT:nth-child(3) {
+    bottom: 300px;
+    transition-delay: 0.8s;
+}
+.buttonT:hover img {
+    transform: scale(1.2);
+}
+.buttonT:active img {
+    transform: scale(0.7);
+}
+.cardTT:hover .mainT {
+    transform: scale(1.1);
+}
+.cardTT:hover .mainT .topT {
+    top: -50px;
+}
+.cardTT:hover .mainT .left-side {
+    left: -50px;
+    transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.1s;
+}
+.cardTT:hover .mainT .right-side {
+    right: -50px;
+    transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.1s;
+}
+.cardTT:hover .mainT .titleT {
+    opacity: 1;
+    transition: all 0.2s ease-out 1.3s;
+}
+.cardTT:hover .mainT .button-containerT .buttonT:nth-child(1) {
+    bottom: 80px;
+    transition-delay: 0.8s;
+}
+.cardTT:hover .mainT .button-containerT .buttonT:nth-child(2) {
+    bottom: 40px;
+    transition-delay: 0.6s;
+}
+.cardTT:hover .mainT .button-containerT .buttonT:nth-child(3) {
+    bottom: 0;
+    transition-delay: 0.4s;
+}

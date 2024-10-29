@@ -40,7 +40,7 @@ public class DevicesView extends Composite<VerticalLayout> {
 
         Div searchDiv = new Div();
         searchDiv.addClassName("input-wrapper");
-        Image iconDI = new Image("/images/rett-luna.png", "search");
+        Image iconDI = new Image("/images/search.png", "search");
         iconDI.setWidth("25px");
         Button iconD = new Button(iconDI);
         iconD.addClassName("button-search");
@@ -76,6 +76,7 @@ public class DevicesView extends Composite<VerticalLayout> {
         container.add(lightingDiv);
 
         Div rooms = new Div();
+        rooms.setId("room-section");
         rooms.addClassName("rooms-div");
         H1 roomH1 = new H1("Your Rooms");
         Paragraph roomP = new Paragraph("Add room +");

@@ -66,7 +66,7 @@ public class SigninView extends Composite<VerticalLayout> {
         LoginForm loginForm = new LoginForm();
         loginForm.addClassName("loginform");
         loginForm.addLoginListener(event -> {
-            Notification.show("Login Successful! Redirecting...", 3000, Notification.Position.MIDDLE);
+            Notification.show("Login Successful!", 3000, Notification.Position.MIDDLE);
             getUI().ifPresent(ui -> ui.navigate("main-view"));
         });
 
