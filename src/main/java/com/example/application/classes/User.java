@@ -1,15 +1,19 @@
-package classes;
+package com.example.application.classes;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.*;
 
+
+@Entity
+@Table(name = "users")
 public class User {
 
-    // userCount brukes for å telle antall ganger et User-objekt har blitt opprettet,
-    // og skal brukes til å fordele userId.
-    private static int userCount = 0;
+    @Id
 
-    // userId for å få en unik identifikator av brukere
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // or another strategy based on your DB
+
+    @Column(name = "USERID", nullable = false)
     private int userId;
 
     private String username;
@@ -24,18 +28,23 @@ public class User {
     private boolean isAuthenticated;
 
     // isEmailVerified sjekker om mailen til user er verifisert
-    private boolean isEmailVerified;
+    @Column(name = "IS_EMAIL_VERIFIED", nullable = false)
+    private boolean isEmailVerified = false;
+
 
     // isAdmin viser om brukeren har admin-rettigheter eller ikke, for å finne ut av hva de kan/kan ikke gjøre
     private boolean isAdmin;
 
     // devices er en liste med devices som er relatert til brukeren
-    private ArrayList<Device> devices;
+    @OneToMany(cascade = jakarta.persistence.CascadeType.ALL, fetch = jakarta.persistence.FetchType.LAZY)
+    private List<Device> devices = new ArrayList<>();
 
+
+    // Nytt felt for å lagre verifikasjonskoden for registrering
+    private String verificationCode;
 
     // Konstruktør som lager user-objekter
-    public User(int userCount, String username, String firstName, String lastName, String email, String hashedPassword) {
-        this.userId = ++userCount;
+    public User(String username, String firstName, String lastName, String email, String hashedPassword) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -48,6 +57,8 @@ public class User {
         this.devices = new ArrayList<>();
     }
 
+    public User(){}
+
     public boolean isEmailVerified() {
         return isEmailVerified;
     }
@@ -59,6 +70,14 @@ public class User {
         }
     }
 
+
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
+    }
 
     public boolean authenticate(String password) {
         return verifyPassword(password);
@@ -148,14 +167,6 @@ public class User {
         isAdmin = admin;
     }
 
-    public static int getUserCount() {
-        return userCount;
-    }
-
-    public static void setUserCount(int userCount) {
-        User.userCount = userCount;
-    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -171,4 +182,6 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+
 }

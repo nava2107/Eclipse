@@ -6,3 +6,6 @@ src/main/frontend/generated/
 vite.generated.ts
 .idea/workspace.xml
 
+*.xml
+*.lock
+.idea/workspace.xml
