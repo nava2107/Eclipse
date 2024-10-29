@@ -168,7 +168,7 @@ public class MainView extends Composite<VerticalLayout> {
 
         H3 yourRooms = new H3("Your Rooms");
         yourRooms.addClassName("quick-action-h3");
-        Image icon = new Image("/images/arrow->.png", "-->");
+        Image icon = new Image("/images/arrow-right.png", "-->");
         icon.setWidth("20px");
         upperQuick.add(yourRooms, icon);
         quickMain.add(upperQuick);
@@ -191,7 +191,7 @@ public class MainView extends Composite<VerticalLayout> {
 
         H3 suggestedDevices = new H3("Suggested Devices");
         suggestedDevices.addClassName("quick-action-h3");
-        Image icon2 = new Image("/images/arrow->.png", "-->");
+        Image icon2 = new Image("/images/arrow-right.png", "-->");
         icon2.setWidth("20px");
         lowerQuick.add(suggestedDevices, icon2);
         quickMain.add(lowerQuick);

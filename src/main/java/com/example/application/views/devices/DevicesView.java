@@ -29,7 +29,7 @@ public class DevicesView extends Composite<VerticalLayout> {
         H1 titleDevices = new H1("Devices");
         Div backDiv = new Div();
         backDiv.addClassName("back-devices-div");
-        Image icon = new Image("images/arrow<-.png", "back");
+        Image icon = new Image("images/arrow-left.png", "back");
         icon.setWidth("25px");
         icon.addClassName("back-devices");
         icon.addClickListener((ComponentEventListener<ClickEvent<Image>>) click -> {
