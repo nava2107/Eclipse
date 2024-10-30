@@ -1,8 +1,8 @@
 package com.example.application.classes.Devices.Lightning;
 
-public class Standar extends Lighting {
+public class Standard extends Lighting {
 
-    public Standar(Long deviceId, String deviceName, String deviceBrand) {
+    public Standard(Long deviceId, String deviceName, String deviceBrand) {
         super(deviceId, deviceName, deviceBrand);
         this.isDimmable = false;
     }
