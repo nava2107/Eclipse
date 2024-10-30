@@ -17,19 +17,23 @@ public class AuthService {
     public AuthService(){}
 
     public User registerUser(String username, String password, String email, String firstName, String lastName) {
-        if (userRepository.findByUsername(username) != null || userRepository.findByEmail(email) != null) {
-            throw new RuntimeException("Username or email already in use");
+        // Sjekk om brukernavn eller e-post allerede er i bruk
+        if (userRepository.findByUsername(username) != null) {
+            throw new RuntimeException("Brukernavnet er allerede i bruk.");
+        } else if (userRepository.findByEmail(email) != null) {
+            throw new RuntimeException("E-posten er allerede registrert.");
+        } else {
+            // Oppretter brukeren om brukernavn og email er ledig
+            User newUser = new User();
+            newUser.setUsername(username);
+            newUser.setFirstName(firstName);
+            newUser.setLastName(lastName);
+            newUser.setHashedPassword(hashPassword(password)); // Her "hashes" passordet (ikke ekte hashing men får frem intensjon om at det skal hashes)
+            newUser.setEmail(email);
+
+            // Lagre den nye brukeren i databasen
+            return userRepository.save(newUser);
         }
-
-        User newUser = new User();
-        newUser.setUsername(username);
-        newUser.setFirstName(firstName);
-        newUser.setLastName(lastName);
-        newUser.setHashedPassword(password); // Pass på å hashe passordet
-        newUser.setEmail(email);
-
-        // Lagre den nye brukeren i databasen
-        return userRepository.save(newUser); // save() kommer fra JpaRepository
     }
 
     public boolean verifyEmail(String email, String code) {
