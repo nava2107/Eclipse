@@ -82,9 +82,9 @@ public class Register extends Composite<VerticalLayout> {
         h3.setWidth("100%");
         firstNameField.setLabel("First Name");
         lastNameField.setLabel("Last Name");
-        usernameField.setLabel("Choose an username:");
+        usernameField.setLabel("Username");
         emailField.setLabel("Email");
-        passwordField.setLabel("Password field");
+        passwordField.setLabel("Password");
         passwordField.setWidth("min-content");
 
         h3.addClassName("set-up");
