@@ -55,11 +55,8 @@ public class AuthService {
 
     public boolean login(String username, String password) {
         User user = userRepository.findByUsername(username);
-        if (user != null && user.authenticate(password)) {
-            if (!user.isEmailVerified()) {
-                System.out.println("E-posten er ikke bekreftet!");
-                return false;
-            }
+
+        if (user != null && password.equals(user.getHashedPassword())) {
             user.setAuthenticated(true);
             return true;
         }
@@ -67,7 +64,7 @@ public class AuthService {
     }
 
     private String hashPassword(String password) {
-        return password;  // Burde bruke en ordentlig hashingfunksjon
+        return password;  // Burde bruke en ordentlig hashingfunksjon, men for prosjektet vårt er ikke dette nødvendig
     }
 
 
