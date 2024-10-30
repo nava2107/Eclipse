@@ -61,4 +61,19 @@ public abstract class Device {
     public void deactivate() {
         this.isActive = false;
     }
+    public String getDeviceInfo() {
+        return "Device: " + deviceName + "/n" + isActive;
+    }
+    public String getDeviceInfoLong() {
+        return "Device: " + deviceName + "/nBrand" + deviceBrand + "/n" + isActive;
+    }
+    public void turnOn() {
+        isActive = true;
+        System.out.println(deviceName + " is now ON.");
+    }
+
+    public void turnOff() {
+        isActive = false;
+        System.out.println(deviceName + " is now OFF.");
+    }
 }
