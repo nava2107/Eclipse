@@ -1,4 +1,4 @@
-package com.example.application.classes;
+package com.example.application.classes.Devices;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,22 +7,22 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "devices")
-public class Device {
+public abstract class Device {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long deviceId;
 
     private String deviceName;
-    private String deviceType;
+    private String deviceBrand;
     private boolean isActive;
 
     public Device(){}
 
-    public Device(Long deviceId, String deviceName, String deviceType) {
+    public Device(Long deviceId, String deviceName, String deviceBrand) {
         this.deviceId = deviceId;
         this.deviceName = deviceName;
-        this.deviceType = deviceType;
+        this.deviceBrand = deviceBrand;
         this.isActive = true;
     }
 
@@ -34,8 +34,8 @@ public class Device {
         return deviceName;
     }
 
-    public String getDeviceType() {
-        return deviceType;
+    public String getDeviceBrand() {
+        return deviceBrand;
     }
 
     public void setDeviceId(Long deviceId) {
@@ -46,8 +46,8 @@ public class Device {
         this.deviceName = deviceName;
     }
 
-    public void setDeviceType(String deviceType) {
-        this.deviceType = deviceType;
+    public void setDeviceBrand(String deviceBrand) {
+        this.deviceBrand = deviceBrand;
     }
 
     public void setActive(boolean active) {
