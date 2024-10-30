@@ -1,6 +1,6 @@
 package com.example.application.views.devices;
 
-import com.example.application.views.RedirectCard;
+import com.example.application.addons.RedirectCard;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.Composite;
