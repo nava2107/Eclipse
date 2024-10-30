@@ -2,6 +2,7 @@ package com.example.application.classes;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.application.classes.Devices.Device;
 import jakarta.persistence.*;
 
 

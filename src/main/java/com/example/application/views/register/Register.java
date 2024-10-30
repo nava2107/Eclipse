@@ -82,9 +82,9 @@ public class Register extends Composite<VerticalLayout> {
         h3.setWidth("100%");
         firstNameField.setLabel("First Name");
         lastNameField.setLabel("Last Name");
-        usernameField.setLabel("Choose an username:");
+        usernameField.setLabel("Username");
         emailField.setLabel("Email");
-        passwordField.setLabel("Password field");
+        passwordField.setLabel("Password");
         passwordField.setWidth("min-content");
 
         h3.addClassName("set-up");
@@ -117,20 +117,16 @@ public class Register extends Composite<VerticalLayout> {
             String email = emailField.getValue();
             String password = passwordField.getValue();
 
-            // Perform basic validation
             if (firstName.isEmpty() || lastName.isEmpty() || username.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 Notification.show("All fields must be filled", 3000, Notification.Position.MIDDLE);
                 return;
             }
 
-            // Call the register method
-            User user = authService.registerUser(username, password, email, firstName, lastName);
-
-            if (user != null) { // Check if the returned User object is not null
-                Notification.show("Registration successful! Please verify your email.", 3000, Notification.Position.MIDDLE);
-                // Redirect or perform other actions after success
-            } else {
-                Notification.show("Registration failed. Try again.", 3000, Notification.Position.MIDDLE);
+            try {
+                User user = authService.registerUser(username, password, email, firstName, lastName);
+                Notification.show("Registrering vellykket! Vennligst verifiser e-posten din.", 3000, Notification.Position.MIDDLE);
+            } catch (RuntimeException e) {
+                Notification.show(e.getMessage(), 3000, Notification.Position.MIDDLE);
             }
         });
 

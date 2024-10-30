@@ -1,5 +1,7 @@
 package com.example.application.classes;
 
+import com.example.application.classes.Devices.Device;
+
 import java.util.ArrayList;
 import java.util.UUID;
 

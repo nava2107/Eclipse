@@ -1,6 +1,7 @@
 package com.example.application.views.signin;
 
 
+import com.example.application.classes.AuthService;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -12,13 +13,18 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @PageTitle("Sign in")
 @Menu(icon = "line-awesome/svg/user.svg", order = 0)
 @Route(value = "")
 public class SigninView extends Composite<VerticalLayout> {
 
-    public SigninView() {
+    private final AuthService authService;
+
+    @Autowired
+    public SigninView(AuthService authService) {
+        this.authService = authService;
         this.addClassName("sign-in-view");
 
         getContent().setWidth("100%");
@@ -66,8 +72,17 @@ public class SigninView extends Composite<VerticalLayout> {
         LoginForm loginForm = new LoginForm();
         loginForm.addClassName("loginform");
         loginForm.addLoginListener(event -> {
-            Notification.show("Login Successful!", 3000, Notification.Position.MIDDLE);
-            getUI().ifPresent(ui -> ui.navigate("main-view"));
+
+            String username = event.getUsername();
+            String password = event.getPassword();
+
+            if (authService.login(username, password)) {
+                Notification.show("Login Successful!", 3000, Notification.Position.MIDDLE);
+                getUI().ifPresent(ui -> ui.navigate("main-view"));
+            } else {
+                Notification.show("Login failed! Invalid username or password.", 3000, Notification.Position.MIDDLE);
+            }
+
         });
 
         mainBox.add(shadowBox,loginForm);
