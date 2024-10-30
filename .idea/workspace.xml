@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="79755c36-f1e7-438a-9802-debb416a022c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/Devices/Lightning/Lighting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/Devices/Lightning/Motion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/Devices/Lightning/Smart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/Devices/Lightning/SmartColour.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/Devices/Lightning/Standar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/classes/Devices/Device.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/classes/Devices/Device.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "git-widget-placeholder": "lightning",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="eclipse" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.application.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+</project>
