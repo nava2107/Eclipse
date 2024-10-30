@@ -1,5 +1,10 @@
 package com.example.application.views.main;
 
+import java.util.List;
+import java.util.Map;
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.router.QueryParameters;
+import com.vaadin.flow.component.notification.Notification;
 import com.example.application.views.RedirectCard;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
@@ -33,6 +38,20 @@ public class MainView extends Composite<VerticalLayout> {
 
 
         this.addClassName("main-view");
+
+
+        // Legg til kode for å vise verifikasjonsmelding
+        QueryParameters queryParameters = UI.getCurrent().getInternals().getActiveViewLocation().getQueryParameters();
+        Map<String, List<String>> parameters = queryParameters.getParameters();
+
+        if (parameters.containsKey("verification")) {
+            String verificationStatus = parameters.get("verification").get(0);
+            if ("success".equals(verificationStatus)) {
+                Notification.show("Your account has been successfully verified!", 3000, Notification.Position.MIDDLE);
+            } else if ("failed".equals(verificationStatus)) {
+                Notification.show("Verification failed. Invalid or expired link.", 3000, Notification.Position.MIDDLE);
+            }
+        }
 
         Div container = new Div();
         container.addClassName("div-main");

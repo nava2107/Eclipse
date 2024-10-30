@@ -25,6 +25,7 @@ public class EmailService {
                 "http://localhost:60401/verify?code=" + verificationCode + "\n\n" +
                 "If you did not register with us, please ignore this email.\n\n" +
                 "Best regards,\nThe Eclipse Team");
+
         try {
             mailSender.send(message);
             System.out.println("Verification email sent to: " + toEmail);
@@ -38,28 +39,11 @@ public class EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(toEmail);
         message.setSubject("Welcome!");
-        message.setText("Velkommen til vår tjeneste!");
+        message.setText("Welcome to our service!");
 
         try {
             mailSender.send(message);
             System.out.println("Welcome email sent to: " + toEmail);
-        } catch (Exception e) {
-            System.out.println("Failed to send email: " + e.getMessage());
-        }
-    }
-
-    // Method to send a reset password email
-    public void sendResetPasswordEmail(String toEmail, String resetToken) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(toEmail);
-        message.setSubject("Reset your password");
-        message.setText("Din tilbakestillingskode er: " + resetToken +
-                "\nKlikk på lenken for å tilbakestille passordet: " +
-                "http://localhost:60401/reset-password?token=" + resetToken);
-
-        try {
-            mailSender.send(message);
-            System.out.println("Reset password email sent to: " + toEmail);
         } catch (Exception e) {
             System.out.println("Failed to send email: " + e.getMessage());
         }
