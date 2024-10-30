@@ -1,4 +1,4 @@
-package com.example.application.views;
+package com.example.application.addons;
 
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEventListener;

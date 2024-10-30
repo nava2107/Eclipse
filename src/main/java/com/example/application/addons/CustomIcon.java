@@ -1,4 +1,4 @@
-package com.example.application;
+package com.example.application.addons;
 
 
 import com.vaadin.flow.component.Component;
