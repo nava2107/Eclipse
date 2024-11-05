@@ -14,19 +14,17 @@ public class Alarm extends Security {
     public void detectMovement(int sensorInput) {
         // Her kan vi anta at sensorInput > 0 indikerer bevegelse
         if (sensorInput > 0) {
-            this.movement = true; // Bevegelse er detektert
+            this.movement = true;
             if (super.isActive()) {
-                triggerAlarm(); // Utløs alarm hvis den er aktiv
+                triggerAlarm();
             }
         } else {
-            this.movement = false; // Ingen bevegelse
+            this.movement = false;
         }
     }
 
-    // Metode for å utløse alarmen
     private void triggerAlarm() {
         System.out.println("The alarm has been triggered!");
-        // Her kan du legge til logikk for å sende notifikasjoner til brukeren
     }
 
     public boolean isMovementDetected() {

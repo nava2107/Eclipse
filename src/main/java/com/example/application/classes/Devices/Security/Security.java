@@ -9,7 +9,6 @@ public abstract class Security extends Device {
         super(deviceId, deviceName, deviceBrand);
     }
 
-    // Legg til eventuelle metoder som er spesifikke for sikkerhetsenheter
     public abstract void activate();
     public abstract void deactivate();
 

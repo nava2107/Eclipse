@@ -17,10 +17,10 @@ public class Sensor extends Security {
     public void detectMovement(int sensorInput) {
         // Her kan vi anta at sensorInput > 0 indikerer bevegelse
         if (sensorInput > 0) {
-            this.movement = true; // Bevegelse er detektert
+            this.movement = true;
             System.out.println("Movement detected!");
         } else {
-            this.movement = false; // Ingen bevegelse
+            this.movement = false;
             System.out.println("No movement detected");
         }
     }
