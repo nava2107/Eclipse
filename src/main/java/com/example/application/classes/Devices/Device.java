@@ -1,9 +1,5 @@
 package com.example.application.classes.Devices;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "devices")
@@ -11,10 +7,16 @@ public abstract class Device {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "DEVICE_ID", nullable = false)
     private Long deviceId;
 
+    @Column(name = "DEVICE_NAME")
     private String deviceName;
+
+    @Column(name = "DEVICE_BRAND")
     private String deviceBrand;
+
+    @Column(name = "IS_ACTIVE")
     private boolean isActive;
 
     public Device(){}
