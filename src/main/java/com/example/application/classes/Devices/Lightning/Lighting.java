@@ -15,7 +15,7 @@ public abstract class Lighting extends Device {
         isDimmable = dimmable;
     }
 
-    void setBrightness(int level){
+    public void setBrightness(int level){
         if (isDimmable) {
             this.brightness = level;
             System.out.println(super.getDeviceInfo() + " Brightness set to " + brightness + ".");
