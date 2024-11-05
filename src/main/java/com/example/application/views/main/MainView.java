@@ -6,7 +6,6 @@ import java.util.Map;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.router.QueryParameters;
 import com.vaadin.flow.component.notification.Notification;
-import com.example.application.views.RedirectCard;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
