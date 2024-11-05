@@ -6,7 +6,7 @@ Hoved programmet: application.java. Programmet kan kjøres ved hjelp av kommando
 
 Kjør gjennom versonen 21 av JDK. Ha installert maven. 
 Ved kjøring, printes det ut URL, i tilfelle at den ikkje opner vinduet av seg sjølv
-På nettsida kan brukeren skrive inn inloggingsionformasjonen, som så lang ikkje har tilrettet en egen database. Ved login sendes brukeren automatisk til main-view. Ved join family funksjonen vil brukeren bli sendt til registreringssida.
+På nettsida kan brukeren skrive inn inloggingsionformasjon. Ved login sendes brukeren automatisk til main-view. Ved join family funksjonen vil brukeren bli sendt til registreringssida.
 Views i arbeid:
 - [https](http://localhost:60401) (nesten ferdig)
 - [https](http://localhost:60401/main-view) (nesten ferdig)
