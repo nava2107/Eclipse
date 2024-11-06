@@ -13,16 +13,14 @@ public class EmailService {
         this.mailSender = mailSender;
     }
 
-    // Method to send a verification email
-    public void sendVerificationEmail(String toEmail, String verificationCode) {
+    // Send a verification link via email
+    public void sendVerificationEmail(String toEmail, String verificationLink) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(toEmail);
         message.setSubject("Please Verify Your Email Address");
         message.setText("Dear User,\n\n" +
-                "Thank you for registering with us! To complete your registration, please verify your email address by using the verification code below:\n\n" +
-                "Verification Code: " + verificationCode + "\n\n" +
-                "Alternatively, you can verify your email by clicking the following link:\n" +
-                "http://localhost:60401/verify?code=" + verificationCode + "\n\n" +
+                "Thank you for registering with us! To complete your registration, please verify your email address by clicking the link below:\n\n" +
+                verificationLink + "\n\n" +
                 "If you did not register with us, please ignore this email.\n\n" +
                 "Best regards,\nThe Eclipse Team");
 
@@ -46,6 +44,9 @@ public class EmailService {
             System.out.println("Welcome email sent to: " + toEmail);
         } catch (Exception e) {
             System.out.println("Failed to send email: " + e.getMessage());
+
+
         }
     }
-}
+
+    }

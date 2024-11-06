@@ -43,8 +43,8 @@ public class User {
     @Column(name = "IS_ADMIN", nullable = false)
     private boolean isAdmin = false;
 
-    @Column(name = "VERIFICATION_CODE")
-    private String verificationCode;
+    @Column(name = "VERIFICATION_TOKEN")
+    private String verificationToken;
 
     // devices er en liste med devices som er relatert til brukeren
     @OneToMany(cascade = jakarta.persistence.CascadeType.ALL, fetch = jakarta.persistence.FetchType.LAZY)
@@ -79,12 +79,12 @@ public class User {
     }
 
 
-    public String getVerificationCode() {
-        return verificationCode;
+    public String getVerificationToken() {
+        return verificationToken;
     }
 
-    public void setVerificationCode(String verificationCode) {
-        this.verificationCode = verificationCode;
+    public void setVerificationToken(String verificationToken) {
+        this.verificationToken = verificationToken;
     }
 
     public boolean authenticate(String password) {
