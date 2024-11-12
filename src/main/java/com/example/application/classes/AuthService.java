@@ -2,19 +2,20 @@ package com.example.application.classes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 @Service
 public class AuthService {
 
-    @Autowired
-    private UserRepository userRepository;
-    private EmailService emailService;
+    private final UserRepository userRepository;
+    private final EmailService emailService;
+    private final UserService userService;
 
-    public AuthService(UserRepository userRepository, EmailService emailService) {
+    @Autowired
+    public AuthService(UserRepository userRepository, EmailService emailService, UserService userService) {
         this.userRepository = userRepository;
         this.emailService = emailService;
+        this.userService = userService;
     }
-
-    public AuthService(){}
 
     public User registerUser(String username, String password, String email, String firstName, String lastName) {
         // Sjekk om brukernavn eller e-post allerede er i bruk
@@ -32,29 +33,18 @@ public class AuthService {
             newUser.setEmail(email);
 
             // Lagre den nye brukeren i databasen
-            return userRepository.save(newUser);
+            userRepository.save(newUser);
+
+            // Generer og send verifikasjonslenke
+            userService.generateVerificationLink(newUser);
+
+            return newUser;
         }
     }
 
-    public boolean verifyEmail(String email, String code) {
+    public boolean verifyEmail(String email, String token) {
         User user = userRepository.findByEmail(email);
-        if (user != null && verifyCode(user, code)) {
-            user.setEmailVerified(true);
-            userRepository.save(user);
-            userRepository.save(user);
-
-            return true;
-        }
-        return false;
-    }
-
-    private String generateVerificationCode(User user) {
-        return "verif-" + user.getUserId();
-    }
-
-    private boolean verifyCode(User user, String code) {
-        String expectedCode = generateVerificationCode(user);
-        return expectedCode.equals(code);
+        return user != null && userService.verifyUserByToken(token);
     }
 
     public boolean login(String username, String password) {
@@ -71,20 +61,11 @@ public class AuthService {
         return password;  // Burde bruke en ordentlig hashingfunksjon, men for prosjektet vårt er ikke dette nødvendig
     }
 
-
     public UserRepository getUserRepository() {
         return userRepository;
     }
 
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
     public EmailService getEmailService() {
         return emailService;
-    }
-
-    public void setEmailService(EmailService emailService) {
-        this.emailService = emailService;
     }
 }

@@ -17,8 +17,8 @@ public class VerificationController {
     }
 
     @GetMapping("/verify")
-    public RedirectView verifyUser(@RequestParam("code") String code) {
-        boolean isVerified = userService.verifyUserByCode(code);
+    public RedirectView verifyUser(@RequestParam("token") String token) {
+        boolean isVerified = userService.verifyUserByToken(token);
         if (isVerified) {
             return new RedirectView("/main-view?verification=success");
         } else {
