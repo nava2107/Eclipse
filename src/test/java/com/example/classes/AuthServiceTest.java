@@ -3,14 +3,13 @@ package com.example.classes;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.example.application.classes.AuthService;
-import com.example.application.classes.EmailService;
-import com.example.application.classes.User;
-import com.example.application.classes.UserRepository;
+import com.example.application.classes.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.*;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 class AuthServiceTest {
 
@@ -18,13 +17,15 @@ class AuthServiceTest {
     private UserRepository userRepository;
     @Mock
     private EmailService emailService;
+    @Mock
+    private UserService userService;
 
+    @InjectMocks
     private AuthService authService;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        authService = new AuthService(userRepository, emailService);
     }
 
     @Test
@@ -36,10 +37,9 @@ class AuthServiceTest {
         String firstName = "Test";
         String lastName = "User";
 
-        // Mock the behavior of the userRepository to not find the user by username or email
         when(userRepository.findByUsername(username)).thenReturn(null);
         when(userRepository.findByEmail(email)).thenReturn(null);
-        when(userRepository.save(any(User.class))).thenReturn(new User(username, firstName, lastName, email, password));
+        when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
         User result = authService.registerUser(username, password, email, firstName, lastName);
 
@@ -47,91 +47,71 @@ class AuthServiceTest {
         assertEquals(username, result.getUsername());
         assertEquals(firstName, result.getFirstName());
         assertEquals(lastName, result.getLastName());
-        verify(userRepository, times(1)).save(any(User.class));  // Verify save is called once
+        verify(userRepository, times(1)).save(any(User.class));
+        verify(userService, times(1)).generateVerificationLink(result);
     }
 
     @Test
     @DisplayName("Test: Register User - Username Already Exists")
     void testRegisterUser_UsernameAlreadyExists() {
         String username = "existingUser";
-        String password = "password123";
-        String email = "test@example.com";
-        String firstName = "Test";
-        String lastName = "User";
 
-        // Mock the behavior of the userRepository to return a user with the same username
         when(userRepository.findByUsername(username)).thenReturn(new User());
 
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-            authService.registerUser(username, password, email, firstName, lastName);
+            authService.registerUser(username, "password123", "test@example.com", "Test", "User");
         });
 
         assertEquals("Brukernavnet er allerede i bruk.", exception.getMessage());
-        verify(userRepository, never()).save(any(User.class));  // Verify save is not called
+        verify(userRepository, never()).save(any(User.class));
     }
 
     @Test
     @DisplayName("Test: Register User - Email Already Exists")
     void testRegisterUser_EmailAlreadyExists() {
-        String username = "newUser";
-        String password = "password123";
         String email = "existing@example.com";
-        String firstName = "Test";
-        String lastName = "User";
 
-        // Mock the behavior of the userRepository to return a user with the same email
-        when(userRepository.findByUsername(username)).thenReturn(null);
+        when(userRepository.findByUsername("newUser")).thenReturn(null);
         when(userRepository.findByEmail(email)).thenReturn(new User());
 
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-            authService.registerUser(username, password, email, firstName, lastName);
+            authService.registerUser("newUser", "password123", email, "Test", "User");
         });
 
         assertEquals("E-posten er allerede registrert.", exception.getMessage());
-        verify(userRepository, never()).save(any(User.class));  // Verify save is not called
+        verify(userRepository, never()).save(any(User.class));
     }
 
     @Test
     @DisplayName("Test: Verify Email - Success")
     void testVerifyEmail_Success() {
         String email = "test@example.com";
-        String code = "verif-";
-
+        String token = "valid-token";
         User user = new User();
         user.setEmail(email);
-        user.setVerificationCode(code);
 
         when(userRepository.findByEmail(email)).thenReturn(user);
-        when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
+        when(userService.verifyUserByToken(token)).thenReturn(true);
 
-        boolean result = authService.verifyEmail(email, code);
-
-        System.out.println("Email Verified: " + user.isEmailVerified());
+        boolean result = authService.verifyEmail(email, token);
 
         assertTrue(result);
-        assertTrue(user.isEmailVerified());
-        verify(userRepository, times(2)).save(user);
     }
 
-
     @Test
-    @DisplayName("Test: Verify Email - Failure (Incorrect Code)")
-    void testVerifyEmail_Failure_IncorrectCode() {
+    @DisplayName("Test: Verify Email - Failure")
+    void testVerifyEmail_Failure() {
         String email = "test@example.com";
-        String code = "wrong-code";
-
+        String token = "invalid-token";
         User user = new User();
         user.setEmail(email);
-        user.setVerificationCode("verif-1");
-
 
         when(userRepository.findByEmail(email)).thenReturn(user);
+        when(userService.verifyUserByToken(token)).thenReturn(false);
 
-        boolean result = authService.verifyEmail(email, code);
+        boolean result = authService.verifyEmail(email, token);
 
         assertFalse(result);
-        assertFalse(user.isEmailVerified());
-        verify(userRepository, never()).save(user);
     }
 
     @Test
@@ -139,11 +119,9 @@ class AuthServiceTest {
     void testLogin_Success() {
         String username = "testUser";
         String password = "password123";
-
         User user = new User();
         user.setUsername(username);
         user.setHashedPassword(password);
-
 
         when(userRepository.findByUsername(username)).thenReturn(user);
 
@@ -158,11 +136,9 @@ class AuthServiceTest {
     void testLogin_Failure_InvalidPassword() {
         String username = "testUser";
         String password = "incorrectPassword";
-
         User user = new User();
         user.setUsername(username);
         user.setHashedPassword("password123");
-
 
         when(userRepository.findByUsername(username)).thenReturn(user);
 
@@ -175,13 +151,9 @@ class AuthServiceTest {
     @Test
     @DisplayName("Test: Login - Failure (User Not Found)")
     void testLogin_Failure_UserNotFound() {
-        String username = "testUser";
-        String password = "password123";
+        when(userRepository.findByUsername("testUser")).thenReturn(null);
 
-
-        when(userRepository.findByUsername(username)).thenReturn(null);
-
-        boolean result = authService.login(username, password);
+        boolean result = authService.login("testUser", "password123");
 
         assertFalse(result);
     }

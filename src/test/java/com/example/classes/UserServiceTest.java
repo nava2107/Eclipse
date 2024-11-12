@@ -1,6 +1,6 @@
 package com.example.classes;
 
-
+import com.example.application.classes.EmailService;
 import com.example.application.classes.User;
 import com.example.application.classes.UserRepository;
 import com.example.application.classes.UserService;
@@ -12,13 +12,16 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-@DisplayName("UserService Tests")
 class UserServiceTest {
 
     @Mock
     private UserRepository userRepository;
+
+    @Mock
+    private EmailService emailService;
 
     @InjectMocks
     private UserService userService;
@@ -29,42 +32,71 @@ class UserServiceTest {
     }
 
     @Test
-    @DisplayName("Test: Generate Verification Code")
-    void testGenerateVerificationCode() {
+    @DisplayName("Test: Generate Verification Link - Success")
+    void testGenerateVerificationLink_Success() {
         User user = new User();
-        userService.generateVerificationCode(user);
+        user.setEmail("test@example.com");
 
-        assertNotNull(user.getVerificationCode(), "Verification code should not be null");
+        // Mock repository save behavior
+        when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        userService.generateVerificationLink(user);
+
+        assertNotNull(user.getVerificationToken());
+
+
         verify(userRepository, times(1)).save(user);
+        verify(emailService, times(1)).sendVerificationEmail(eq(user.getEmail()), contains(user.getVerificationToken()));
     }
 
     @Test
-    @DisplayName("Test: Verify User by Code - Success")
-    void testVerifyUserByCode_Success() {
-        String code = "valid-code";
+    @DisplayName("Test: Verify User by Token - Success")
+    void testVerifyUserByToken_Success() {
+        String token = "valid-token";
+
         User user = new User();
-        user.setVerificationCode(code);
+        user.setVerificationToken(token);
         user.setEmailVerified(false);
 
-        when(userRepository.findByVerificationCode(code)).thenReturn(user);
+        when(userRepository.findByVerificationToken(token)).thenReturn(user);
+        when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
-        boolean isVerified = userService.verifyUserByCode(code);
+        boolean result = userService.verifyUserByToken(token);
 
-        assertTrue(isVerified, "User should be verified successfully");
-        assertTrue(user.isEmailVerified(), "User email should be set as verified");
+        assertTrue(result);
+        assertTrue(user.isEmailVerified());
         verify(userRepository, times(1)).save(user);
     }
 
     @Test
-    @DisplayName("Test: Verify User by Code - Failure")
-    void testVerifyUserByCode_Failure() {
-        String code = "invalid-code";
-        when(userRepository.findByVerificationCode(code)).thenReturn(null);
+    @DisplayName("Test: Verify User by Token - Failure (User Not Found)")
+    void testVerifyUserByToken_UserNotFound() {
+        String token = "invalid-token";
 
-        boolean isVerified = userService.verifyUserByCode(code);
+        when(userRepository.findByVerificationToken(token)).thenReturn(null);
 
-        assertFalse(isVerified, "Verification should fail for invalid code");
+
+        boolean result = userService.verifyUserByToken(token);
+
+
+        assertFalse(result);
+        verify(userRepository, never()).save(any(User.class));
+    }
+
+    @Test
+    @DisplayName("Test: Verify User by Token - Failure (Already Verified)")
+    void testVerifyUserByToken_AlreadyVerified() {
+        String token = "valid-token";
+
+        User user = new User();
+        user.setVerificationToken(token);
+        user.setEmailVerified(true);
+
+        when(userRepository.findByVerificationToken(token)).thenReturn(user);
+
+        boolean result = userService.verifyUserByToken(token);
+
+        assertFalse(result);
         verify(userRepository, never()).save(any(User.class));
     }
 }
-
