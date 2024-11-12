@@ -74,7 +74,6 @@ class FamilyTest {
         assertEquals(newName, family.getFamilyName());
         System.out.println("Family name updated successfully.");
     }
-
     @Test
     @DisplayName("test: Should set and get family admin")
     void testSetAndGetAdmin() {

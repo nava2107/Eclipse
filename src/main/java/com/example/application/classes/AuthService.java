@@ -40,8 +40,8 @@ public class AuthService {
         User user = userRepository.findByEmail(email);
         if (user != null && verifyCode(user, code)) {
             user.setEmailVerified(true);
-            userRepository.save(user); // Bruk save() til å oppdatere brukeren
-            userRepository.save(user); // Bruk save() i stedet for update()
+            userRepository.save(user);
+            userRepository.save(user);
 
             return true;
         }

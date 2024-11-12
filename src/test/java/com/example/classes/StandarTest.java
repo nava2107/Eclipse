@@ -1,6 +1,6 @@
 package com.example.classes;
 
-import com.example.application.classes.Devices.Lightning.Standar;
+import com.example.application.classes.Devices.Lightning.Standard;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,11 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("Standar Class Tests")
 class StandarTest {
 
-    private Standar lighting;
+    private Standard lighting;
 
     @BeforeEach
     void setUp() {
-        lighting = new Standar(1L, "Living Room Light", "Philips");
+        lighting = new Standard(1L, "Living Room Light", "Philips");
         System.out.println("Set up Standar object: " + lighting.getDeviceInfo());
     }
 
