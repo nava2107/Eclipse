@@ -3,6 +3,9 @@ package com.example.application.views.main;
 import com.example.application.addons.RedirectCard;
 import java.util.List;
 import java.util.Map;
+
+import com.vaadin.flow.component.ClickEvent;
+import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.router.QueryParameters;
 import com.vaadin.flow.component.notification.Notification;
@@ -38,7 +41,6 @@ public class MainView extends Composite<VerticalLayout> {
         this.addClassName("main-view");
 
 
-        // Legg til kode for å vise verifikasjonsmelding
         QueryParameters queryParameters = UI.getCurrent().getInternals().getActiveViewLocation().getQueryParameters();
         Map<String, List<String>> parameters = queryParameters.getParameters();
 
@@ -227,9 +229,15 @@ public class MainView extends Composite<VerticalLayout> {
         Div luna = new Div();
         luna.setClassName("luna-main");
         Image lunaImage = new Image("/images/rett-luna.png", "Luna");
+
+        lunaImage.addClickListener((ComponentEventListener<ClickEvent<Image>>) click -> {
+            getUI().ifPresent(ui -> ui.getPage().setLocation("http://localhost:60401/luna-view"));
+        });
+
         lunaImage.setClassName("luna-image-main");
         Div lunaBackground = new Div();
         lunaBackground.addClassName("background");
+
         lunaBackground.add(lunaImage);
         luna.add(lunaBackground);
         container.add(luna);
