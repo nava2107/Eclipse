@@ -1,10 +1,10 @@
 @import url('./styles/register.css');
 @import url('./styles/login.css');
 @import url("./styles/mainview.css");
-@import url("./styles/test.css");
 @import url("./styles/device.css");
 @import url("./components/logo.css");
 @import url('@fontsource/mukta/index.css');
+@import url("./styles/luna.css");
 
 
 
@@ -152,7 +152,8 @@ main {
 .div-login,
 .div-register,
 .div-main ,
-.device-container{
+.device-container,
+.div-luna{
     background: transparent;
     max-width: 500px;
     width: 100%;
@@ -171,6 +172,12 @@ main {
     flex-grow: 1;
     font-family: "Roboto Condensed", sans-serif;
     top: 0;
+}
+
+.div-luna {
+    display: flex;
+    justify-content: space-between !important;
+    max-height: 100vh !important;
 }
 
 .device-container{
@@ -198,7 +205,7 @@ main {
 
 }
 
-.register-view, .sign-in-view, .main-view, .devices-view {
+.register-view, .sign-in-view, .main-view, .devices-view, .luna-chat-view {
     display: flex;
     justify-content: center;
     align-items: center;

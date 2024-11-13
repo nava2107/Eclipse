@@ -64,10 +64,10 @@ public abstract class Device {
         this.isActive = false;
     }
     public String getDeviceInfo() {
-        return "Device: " + deviceName + "/n" + isActive;
+        return "Device: " + deviceName + "\nBrand: " + deviceBrand + "\nActive: " + isActive;
     }
     public String getDeviceInfoLong() {
-        return "Device: " + deviceName + "/nBrand" + deviceBrand + "/n" + isActive;
+        return "Device: " + deviceName + "\nBrand: " + deviceBrand + "\nActive: " + isActive;
     }
     public void turnOn() {
         isActive = true;
