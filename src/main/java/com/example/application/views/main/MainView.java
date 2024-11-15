@@ -1,20 +1,26 @@
 package com.example.application.views.main;
 
 import com.example.application.addons.RedirectCard;
+
+import java.awt.*;
 import java.util.List;
 import java.util.Map;
 
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.router.QueryParameters;
 import com.vaadin.flow.component.notification.Notification;
-import com.example.application.addons.RedirectCard;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H3;
@@ -66,10 +72,30 @@ public class MainView extends Composite<VerticalLayout> {
         logo.add(eclipse,eclipse2);
         container.add(logo);
 
+
+        Dialog dialog = new Dialog();
+        dialog.setHeaderTitle("Add Device");
+        dialog.setWidth("15rem");
+        dialog.setHeight("15rem");
+
+        Button saveButton = new Button("Save", e -> dialog.close());
+        Button cancelButton = new Button("Cancel", e -> dialog.close());
+        dialog.getFooter().add(cancelButton);
+        dialog.getFooter().add(saveButton);
+
+        Dialog dialog2 = new Dialog();
+        dialog2.setHeaderTitle("Searching Device");
+        dialog2.setWidth("15rem");
+        dialog2.setHeight("15rem");
+        Button saveButton2 = new Button("Save", e -> dialog2.close());
+        Button cancelButton2 = new Button("Cancel", e -> dialog2.close());
+        dialog2.getFooter().add(cancelButton2);
+        dialog2.getFooter().add(saveButton2);
+
         //meny bar
         MenuBar menuBar = new MenuBar();
         menuBar.setWidth("min-content");
-        setMenuSampleData(menuBar);
+        setMenuSampleData(menuBar, dialog, dialog2);
         menuBar.setClassName("menu-bar");
 
 
@@ -134,23 +160,23 @@ public class MainView extends Composite<VerticalLayout> {
         products.setClassName("products");
         products.add(prod);
 
-        Button buttonPrimary2 = new Button();
-        Button buttonPrimary4 = new Button();
-        Button buttonPrimary6 = new Button();
-        buttonPrimary2.setText("Search devices");
+
+
+        Button buttonPrimary2 = new Button("Search Devices", e -> dialog2.open());
+
+        Button buttonPrimary4 = new Button("My Devices");
+        buttonPrimary4.addClickListener(event ->{
+            getUI().ifPresent(ui -> ui.getPage().setLocation("http://localhost:60401/devices-view"));
+        });
+
+        Button buttonPrimary6 = new Button("Add manually", e -> dialog.open());
         buttonPrimary2.setWidth("min-content");
-        buttonPrimary4.setText("My devices");
         buttonPrimary4.setWidth("min-content");
-        buttonPrimary6.setText("Add manually");
         buttonPrimary6.setWidth("min-content");
 
 
 
         buttonPrimary2.setClassName("search-button-main");
-        buttonPrimary2.addClickListener(event ->{
-            getUI().ifPresent(ui -> ui.getPage().setLocation("http://localhost:60401/devices-view"));
-        });
-
         buttonPrimary4.setClassName("devices-button-main");
         buttonPrimary6.setClassName("manual-button-main");
 
@@ -158,26 +184,7 @@ public class MainView extends Composite<VerticalLayout> {
         buttonsMain.setClassName("buttons-main");
         buttonsMain.add(buttonPrimary2, buttonPrimary4, buttonPrimary6);
 
-        wholeTop.add(products, recommendations, buttonsMain);
-
-
-        Div pulses = new Div();
-        pulses.setClassName("pulses");
-
-
-        Image pulsImage = new Image("/images/devices.png", "Search");
-        pulsImage.setClassName("device-image");
-
-        Div pulsContainer1 = new Div();
-        pulsContainer1.setClassName("puls-container");
-        pulsContainer1.add(pulsImage);
-        pulsContainer1.add(pulses);
-
-        Div mainDiv = new Div();
-        mainDiv.setClassName("main-div");
-        mainDiv.add(pulsContainer1);
-
-        container.add(mainDiv);
+        wholeTop.add(products, recommendations, dialog,buttonsMain);
         Div emptyDiv = new Div();
         emptyDiv.addClassName("empty");
         container.add(emptyDiv);
@@ -255,8 +262,7 @@ public class MainView extends Composite<VerticalLayout> {
     }
 
 
-
-    private void setMenuSampleData(MenuBar menuBar) {
+    private void setMenuSampleData(MenuBar menuBar, Dialog dialog, Dialog dialog2) {
         Image menuImage = new Image("/images/menu-.png", "Menu");
         menuImage.addClassName("menu-img");
 
@@ -266,11 +272,11 @@ public class MainView extends Composite<VerticalLayout> {
         SubMenu shareSubMenu = more.getSubMenu();
         MenuItem onSocialMedia = shareSubMenu.addItem("Devices");
         SubMenu socialMediaSubMenu = onSocialMedia.getSubMenu();
-        socialMediaSubMenu.addItem("My devices");
-        socialMediaSubMenu.addItem("Add devices");
-        socialMediaSubMenu.addItem("Scan for devices");
+        socialMediaSubMenu.addItem("My devices").addClickListener((ComponentEventListener<ClickEvent<MenuItem>>) click ->
+                getUI().ifPresent(ui -> ui.getPage().setLocation("http://localhost:60401/devices-view")));
+        socialMediaSubMenu.addItem("Add devices", e -> dialog.open());
+        socialMediaSubMenu.addItem("Scan for devices", e -> dialog2.open());
         shareSubMenu.addItem("Account");
         shareSubMenu.addItem("Help");
     }
-
 }
