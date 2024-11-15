@@ -70,21 +70,22 @@
     margin: 5px;
 }
 
-/*
-.search-button-main, .manual-button-main {
-    background: rgb(150,95,217);
-    background: radial-gradient(circle, rgba(150,95,217,1) 0%, rgba(59,6,124,1) 100%);
+
+.avatar-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.avatar-main{
+    min-width: 100%;
+    min-height: 100%;
+    background-color: rgba(82, 75, 126, 0.78);
 }
-.devices-button-main {
-    color: white;
-    font-weight: 600;
-    font-size: small;
-    max-width: 30%;
-    min-width: 30%;
-    padding: 0;
-    box-shadow: 10px 5px 5px rgba(5, 5, 19, 0.55);}
-*/
 
 .search-button-main, .manual-button-main, .devices-button-main{
     color: white;

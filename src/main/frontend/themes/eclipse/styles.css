@@ -5,6 +5,7 @@
 @import url("./components/logo.css");
 @import url('@fontsource/mukta/index.css');
 @import url("./styles/luna.css");
+@import url("./styles/user.css");
 
 
 
@@ -153,7 +154,8 @@ main {
 .div-register,
 .div-main ,
 .device-container,
-.div-luna{
+.div-luna,
+.div-user{
     background: transparent;
     max-width: 500px;
     width: 100%;
@@ -205,7 +207,7 @@ main {
 
 }
 
-.register-view, .sign-in-view, .main-view, .devices-view, .luna-chat-view {
+.register-view, .sign-in-view, .main-view, .devices-view, .luna-chat-view, .user-view {
     display: flex;
     justify-content: center;
     align-items: center;

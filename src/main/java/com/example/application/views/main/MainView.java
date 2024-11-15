@@ -72,8 +72,15 @@ public class MainView extends Composite<VerticalLayout> {
         setMenuSampleData(menuBar);
         menuBar.setClassName("menu-bar");
 
+
         Avatar avatar2 = new Avatar();
+        avatar2.addClassName("avatar-main");
         avatar2.setName("Firstname Lastname");
+        Button avatarbutton = new Button(avatar2);
+        avatarbutton.addClassName("avatar-button");
+        avatarbutton.addClickListener(event ->{
+            getUI().ifPresent(ui -> ui.getPage().setLocation("http://localhost:60401/user-view"));
+        });
 
         TextField questionField = new TextField("");
         questionField.setPlaceholder("Search the internet...");
@@ -91,7 +98,7 @@ public class MainView extends Composite<VerticalLayout> {
         Div topMain = new Div();
         topMain.setClassName("top-main");
         topMain.setWidth("100%");
-        topMain.add(menuBar, questionField, avatar2);
+        topMain.add(menuBar, questionField, avatarbutton);
         wholeTop.add(topMain);
 
         Div background = new Div();
