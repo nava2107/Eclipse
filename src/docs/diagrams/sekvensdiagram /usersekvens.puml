@@ -1,0 +1,61 @@
+@startuml
+title Brukerregistrering og autentisering prosess med Database
+
+actor User
+participant AuthService
+participant UserRepository
+database Database
+participant UserService
+participant EmailService
+
+User -> AuthService: registerUser(username, password, email, firstName, lastName)
+
+AuthService -> UserRepository: findByUsername(username)
+UserRepository -> Database: Query(username)
+Database -> UserRepository: return existing user (if exists)
+UserRepository -> AuthService: return existing user (if exists)
+
+AuthService -> UserRepository: findByEmail(email)
+UserRepository -> Database: Query(email)
+Database -> UserRepository: return existing user (if exists)
+UserRepository -> AuthService: return existing user (if exists)
+
+AuthService -> User: return error (if username/email exists)
+
+AuthService -> UserRepository: save(newUser)
+UserRepository -> Database: Insert newUser
+Database -> UserRepository: return saved user
+UserRepository -> AuthService: return saved user
+
+
+
+AuthService -> UserService: generateVerificationLink(newUser)
+UserService -> UserRepository: save(newUser)
+UserRepository -> Database: Insert newUser
+Database -> UserRepository: return saved user
+UserRepository -> UserService: return saved user
+UserService -> EmailService: sendVerificationEmail(newUser.email, verificationLink)
+EmailService -> User: send email with verification token
+
+
+User -> AuthService: verifyEmail(email, token)
+AuthService -> UserRepository: findByEmail(email)
+UserRepository -> Database: Query(email)
+Database -> UserRepository: return user
+UserRepository -> AuthService: return boolean
+
+User -> UserService: verifyUserByToken(token)
+UserService -> UserRepository: return verification result
+UserRepository -> User: setAuthenticated(true), setActive(true)
+
+User -> AuthService: login(username, password)
+AuthService -> UserRepository: findByUsername(username)
+UserRepository -> Database: Query(username)
+Database -> UserRepository: return user
+UserRepository -> AuthService: return user
+
+
+AuthService -> AuthService: validate password
+AuthService -> User: setAuthenticated(true)
+
+@enduml

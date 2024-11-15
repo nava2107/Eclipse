@@ -5,8 +5,8 @@ import com.example.application.classes.Devices.Energymanagement.Energy;
 public class SmartPlug extends Energy {
     private boolean isOn;
 
-    public SmartPlug(String deviceName){
-        super(deviceName);
+    public SmartPlug(Long deviceId, String deviceName, String deviceBrand){
+        super(deviceId, deviceName, deviceBrand);
         this.isOn = false;
     }
 

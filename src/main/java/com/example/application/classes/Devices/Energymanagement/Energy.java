@@ -1,14 +1,12 @@
 package com.example.application.classes.Devices.Energymanagement;
 
-public abstract class Energy {
-    private String deviceName;
+import com.example.application.classes.Devices.Device;
 
-    public Energy(String deviceName){
-        this.deviceName = deviceName;
+public abstract class Energy extends Device {
+
+    public Energy(Long deviceId, String deviceName, String deviceBrand) {
+        super(deviceId, deviceName, deviceBrand);
     }
 
-    public String getDeviceName(){
-        return deviceName;
-    }
     public abstract void displayStatus();
 }
