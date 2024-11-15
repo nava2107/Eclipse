@@ -33,7 +33,7 @@ public class DevicesView extends Composite<VerticalLayout> {
         icon.setWidth("25px");
         icon.addClassName("back-devices");
         icon.addClickListener((ComponentEventListener<ClickEvent<Image>>) click -> {
-            getUI().ifPresent(ui -> ui.getPage().setLocation("http://localhost:60401"));
+            getUI().ifPresent(ui -> ui.getPage().setLocation("http://localhost:60401/main-view"));
         });
         backDiv.add(icon);
 
