@@ -1,0 +1,10 @@
+@startuml
+title EmailService State Diagram
+
+[*] --> PreparingEmail
+
+PreparingEmail --> EmailVerified : sendVerificationEmail(toEmail, verificationLink)
+EmailVerified --> SendingWelcomeEmail : sendWelcomeEmail(toEmail)
+SendingWelcomeEmail --> [*]
+
+@enduml

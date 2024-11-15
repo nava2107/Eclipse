@@ -1,0 +1,8 @@
+@startuml
+title AuthService State Diagram
+
+[*] --> Registering : registerUser()
+Registering --> VerifyingEmail : verifyEmail()
+VerifyingEmail --> LoggingIn : login()
+
+@enduml
