@@ -5,8 +5,8 @@ import com.example.application.classes.Devices.Energymanagement.Energy;
 public class BatteryStorage extends Energy {
     private double batteryLevel;
 
-    public BatteryStorage(String deviceName) {
-        super(deviceName);
+    public BatteryStorage(Long deviceId, String deviceName, String deviceBrand){
+        super(deviceId, deviceName, deviceBrand);
         this.batteryLevel = 100.0;
     }
 

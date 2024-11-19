@@ -1,0 +1,7 @@
+@startuml
+title VerificationController State Diagram
+
+[*] --> ProcessingVerification : verifyUser(token)
+ProcessingVerification --> Redirecting : verification complete
+
+@enduml

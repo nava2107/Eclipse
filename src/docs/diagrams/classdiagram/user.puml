@@ -1,0 +1,96 @@
+@startuml
+title Class Diagram for User and Device Management System
+
+class AuthService {
+    - UserRepository userRepository
+    - EmailService emailService
+    - UserService userService
+    --
+    + registerUser(username: String, password: String, email: String, firstName: String, lastName: String): User
+    + verifyEmail(email: String, token: String): boolean
+    + login(username: String, password: String): boolean
+    - hashPassword(password: String): String
+}
+
+class UserService {
+    - UserRepository userRepository
+    - EmailService emailService
+    --
+    + generateVerificationLink(user: User)
+    + verifyUserByToken(token: String): boolean
+}
+
+class EmailService {
+    - JavaMailSender mailSender
+    --
+    + sendVerificationEmail(toEmail: String, verificationLink: String)
+    + sendWelcomeEmail(toEmail: String)
+}
+
+class User {
+    - int userId
+    - String username
+    - String firstName
+    - String lastName
+    - String email
+    - String hashedPassword
+    - boolean isActive
+    - boolean isAuthenticated
+    - boolean isEmailVerified
+    - boolean isAdmin
+    - String verificationToken
+    - List<Device> devices
+    --
+    + authenticate(password: String): boolean
+    + deactivate()
+    + promoteToAdmin()
+    + addDevice(device: Device)
+    + removeDevice(deviceId: String)
+}
+
+class Family {
+    - int familyId
+    - String familyName
+    - List<User> familyMembers
+    - List<Device> householdDevices
+    - User admin
+    - String qrCode
+    --
+    - generateQRCode(): String
+    + addFamilyMemberWithQRCode(newMember: User, qrCodeInput: String): boolean
+    + addFamilyMember(newMember: User)
+    + removeFamilyMember(member: User)
+    + addDevice(newDevice: Device)
+    + removeDevice(device: Device)
+}
+
+interface UserRepository {
+    + findByUsername(username: String): User
+    + findByEmail(email: String): User
+    + findByVerificationToken(token: String): User
+}
+
+class Device {
+    - String deviceId
+    ...
+}
+
+class VerificationController {
+    - UserService userService
+    --
+    + verifyUser(token: String): RedirectView
+}
+
+AuthService --> UserRepository
+AuthService --> EmailService
+AuthService --> UserService
+UserService --> UserRepository
+UserService --> EmailService
+EmailService --> JavaMailSender
+User "1" --> "0..*" Device
+Family "1" --> "1" User : admin
+Family "1" --> "0..*" User : familyMembers
+Family "1" --> "0..*" Device : householdDevices
+VerificationController --> UserService
+
+@enduml
