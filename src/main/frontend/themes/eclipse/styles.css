@@ -3,9 +3,9 @@
 @import url("./styles/mainview.css");
 @import url("./styles/device.css");
 @import url("./components/logo.css");
-@import url('@fontsource/mukta/index.css');
 @import url("./styles/luna.css");
 @import url("./styles/user.css");
+@import url("./styles/luna.css");
 
 
 
@@ -155,7 +155,8 @@ main {
 .div-main ,
 .device-container,
 .div-luna,
-.div-user{
+.div-user,
+.div-luna{
     background: transparent;
     max-width: 500px;
     width: 100%;
