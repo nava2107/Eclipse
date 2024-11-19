@@ -13,7 +13,6 @@ public class EmailService {
         this.mailSender = mailSender;
     }
 
-    // Send a verification link via email
     public void sendVerificationEmail(String toEmail, String verificationLink) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(toEmail);
@@ -32,7 +31,6 @@ public class EmailService {
         }
     }
 
-    // Method to send a welcome email
     public void sendWelcomeEmail(String toEmail) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(toEmail);

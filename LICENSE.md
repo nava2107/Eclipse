@@ -1,3 +1,10 @@
+
+## Lisens for bruk av Vaadin-prosjekt
+
+Dette prosjektet er utgitt til offentlig bruk.
+Koden kan fritt kopieres, endres, publiseres og 
+distribueres for kommersielle eller ikke-kommersielle formål.
+
 This is free and unencumbered software released into the public domain.
 
 Anyone is free to copy, modify, publish, use, compile, sell, or

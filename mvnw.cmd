@@ -1,4 +1,12 @@
 @REM ----------------------------------------------------------------------------
+@REM Dette skriptet brukes til å starte Maven Wrapper for å kjøre og bygge prosjektet.
+@REM Det sjekker om JAVA_HOME-variabelen er satt opp riktig, og laster ned nødvendige filer hvis de mangler.
+@REM Kjør skriptet for å sette opp og bygge prosjektet automatisk, uten å måtte installere Maven lokalt.
+@REM Pass på at JAVA_HOME peker til riktig JDK-installasjon.
+@REM ----------------------------------------------------------------------------
+
+
+@REM ----------------------------------------------------------------------------
 @REM Licensed to the Apache Software Foundation (ASF) under one
 @REM or more contributor license agreements.  See the NOTICE file
 @REM distributed with this work for additional information

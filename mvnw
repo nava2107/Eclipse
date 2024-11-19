@@ -1,5 +1,24 @@
 #!/bin/sh
 # ----------------------------------------------------------------------------
+# Dette skriptet er en Maven Wrapper (mvnw), som brukes til å kjøre Apache Maven
+# uten behov for en lokal Maven-installasjon. Skriptet sjekker om nødvendige
+# miljøvariabler som JAVA_HOME er definert, og konfigurerer systemet til å kjøre
+# Maven basert på prosjektets innstillinger. Hvis det mangler nødvendige filer
+# (som maven-wrapper.jar), vil de automatisk lastes ned fra Maven Central.
+#
+# Bruk:
+#   Kjør ./mvnw <kommando> for å utføre Maven-kommandoer (f.eks. ./mvnw install).
+#
+# Krav:
+#   - JAVA_HOME miljøvariabel må peke til en gyldig JDK-installasjon.
+#   - Hvis Maven ikke allerede finnes i prosjektets .mvn/wrapper-mappe, vil det
+#     automatisk bli lastet ned.
+#
+# Lisens:
+#   Skriptet er lisensiert under Apache License, Version 2.0.
+# ----------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
 # distributed with this work for additional information

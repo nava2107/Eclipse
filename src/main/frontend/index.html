@@ -9,10 +9,7 @@
     <title>Eclipse</title>
     <script>
       window.addEventListener('scroll', () => {
-        // Get the scroll position of the page
         const scrollPosition = window.scrollY;
-
-        // Adjust the background position based on scroll position
         document.body.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
       });
     </script>
@@ -368,7 +365,6 @@
         max-width: 100%;
       }
 
-      /* Landscape small screen */
       @media only screen and (max-height: 600px) and (min-width: 600px) and (orientation: landscape) {
         :host([theme~='with-overlay']) [part='form'] {
           height: 100%;
@@ -379,7 +375,6 @@
       }
     </style>
 
-    <!-- index.ts is included here automatically (either by the dev server or during the build) -->
   </head>
 
   <body theme="dark">

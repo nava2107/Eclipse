@@ -9,7 +9,6 @@ import com.vaadin.flow.dom.Element;
 public class CustomIcon extends Component {
 
     public CustomIcon(String pngPath) {
-        // Embed SVG directly in HTML
         Element pngElement = new Element("png");
         pngElement.setAttribute("width", "24");
         pngElement.setAttribute("height", "24");
@@ -20,7 +19,6 @@ public class CustomIcon extends Component {
         pngElement.setAttribute("stroke-linecap", "round");
         pngElement.setAttribute("stroke-linejoin", "round");
 
-        // Add SVG path
         Element pathElement = new Element("path");
         pathElement.setAttribute("d", pngPath);
         pngElement.appendChild(pathElement);
