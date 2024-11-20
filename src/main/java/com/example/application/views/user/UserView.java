@@ -75,7 +75,7 @@ public class UserView extends Composite<VerticalLayout> {
         notificationSettings.add(notifcards);
         container.add(notificationSettings);
 
-        Div householdSettings = createDeviceSection("Notification settings", "");
+        Div householdSettings = createDeviceSection("Household settings", "");
         Div householdcards = new Div();
         householdcards.addClassName("device-cards");
         householdcards.add(
@@ -85,7 +85,7 @@ public class UserView extends Composite<VerticalLayout> {
         householdSettings.add(householdcards);
         container.add(householdSettings);
 
-        Div accountSettings = createDeviceSection("Notification settings", "");
+        Div accountSettings = createDeviceSection("Account and privacy settings", "");
         Div accoundcards = new Div();
         accoundcards.addClassName("device-cards");
         accoundcards.add(
