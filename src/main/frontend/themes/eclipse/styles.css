@@ -31,6 +31,9 @@
 }
 
 
+:host{
+    font-family: "Roboto Condensed", sans-serif !important;
+}
 
 html {
       --lumo-shade: hsl(214, 32%, 12%);
@@ -69,11 +72,11 @@ html {
       --lumo-line-height-m: 1.8;
       --lumo-line-height-s: 1.5;
       --lumo-line-height-xs: 1.3;
---lumo-font-family: Mukta;
-
-    }
+    --lumo-font-family: Mukta;
+}
 
 html, body {
+    font-family: "Roboto Condensed", sans-serif !important;
     width: 100vw;
     overflow-x: hidden;
     background: linear-gradient(162deg, rgba(9,4,62,1) 0%, rgba(16,0,74,1) 10%, rgba(16,0,74,1) 42%, rgba(56,12,110,1) 71%, rgba(104,48,171,1) 93%);
@@ -96,18 +99,8 @@ body {
     background: transparent;
 }
 
-
-:host {
-    --monospace: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-    --red: #ff5555;
-    --yellow: #e2aa53;
-    --purple: #cfa4ff;
-    --blue: #a4c1ff;
-    --cyan: #2dd9da;
-    --dim: #c9c9c9;
-}
 .window:root {
-    font-family: sans-serif;
+    font-family: "Roboto Condensed", sans-serif !important;
     background-color: rgba(10, 58, 115, 0.85);
     backdrop-filter: blur(1px);
     color: white;
@@ -146,9 +139,6 @@ main {
     width: 100%;
     box-sizing: border-box;
 }
-
-
-
 
 .div-login,
 .div-register,
@@ -209,6 +199,7 @@ main {
 }
 
 .register-view, .sign-in-view, .main-view, .devices-view, .luna-chat-view, .user-view {
+    font-family: "Roboto Condensed", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -224,5 +215,12 @@ main {
     background-position: top center;
 }
 
+#vaadin-text-field, #vaadin-field-container, .label-vaadin-text-field-0{
+    font-family: "Roboto Condensed", sans-serif !important;
+}
+
+:root {
+    font-family: "Roboto Condensed", sans-serif !important;
+}
 
 

@@ -96,12 +96,14 @@
     max-width: 30%;
     min-width: 30%;
     border: 1px solid transparent;
-    padding: 0.75rem; /* p-3 */
-    border-radius: 0.5rem; /* rounded-lg */
+    padding: 0.75rem;
+    border-radius: 0.5rem;
     overflow: hidden;
     text-decoration: underline;
-    text-underline-offset: 0.125rem; /* underline-offset-2 */
-    transition: all 0.5s ease; /* duration-500 */
+    text-underline-offset: 0.125rem;
+    transition: all 0.5s ease;
+    font-family: "Roboto Condensed", sans-serif !important;
+
 }
 
 .search-button-main:hover, .manual-button-main:hover, .devices-button-main:hover {
@@ -284,6 +286,8 @@ vaadin-avatar,
 vaadin-menu-bar-button{
     background-color: rgba(82, 75, 126, 0.78);
     border: none;
+    font-family: "Roboto Condensed", sans-serif !important;
+
 }
 
 vaadin-text-field::part(input-field):hover,

@@ -13,9 +13,10 @@ effect(() => {
 (window as any).Vaadin.documentTitleSignal = documentTitleSignal;
 
 export default function MainLayout() {
-    // No longer using the SideNav or navigation logic
+
     useEffect(() => {
-        documentTitleSignal.value = defaultTitle; // Set default title
+        documentTitleSignal.value = defaultTitle;
+
     }, []);
 
     return (
