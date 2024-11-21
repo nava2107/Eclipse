@@ -1,0 +1,35 @@
+.back-account-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 6rem;
+    align-items: center;
+    margin: 55px;
+    width: 80%;
+}
+
+.avatar-user{
+    width: 5rem;
+    height: 5rem;
+}
+
+.buttons-div-user {
+    display: flex;
+    width: 80%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.delete-account, .sign-out{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    width: 11rem;
+}
+.delete-account:hover,
+.sign-out:hover{
+    box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.37), 0 6px 20px 0 rgba(76, 74, 147, 0.39);
+    background-color: rgba(21, 15, 79, 0.87);
+    color: white;
+}
+

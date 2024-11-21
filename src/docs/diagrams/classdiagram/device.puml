@@ -1,0 +1,255 @@
+@startuml
+title Class Diagram for Device and Energy Management System
+
+abstract class Device {
+- Long deviceId
+- String deviceName
+- String deviceBrand
+- boolean isActive
+--
++ getDeviceInfo(): String
++ turnOn()
++ turnOff()
++ deactivate()
+}
+
+abstract class Camera extends Device {
+- String resolution
+- boolean nightVision
+- boolean motionDetectionEnabled
+- boolean autoTrackingEnabled
+- boolean soundSensorEnabled
+- String activationSchedule
+--
++ isActiveBasedOnSchedule(currentTime: String): boolean
++ getDeviceInfo(): String
+}
+
+class InDoor extends Camera {
++ getDeviceInfo(): String
+}
+
+class OutDoor extends Camera {
+- boolean weatherResistant
+- int range
+--
++ getDeviceInfo(): String
+}
+
+
+abstract class Energy {
+- String deviceName
+--
++ displayStatus()
+}
+
+class ElectricityMeter extends Energy {
+- double totalUsage
+--
++ addUsage(usage: double)
++ getTotalUsage(): double
++ displayStatus()
+}
+
+class WaterMeter extends Energy {
+- double totalUsage
+--
++ addUsage(usage: double)
++ getTotalUsage(): double
++ displayStatus()
+}
+
+class BatteryStorage extends Energy {
+- double batteryLevel
+--
++ discharge(amount: double)
++ charge(amount: double)
++ displayStatus()
+}
+
+
+class SmartPlug extends Energy {
+- boolean isOn
+--
++ turnOn()
++ turnOff()
++ displayStatus()
+}
+
+
+
+abstract class Entertainment extends Device {
+- int volume
+--
++ setVolume(level: int)
++ getVolume(): int
+}
+
+
+class Projector extends Entertainment {
+- int focusLevel
+- boolean screenMirroringEnabled
+--
++ adjustFocus(level: int)
++ enableScreenMirroring()
++ disableScreenMirroring()
+}
+
+class VisualEntertainment extends Device {
+    - String currentInput
+    - boolean streamingEnabled
+    --
+    + switchInput(input: String)
+    + enableStreaming()
+    + disableStreaming()
+}
+
+
+
+class SoundSystem extends Entertainment {
+    - boolean bluetoothConnected
+    --
+    + connectBluetooth()
+    + disconnectBluetooth()
+}
+
+
+
+
+abstract class Environment extends Device {
+    - int updateInterval
+    - String lastUpdateTime
+    --
+    + performMeasurement()
+    + updateLastUpdateTime()
+}
+
+class Thermostat extends Environment {
+    - double targetTemperature
+    - double currentTemperature
+    - String mode
+    - int fanSpeed
+    - boolean ecoMode
+    - String schedule
+    --
+    + performMeasurement()
+    + applySchedule(currentTime: String)
+    + getDeviceInfo(): String
+}
+
+class Detectors extends Environment {
+    - boolean smokeDetected
+    - double carbonMonoxideLevel
+    - boolean gasDetected
+    - double temperature
+    - int sensitivity
+    --
+    + performMeasurement()
+    + printLastUpdateTime()
+    + getDeviceInfo(): String
+}
+
+class AirQuality extends Environment {
+    - double co2Level
+    - double pm25Level
+    - double pm10Level
+    - double temperature
+    - double humidity
+    - double tvocLevel
+    - int airQualityIndex
+    --
+    + performMeasurement()
+    + getDeviceInfo(): String
+}
+
+
+
+abstract class HouseholdAppliance extends Device {
+    - String applianceCategory
+    --
+    + getApplianceCategory(): String
+    + setApplianceCategory(applianceCategory: String)
+    + performSpecificAction()
+    + getDeviceInfoLong(): String
+}
+
+class KitchenAppliance extends HouseholdAppliance {
+    - String cookingMode
+    - int temperature
+    - int cookingTime
+    - boolean isCooking
+    --
+    + startCooking()
+    + stopCooking()
+    + setCookingTimer(minutes: int)
+    + preheatOven(targetTemperature: int)
+    + activateSmartCookingMode(mode: String)
+    + performSpecificAction()
+}
+
+class LaundryAppliance extends HouseholdAppliance {
+    - String laundryCycle
+    - int temperature
+    --
+    + startWashing()
+    + startDrying()
+    + performSpecificAction()
+}
+
+class CleaningAppliance extends HouseholdAppliance {
+    - String cleaningMode
+    - int powerLevel
+    - int cleaningDuration
+    - String cleaningArea
+    --
+    + startCleaning()
+    + stopCleaning()
+    + chooseCleaningDuration(minutes: int)
+    + chooseCleaningArea(area: String)
+    + performSpecificAction()
+}
+
+
+
+abstract class Lighting extends Device {
+    - int brightness
+    - boolean isDimmable
+    --
+    + setBrightness(level: int)
+    + getBrightness(): int
+    + setDimmable(dimmable: boolean)
+    + getIsDimmable(): boolean
+}
+
+class Motion extends Lighting {
+    - boolean motionDetected
+    - int motionSensitivity
+    --
+    + detectMotion()
+    + setMotionSensitivity(level: int)
+    + getMotionSensitivity(): int
+    + getDeviceInfo(): String
+}
+
+class Smart extends Lighting {
+    --
+    + getDeviceInfo(): String
+}
+
+class SmartColour extends Lighting {
+    - String color
+    - boolean isColorAdjustable
+    --
+    + setColor(color: String)
+    + getColor(): String
+    + getDeviceInfo(): String
+}
+
+class Standard extends Lighting {
+    --
+    + setDimmable(dimmable: boolean)
+}
+
+
+
+@enduml

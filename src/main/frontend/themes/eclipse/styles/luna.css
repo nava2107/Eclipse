@@ -1,0 +1,128 @@
+.headerDivLuna{
+    width: 100%;
+    height: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: white;
+}
+
+.go-back-luna{
+    position: absolute;
+    z-index: 2;
+    left:60px;
+    top: 77px;
+}
+
+.titleLuna{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(21, 15, 79, 0.51);
+    padding: 10px 20px;
+    margin-top: 60px;
+    border-radius: 40px;
+    gap: 10px;
+    z-index: 1;
+}
+
+.backgroundLuna{
+    position: absolute;
+    background-image: url("/images/luna-background.png");
+    filter: drop-shadow(0 7mm 10mm rgb(17, 4, 70));
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: local;
+    background-position: top center;
+    width: 100%;
+    height: 15rem;
+    z-index: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.lunaheader {
+    font-size: large;
+    font-weight: normal;
+}
+.chat-area-outer{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    max-height: 100vh;
+    min-height: 0;
+    background-color: white;
+    justify-content: flex-end;
+    background-clip: content-box;
+}
+.chat-area {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: 100%;
+    padding-bottom: 145px;
+    padding-top: 100px;
+}
+
+.beforeLuna {
+    background-color: white;
+    height: 50px;
+    width: 100%;
+}
+.afterLuna {
+    height: 140px;
+    min-height: 140px;
+    width: 100%;
+    border-radius: 150px 150px 0 0;
+    background: rgb(176,135,193);
+    background: radial-gradient(circle, rgba(176,135,193,1) 0%, rgba(119,52,205,1) 100%);
+    position: absolute;
+}
+
+
+.bottomLunaDiv{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    margin-left: -150px;
+    gap: 10px;
+    z-index: 1;
+}
+
+.bot-message, .user-message {
+    border-radius: 20px;
+    max-width: 70%;
+    color: white;
+    transition: background-color 0.3s ease;
+    padding: 20px;
+    margin: 20px;
+}
+
+.user-message {
+    --_p: 100%;
+    border-bottom-right-radius: 0 0;
+    place-self: end;
+    background-color: rgba(26, 17, 65, 0.51);
+
+}
+.bot-message {
+    --_p: 0;
+    border-bottom-left-radius: 0 0;
+    place-self: start;
+    background-color: rgba(26, 17, 65, 0.85);
+
+}
+
+.bottomLunaDiv vaadin-text-field::part(input-field) {
+    background-color: rgba(26, 17, 65, 0.58) !important;
+}
+
+.sendLunaAsk{
+    background-color: rgba(26, 17, 65, 0.58) !important;
+    color: #b2b2ec;
+}

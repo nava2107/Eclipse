@@ -1,0 +1,12 @@
+@startuml
+title Device State Diagram
+
+[*] --> Inactive
+
+Inactive --> Active : turnOn()
+Active --> Inactive : turnOff()
+Active --> Deactivated : deactivate()
+Inactive --> Deactivated : deactivate()
+
+@enduml
+

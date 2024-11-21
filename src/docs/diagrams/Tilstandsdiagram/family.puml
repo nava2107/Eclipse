@@ -1,0 +1,13 @@
+@startuml
+title Family State Diagram
+
+[*] --> Initializing
+
+Initializing --> AddingMembers : addFamilyMember(newMember)
+Initializing --> AddingMembers : addFamilyMemberWithQRCode(newMember, qrCodeInput)
+AddingMembers --> ManagingDevices : addDevice(newDevice)
+AddingMembers --> RemovingMembers : removeFamilyMember(member)
+
+ManagingDevices --> RemovingDevices : removeDevice(device)
+
+@enduml

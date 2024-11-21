@@ -1,0 +1,10 @@
+@startuml
+title User State Diagram
+
+[*] --> Inactive
+
+Inactive --> Active : authenticate(password)
+Active --> Inactive : deactivate()
+Active --> Admin : promoteToAdmin()
+
+@enduml

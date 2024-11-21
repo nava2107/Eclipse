@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eclipse</title>
+    <script>
+      window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+        document.body.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
+      });
+    </script>
+    <dom-module id="material-login-form-wrapper" theme-for="vaadin-login-form-wrapper">
+      <template>
+        <style include="material-typography">
+          :host {
+            background: transparent !important;
+            min-height: 250px;
+
+          }
+
+          [part="form"] {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          }
+
+          [part="form-title"] {
+            margin-top: calc(var(--material-h3-font-size) - var(--material-h4-font-size));
+            font-size: var(--material-h5-font-size);
+            font-family: "Roboto Condensed", sans-serif !important;
+
+          }
+
+          [theme~='primary']{
+            background-color: rgba(10, 58, 115, 0.85) !important;
+          }
+
+          #forgotPasswordButton {
+            margin: 0.5rem auto;
+            padding-bottom: 12px;
+            padding-top: 12px;
+            text-transform: none;
+          }
+
+          [part="error-message"] {
+            background-color: hsla(3, 100%, 60%, 0.1);
+            padding: 1rem;
+            border-radius: 0.25em;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--material-error-text-color);
+          }
+
+          :host(:not([dir="rtl"])) [part="error-message"] {
+            padding-left: 2.25rem;
+          }
+
+          :host([dir="rtl"]) [part="error-message"] {
+            padding-right: 2.25rem;
+          }
+
+          [part="error-message"]::before {
+            content: "!";
+            font-size: 1.3em;
+            font-weight: 500;
+            position: absolute;
+            width: 2.25rem;
+            height: 1em;
+            line-height: 1;
+            text-align: center;
+          }
+
+          :host(:not([dir="rtl"])) [part="error-message"]::before {
+            /* Visual centering */
+            margin-left: calc(2.25rem * -0.95);
+          }
+
+          :host([dir="rtl"]) [part="error-message"]::before {
+            /* Visual centering */
+            margin-right: calc(2.25rem * -0.95);
+          }
+
+          [part="error-message"] h5 {
+            margin: 0 0 0.25em;
+            color: inherit;
+          }
+
+          [part="error-message"] p {
+            font-size: var(--material-small-font-size);
+            line-height: 1.375;
+            margin: 0;
+            opacity: 0.9;
+          }
+
+        </style>
+      </template>
+    </dom-module>
+    <style>
+      body {
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+      }
+      #outlet {
+        height: 100%;
+      }
+    </style>
+
+    <style id="vaadin-themable-mixin-style">
+      :host {
+        overflow: hidden;
+        display: inline-block;
+      }
+
+      :host([hidden]) {
+        display: none !important;
+      }
+
+      [part='form'] {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      [part='form-title'] {
+        margin: 0;
+        color: #9b6eff !important;
+      }
+
+      [part='error-message'] {
+        position: relative;
+      }
+
+      [theme~='dark'] {
+        color: var(--lumo-body-text-color);
+        background-color: rgb(26, 17, 65);
+        color-scheme: dark;
+      }
+      :host([theme~='primary']){
+        background-color: #1c113a !important;
+      }
+
+      h1,
+      h4,
+      h5,
+      h6 {
+        color: var(--lumo-header-text-color);
+      }
+
+      h3 {
+        color: #3d207a;
+        font-size: xx-large;
+        width: auto;
+      }
+
+      h2 {
+        color: #9b6eff !important;
+      }
+
+      a:where(:any-link) {
+        color: var(--lumo-primary-text-color);
+      }
+
+      a:not(:any-link) {
+        color: var(--lumo-disabled-text-color);
+      }
+
+      blockquote {
+        color: var(--lumo-secondary-text-color);
+      }
+
+      code,
+      pre {
+        background-color: var(--lumo-contrast-10pct);
+        border-radius: var(--lumo-border-radius-m);
+      }
+      pre code {
+        background: transparent;
+      }
+
+
+      body,
+      :host {
+        font-family: "Roboto Condensed", sans-serif !important;
+        font-size: var(--lumo-font-size-m);
+        line-height: var(--lumo-line-height-m);
+        -webkit-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      small,
+      [theme~='font-size-s'] {
+        font-size: var(--lumo-font-size-s);
+        line-height: var(--lumo-line-height-s);
+      }
+
+      [theme~='font-size-xs'] {
+        font-size: var(--lumo-font-size-xs);
+        line-height: var(--lumo-line-height-xs);
+      }
+
+      :where(h1, h2, h3, h4, h5, h6) {
+        font-weight: 600;
+        line-height: var(--lumo-line-height-xs);
+        margin-block: 0;
+      }
+
+      :where(h1) {
+        font-size: var(--lumo-font-size-xxxl);
+      }
+
+      :where(h2) {
+        font-size: var(--lumo-font-size-xxl);
+      }
+
+      :where(h3) {
+        font-size: var(--lumo-font-size-xl);
+      }
+
+      :where(h4) {
+        font-size: var(--lumo-font-size-l);
+      }
+
+      :where(h5) {
+        font-size: var(--lumo-font-size-m);
+      }
+
+      :where(h6) {
+        font-size: var(--lumo-font-size-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+      }
+
+      p,
+      blockquote {
+        margin-top: 0.5em;
+        margin-bottom: 0.75em;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      a:where(:any-link):hover {
+        text-decoration: underline;
+      }
+
+      hr {
+        display: block;
+        align-self: stretch;
+        height: 1px;
+        border: 0;
+        padding: 0;
+        margin: var(--lumo-space-s) calc(var(--lumo-border-radius-m) / 2);
+        background-color: var(--lumo-contrast-10pct);
+      }
+
+      blockquote {
+        border-left: 2px solid var(--lumo-contrast-30pct);
+      }
+
+      b,
+      strong {
+        font-weight: 600;
+      }
+
+      /* RTL specific styles */
+      blockquote[dir='rtl'] {
+        border-left: none;
+        border-right: 2px solid var(--lumo-contrast-30pct);
+      }
+
+
+      :host {
+        max-width: calc(var(--lumo-size-m) * 10);
+        background: var(--lumo-base-color) linear-gradient(var(--lumo-tint-5pct), var(--lumo-tint-5pct));
+      }
+
+      [part='form'] {
+        padding: var(--lumo-space-l);
+      }
+
+      [part='form-title'] {
+        margin-top: calc(var(--lumo-font-size-xxxl) - var(--lumo-font-size-xxl));
+      }
+
+      ::slotted([slot='submit']) {
+        margin-top: var(--lumo-space-l);
+        margin-bottom: var(--lumo-space-s);
+      }
+
+      ::slotted([slot='forgot-password']) {
+        margin: var(--lumo-space-s) auto;
+      }
+
+      [part='error-message'] {
+        background-color: var(--lumo-error-color-10pct);
+        padding: var(--lumo-space-m);
+        border-radius: var(--lumo-border-radius-m);
+        margin-top: var(--lumo-space-m);
+        margin-bottom: var(--lumo-space-s);
+        color: var(--lumo-error-text-color);
+      }
+
+      :host(:not([dir='rtl'])) [part='error-message'] {
+        padding-left: var(--lumo-size-m);
+      }
+
+      :host([dir='rtl']) [part='error-message'] {
+        padding-right: var(--lumo-size-m);
+      }
+
+      [part='error-message']::before {
+        content: var(--lumo-icons-error);
+        font-family: lumo-icons;
+        font-size: var(--lumo-icon-size-m);
+        position: absolute;
+        width: var(--lumo-size-m);
+        height: 1em;
+        line-height: 1;
+        text-align: center;
+      }
+
+      :host(:not([dir='rtl'])) [part='error-message']::before {
+        /* Visual centering */
+        margin-left: calc(var(--lumo-size-m) * -0.95);
+      }
+
+      :host([dir='rtl']) [part='error-message']::before {
+        /* Visual centering */
+        margin-right: calc(var(--lumo-size-m) * -0.95);
+      }
+
+      [part='error-message-title'] {
+        margin: 0 0 0.25em;
+        color: inherit;
+      }
+
+      [part='error-message-description'] {
+        font-size: var(--lumo-font-size-s);
+        line-height: var(--lumo-line-height-s);
+        margin: 0;
+        opacity: 0.9;
+      }
+
+      [part='footer'] {
+        font-size: var(--lumo-font-size-xs);
+        line-height: var(--lumo-line-height-s);
+        color: var(--lumo-secondary-text-color);
+      }
+
+
+      :host([theme~='with-overlay']) {
+        min-height: 100%;
+        display: flex;
+        justify-content: center;
+        max-width: 100%;
+      }
+
+      @media only screen and (max-height: 600px) and (min-width: 600px) and (orientation: landscape) {
+        :host([theme~='with-overlay']) [part='form'] {
+          height: 100%;
+          -webkit-overflow-scrolling: touch;
+          flex: 1;
+          padding: 2px;
+        }
+      }
+    </style>
+
+  </head>
+
+  <body theme="dark">
+    <div id="outlet"></div>
+  </body>
+</html>
